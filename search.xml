@@ -26,42 +26,6 @@
       </tags>
   </entry>
   <entry>
-    <title>澳洲生存指南（2）——垃圾的网络</title>
-    <url>/2017/05/22/Australia2/</url>
-    <content><![CDATA[<p>在我上一篇文章中提及了三大运营商：Telstra，Optus，Vodafone。<br>在这三家里面干ISP的只有两家：Telstra，Optus。</p>
-<p>澳洲的光纤叫做NBN（National Boardband Network），去办光纤的时候不要傻傻的说fiber了。</p>
-<p>澳洲的光纤，是和别处不同的：都是政府统一建设的，每一户有且只有一条光纤，光纤可以随时换ISP。上网的人，只要打个电话，给初装费——这是几年前的事，现在可以网上操作了，——连通网络，就能上网了。倘肯多花点钱，便可以加个互联网电视，或者固话了。如果出到几百刀，那就能有无限流量，但这些顾客，多是个人用户，大抵没有这样阔绰。只有企业用户，才去申请无限流量的网络，疯狂的使用。</p>
-<p>是的，澳洲的ISP，全部是有流量限制的，每个月从最低10GB到最高500GB或1000GB，弄无限流量的一般都是企业用户，只有少数的运营商提供无限流量，也只有少数的用户选择无限流量。</p>
-<p>澳洲的ISP不止两家，数量可能有十几家，二十几家，但能亲自去和NBN要网络的可能就Telstra为首的那几家，别的不是没有最高优先权就是租Telstra或者别家网络的。</p>
-<p>简单地说，Telstra财大气粗，相当于中国电信，网络最稳定，质量最强大，但是贵。</p>
-<p>Telstra开通了一个WiFi叫做Telstra Air，和中国移动的CMCC不同，Telstra Air是使用宽带账号作为登录账号的。至于这个WiFi是无限的还是算进你的流量的就不知道了。</p>
-<p>而且Telstra Air覆盖挺广的……</p>
-<p>Optus是有无限流量的，但是澳洲的企业有个坏毛病：总喜欢让人去签一些两年或者四年这种长期协议的合同……</p>
-<p>Optus的NBN套餐有固话选项，所谓的固话就是NBN光纤盒子通过RJ45接口连接Optus路由器，路由器有RJ11接口给电话使用。重点来了！！！Optus附赠的垃圾路由器供电是带不起一个老式电话的！只有无绳电话机能用！</p>
-<p>什么是老式电话呢？</p>
-<p><img src="https://www.akarin.moe/images/Australia2/1.jpg" alt="pic"></p>
-<p>这种，没有独立供电的。</p>
-<p>无绳电话机就是这种了。</p>
-<p><img src="https://www.akarin.moe/images/Australia2/2.jpg" alt="pic"></p>
-<p>这种是有独立供电的！这种才能用！</p>
-<p>这种固话的价格一般都会便宜的不可思议，打特定国际电话甚至是免费的。</p>
-<p>当然了，因为这丫走VOIP啊……</p>
-<p>当然了Telstra也有这种绑定套餐的。</p>
-<p>另一件事就是据说我们学校要扔掉自己建的垃圾网站，把所有的资源转向Microsoft某个服务……</p>
-<p>应该是Microsoft Azure吧……</p>
-<p>顺便一提Microsoft Azure最近的财报增长102%……而Windows Phone下跌71%……</p>
-<p>那句话怎么说来着？</p>
-<p>我们一年赔4个亿，收Android专利费一年赚8个亿，所以我们的移动部门一年净赚4个亿。</p>
-<p>小伙子明天来微软上班吧。</p>
-]]></content>
-      <categories>
-        <category>Australia</category>
-      </categories>
-      <tags>
-        <tag>Australia</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>澳洲生存指南（3）：你的护照不能用了该怎么办？</title>
     <url>/2017/05/23/Australia3/</url>
     <content><![CDATA[<p>这已经是快半年的事情了。<br>为什么标题会是“不能用”呢？</p>
@@ -140,19 +104,39 @@
       </tags>
   </entry>
   <entry>
-    <title>哔哩哔哩动画UWP版</title>
-    <url>/2017/03/25/BilibiliUWP/</url>
-    <content><![CDATA[<p>一开始是因为Adobe flash player这史前遗留文明对电脑的风扇损害极大，并且不知道为什么缓存死活有问题加载不了视频，所以便在微软应用商店找了哔哩哔哩动画的UWP版。</p>
-<p>然后怀着好奇的心情打开了那个画质测试视频（因为知乎的链接是要跳转的所以直接上av号：av932932）。</p>
-<p>一开始的时候居然流畅的放出来了！但是后面无限小电视……</p>
+    <title>澳洲生存指南（2）——垃圾的网络</title>
+    <url>/2017/05/22/Australia2/</url>
+    <content><![CDATA[<p>在我上一篇文章中提及了三大运营商：Telstra，Optus，Vodafone。<br>在这三家里面干ISP的只有两家：Telstra，Optus。</p>
+<p>澳洲的光纤叫做NBN（National Boardband Network），去办光纤的时候不要傻傻的说fiber了。</p>
+<p>澳洲的光纤，是和别处不同的：都是政府统一建设的，每一户有且只有一条光纤，光纤可以随时换ISP。上网的人，只要打个电话，给初装费——这是几年前的事，现在可以网上操作了，——连通网络，就能上网了。倘肯多花点钱，便可以加个互联网电视，或者固话了。如果出到几百刀，那就能有无限流量，但这些顾客，多是个人用户，大抵没有这样阔绰。只有企业用户，才去申请无限流量的网络，疯狂的使用。</p>
+<p>是的，澳洲的ISP，全部是有流量限制的，每个月从最低10GB到最高500GB或1000GB，弄无限流量的一般都是企业用户，只有少数的运营商提供无限流量，也只有少数的用户选择无限流量。</p>
+<p>澳洲的ISP不止两家，数量可能有十几家，二十几家，但能亲自去和NBN要网络的可能就Telstra为首的那几家，别的不是没有最高优先权就是租Telstra或者别家网络的。</p>
+<p>简单地说，Telstra财大气粗，相当于中国电信，网络最稳定，质量最强大，但是贵。</p>
+<p>Telstra开通了一个WiFi叫做Telstra Air，和中国移动的CMCC不同，Telstra Air是使用宽带账号作为登录账号的。至于这个WiFi是无限的还是算进你的流量的就不知道了。</p>
+<p>而且Telstra Air覆盖挺广的……</p>
+<p>Optus是有无限流量的，但是澳洲的企业有个坏毛病：总喜欢让人去签一些两年或者四年这种长期协议的合同……</p>
+<p>Optus的NBN套餐有固话选项，所谓的固话就是NBN光纤盒子通过RJ45接口连接Optus路由器，路由器有RJ11接口给电话使用。重点来了！！！Optus附赠的垃圾路由器供电是带不起一个老式电话的！只有无绳电话机能用！</p>
+<p>什么是老式电话呢？</p>
+<p><img src="https://www.akarin.moe/images/Australia2/1.jpg" alt="pic"></p>
+<p>这种，没有独立供电的。</p>
+<p>无绳电话机就是这种了。</p>
+<p><img src="https://www.akarin.moe/images/Australia2/2.jpg" alt="pic"></p>
+<p>这种是有独立供电的！这种才能用！</p>
+<p>这种固话的价格一般都会便宜的不可思议，打特定国际电话甚至是免费的。</p>
+<p>当然了，因为这丫走VOIP啊……</p>
+<p>当然了Telstra也有这种绑定套餐的。</p>
+<p>另一件事就是据说我们学校要扔掉自己建的垃圾网站，把所有的资源转向Microsoft某个服务……</p>
+<p>应该是Microsoft Azure吧……</p>
+<p>顺便一提Microsoft Azure最近的财报增长102%……而Windows Phone下跌71%……</p>
+<p>那句话怎么说来着？</p>
+<p>我们一年赔4个亿，收Android专利费一年赚8个亿，所以我们的移动部门一年净赚4个亿。</p>
+<p>小伙子明天来微软上班吧。</p>
 ]]></content>
       <categories>
-        <category>Bilibili</category>
-        <category>UWP</category>
+        <category>Australia</category>
       </categories>
       <tags>
-        <tag>Bilibili</tag>
-        <tag>UWP</tag>
+        <tag>Australia</tag>
       </tags>
   </entry>
   <entry>
@@ -170,6 +154,22 @@
       </categories>
       <tags>
         <tag>Authentication</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>哔哩哔哩动画UWP版</title>
+    <url>/2017/03/25/BilibiliUWP/</url>
+    <content><![CDATA[<p>一开始是因为Adobe flash player这史前遗留文明对电脑的风扇损害极大，并且不知道为什么缓存死活有问题加载不了视频，所以便在微软应用商店找了哔哩哔哩动画的UWP版。</p>
+<p>然后怀着好奇的心情打开了那个画质测试视频（因为知乎的链接是要跳转的所以直接上av号：av932932）。</p>
+<p>一开始的时候居然流畅的放出来了！但是后面无限小电视……</p>
+]]></content>
+      <categories>
+        <category>Bilibili</category>
+        <category>UWP</category>
+      </categories>
+      <tags>
+        <tag>Bilibili</tag>
+        <tag>UWP</tag>
       </tags>
   </entry>
   <entry>
@@ -208,6 +208,18 @@
       </tags>
   </entry>
   <entry>
+    <title>阿卡林服务器英文站上线啦~</title>
+    <url>/2017/05/10/English/</url>
+    <content><![CDATA[<p>如题所示，阿卡林服务器今天终于迎来了它的国际站点~<br>有兴趣的可以戳<a href="https://en.akarin.moe/">这里</a>去看看哦~</p>
+]]></content>
+      <categories>
+        <category>English</category>
+      </categories>
+      <tags>
+        <tag>English</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>神船K640E改造计划</title>
     <url>/2017/05/03/K640E/</url>
     <content><![CDATA[<p>不要问我为什么不一步到位入个好点的本子……<br>总之现在已经砸了将近3500+了……</p>
@@ -239,18 +251,6 @@
       </categories>
       <tags>
         <tag>神舟K640E</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>阿卡林服务器英文站上线啦~</title>
-    <url>/2017/05/10/English/</url>
-    <content><![CDATA[<p>如题所示，阿卡林服务器今天终于迎来了它的国际站点~<br>有兴趣的可以戳<a href="https://en.akarin.moe/">这里</a>去看看哦~</p>
-]]></content>
-      <categories>
-        <category>English</category>
-      </categories>
-      <tags>
-        <tag>English</tag>
       </tags>
   </entry>
   <entry>
@@ -364,7 +364,7 @@
 <p>首先，根据2019年4月5号的情况来看，把新护照更新到澳洲签证上有两种方法：</p>
 <ol>
 <li>使用澳洲移民局官方签证管理系统Immiaccount</li>
-<li>填写929信息更新表格，并将表格与新旧护照信息一并发送至<a href="mailto:&#57;&#50;&#x39;&#64;&#104;&#111;&#x6d;&#101;&#97;&#x66;&#x66;&#x61;&#105;&#114;&#115;&#46;&#x63;&#111;&#109;&#46;&#x61;&#x75;">&#57;&#50;&#x39;&#64;&#104;&#111;&#x6d;&#101;&#97;&#x66;&#x66;&#x61;&#105;&#114;&#115;&#46;&#x63;&#111;&#109;&#46;&#x61;&#x75;</a></li>
+<li>填写929信息更新表格，并将表格与新旧护照信息一并发送至<a href="mailto:&#57;&#x32;&#x39;&#64;&#104;&#x6f;&#x6d;&#101;&#97;&#x66;&#x66;&#97;&#x69;&#x72;&#115;&#46;&#99;&#x6f;&#x6d;&#x2e;&#x61;&#117;">&#57;&#x32;&#x39;&#64;&#104;&#x6f;&#x6d;&#101;&#97;&#x66;&#x66;&#97;&#x69;&#x72;&#115;&#46;&#99;&#x6f;&#x6d;&#x2e;&#x61;&#117;</a></li>
 </ol>
 <p>先说后面一种。<br>929邮箱一直是个很神奇的存在——在一两年前更新护照的方法一种是immiaccount，另一种则是让你邮寄到移民局……这谁有这个功夫啊，但移民局邮箱作为一种特殊渠道，一直以半公开的形式流传于民间。直到这一两年，澳洲重组政府部门，组建内政部——这个部门其实更是个神奇的存在，一手遮天，大权独揽……不过不展开太多。于是，移民局邮箱便正式替代了以往第二种方法。</p>
 <p>但发邮件给移民局来更新护照信息有什么坏处呢？</p>
@@ -466,25 +466,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Surface Pro 4贴纸</title>
-    <url>/2017/08/27/SurfacePro4Stickers/</url>
-    <content><![CDATA[<p>前方多图。</p>
-<p><img src="https://www.akarin.moe/images/surface/stickers/1.jpg" alt="pic"></p>
-<p><img src="https://www.akarin.moe/images/surface/stickers/2.jpg" alt="pic"></p>
-<p><img src="https://www.akarin.moe/images/surface/stickers/3.jpg" alt="pic"></p>
-<p><img src="https://www.akarin.moe/images/surface/stickers/4.jpg" alt="pic"></p>
-<p><img src="https://www.akarin.moe/images/surface/stickers/5.jpg" alt="pic"></p>
-<p><img src="https://www.akarin.moe/images/surface/stickers/6.jpg" alt="pic"></p>
-<p>整个色调粉粉的好少女心呀2333333333</p>
-]]></content>
-      <categories>
-        <category>Microsoft</category>
-      </categories>
-      <tags>
-        <tag>Microsoft Surface</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>对群晖NAS的思考</title>
     <url>/2017/03/23/Synology/</url>
     <content><![CDATA[<p>今天参观了一下学校的机房，有感而发。<br>事实上，从一开始我的定位就不太对劲了。</p>
@@ -567,22 +548,6 @@
       </tags>
   </entry>
   <entry>
-    <title>一个悉尼必备应用简介</title>
-    <url>/2017/03/25/Tripview/</url>
-    <content><![CDATA[<p>Tripview，一款用于查看悉尼（现在也支持墨尔本了）的train（火车（地铁））和bus时间表的软件。<br>这款应用分lite版和付费版，lite版有广告，不可以记录历史查找</p>
-<p>然而网上却找不到它的付费版apk……</p>
-<p>原因是tripview付费版用了Google的授权认证，即使你通过非法手段安装了这款应用的付费版，它也会检测你手机上谷歌账户的授权，如果没有，就会提示没有证书。</p>
-<p>当然这个问题很好解决，幸运破解器解之。</p>
-<p>总感觉这种技术都是EA这种不好好做游戏却天天想着上Denuvo的厂商才会干的……</p>
-]]></content>
-      <categories>
-        <category>Tripview</category>
-      </categories>
-      <tags>
-        <tag>Tripview</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Surface Type Cover评测</title>
     <url>/2017/08/27/TypeCover/</url>
     <content><![CDATA[<p>外包装。<br><img src="https://www.akarin.moe/images/surface/typecover/1.jpg" alt="pic"></p>
@@ -607,6 +572,25 @@
       <tags>
         <tag>Microsft Surface</tag>
         <tag>Type Cover</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Surface Pro 4贴纸</title>
+    <url>/2017/08/27/SurfacePro4Stickers/</url>
+    <content><![CDATA[<p>前方多图。</p>
+<p><img src="https://www.akarin.moe/images/surface/stickers/1.jpg" alt="pic"></p>
+<p><img src="https://www.akarin.moe/images/surface/stickers/2.jpg" alt="pic"></p>
+<p><img src="https://www.akarin.moe/images/surface/stickers/3.jpg" alt="pic"></p>
+<p><img src="https://www.akarin.moe/images/surface/stickers/4.jpg" alt="pic"></p>
+<p><img src="https://www.akarin.moe/images/surface/stickers/5.jpg" alt="pic"></p>
+<p><img src="https://www.akarin.moe/images/surface/stickers/6.jpg" alt="pic"></p>
+<p>整个色调粉粉的好少女心呀2333333333</p>
+]]></content>
+      <categories>
+        <category>Microsoft</category>
+      </categories>
+      <tags>
+        <tag>Microsoft Surface</tag>
       </tags>
   </entry>
   <entry>
@@ -647,20 +631,19 @@
       </tags>
   </entry>
   <entry>
-    <title>VMware UWP版</title>
-    <url>/2017/03/25/VMware/</url>
-    <content><![CDATA[<p>我一般都会放图的，所以你们基本上看图和看标题就能关掉了……<br>主要是今天我随手打开Windows store逛逛时居然发现了VMware horizon的UWP版……</p>
-<p>这也太吃惊了好嘛！</p>
-<p>远程控制这种复杂的玩意什么时候居然能用UWP弄出来了！</p>
-<p>然而体验效果真的还不错……虽然简介光明正大的写着beta版……（现在有几个UWP不是写着beta和内测的（网易云音乐：excuse me？））</p>
-<p>然而最让我震惊的是它的占用空间：<br><img src="https://www.akarin.moe/images/source/vmware2.png" alt="pic"><br>上面的是UWP，下面的是win32……</p>
-<p>微软啊，那么有实力怎么Win10M就这么烂呢…………</p>
+    <title>一个悉尼必备应用简介</title>
+    <url>/2017/03/25/Tripview/</url>
+    <content><![CDATA[<p>Tripview，一款用于查看悉尼（现在也支持墨尔本了）的train（火车（地铁））和bus时间表的软件。<br>这款应用分lite版和付费版，lite版有广告，不可以记录历史查找</p>
+<p>然而网上却找不到它的付费版apk……</p>
+<p>原因是tripview付费版用了Google的授权认证，即使你通过非法手段安装了这款应用的付费版，它也会检测你手机上谷歌账户的授权，如果没有，就会提示没有证书。</p>
+<p>当然这个问题很好解决，幸运破解器解之。</p>
+<p>总感觉这种技术都是EA这种不好好做游戏却天天想着上Denuvo的厂商才会干的……</p>
 ]]></content>
       <categories>
-        <category>VMware</category>
+        <category>Tripview</category>
       </categories>
       <tags>
-        <tag>VMware</tag>
+        <tag>Tripview</tag>
       </tags>
   </entry>
   <entry>
@@ -739,6 +722,23 @@
 ]]></content>
   </entry>
   <entry>
+    <title>VMware UWP版</title>
+    <url>/2017/03/25/VMware/</url>
+    <content><![CDATA[<p>我一般都会放图的，所以你们基本上看图和看标题就能关掉了……<br>主要是今天我随手打开Windows store逛逛时居然发现了VMware horizon的UWP版……</p>
+<p>这也太吃惊了好嘛！</p>
+<p>远程控制这种复杂的玩意什么时候居然能用UWP弄出来了！</p>
+<p>然而体验效果真的还不错……虽然简介光明正大的写着beta版……（现在有几个UWP不是写着beta和内测的（网易云音乐：excuse me？））</p>
+<p>然而最让我震惊的是它的占用空间：<br><img src="https://www.akarin.moe/images/source/vmware2.png" alt="pic"><br>上面的是UWP，下面的是win32……</p>
+<p>微软啊，那么有实力怎么Win10M就这么烂呢…………</p>
+]]></content>
+      <categories>
+        <category>VMware</category>
+      </categories>
+      <tags>
+        <tag>VMware</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>完全无法理解的Lenovo Yoga13</title>
     <url>/2017/03/25/Yoga13/</url>
     <content><![CDATA[<p>Lenovo Yoga13-ITH 皓月银，一款2012年11月上市的全新ultrabook（超极本）。它的卖点主要集中于「可折叠，可变形」。该机传承了Yoga系列一贯的可折叠式风格，其奥秘就在屏轴的独特设计之中。</p>
@@ -809,22 +809,6 @@
       </tags>
   </entry>
   <entry>
-    <title>从hexo到OneDrive</title>
-    <url>/2017/09/27/hexo-OneDrive/</url>
-    <content><![CDATA[<p>是的，利用OneDrive来同步hexo文件夹是完全可行的。</p>
-<p>起因是我的神船当台式机用了，但是和Surface居然每次都要更新两部分……而且文章还一边有一边没有的……所以把hexo转移到OneDrive了。</p>
-<p>OneDrive虽然同步……但是有的时候很不稳定……作为一个新的尝试还在测试ing……</p>
-]]></content>
-      <categories>
-        <category>hexo</category>
-        <category>OneDrive</category>
-      </categories>
-      <tags>
-        <tag>hexo</tag>
-        <tag>OneDrive</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Ubuntu下对于Websocket/HTTP2+TLS+web与mtproto的探索</title>
     <url>/2019/07/09/test/</url>
     <content><![CDATA[<p>首先你需要有caddy。</p>
@@ -876,6 +860,22 @@
       </categories>
       <tags>
         <tag>ubuntu</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>从hexo到OneDrive</title>
+    <url>/2017/09/27/hexo-OneDrive/</url>
+    <content><![CDATA[<p>是的，利用OneDrive来同步hexo文件夹是完全可行的。</p>
+<p>起因是我的神船当台式机用了，但是和Surface居然每次都要更新两部分……而且文章还一边有一边没有的……所以把hexo转移到OneDrive了。</p>
+<p>OneDrive虽然同步……但是有的时候很不稳定……作为一个新的尝试还在测试ing……</p>
+]]></content>
+      <categories>
+        <category>hexo</category>
+        <category>OneDrive</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+        <tag>OneDrive</tag>
       </tags>
   </entry>
 </search>
