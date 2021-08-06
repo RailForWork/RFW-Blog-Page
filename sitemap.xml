@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://www.akarin.moe/service/index.html</loc>
+    
+    <lastmod>2021-08-06</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.akarin.moe/about/index.html</loc>
+    
+    <lastmod>2021-08-06</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://www.akarin.moe/2019/12/10/ubuntu-sudo/</loc>
     
     <lastmod>2021-06-30</lastmod>
@@ -17,20 +31,6 @@
   
   <url>
     <loc>https://www.akarin.moe/2019/11/30/hexo-OneDrive-AnotherOneDrive/</loc>
-    
-    <lastmod>2019-11-30</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.akarin.moe/about/index.html</loc>
-    
-    <lastmod>2019-11-30</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.akarin.moe/service/index.html</loc>
     
     <lastmod>2019-11-30</lastmod>
     
@@ -242,7 +242,7 @@
 
   <url>
     <loc>https://www.akarin.moe/</loc>
-    <lastmod>2021-06-30</lastmod>
+    <lastmod>2021-08-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -250,182 +250,182 @@
   
   <url>
     <loc>https://www.akarin.moe/tags/Australia/</loc>
-    <lastmod>2021-06-30</lastmod>
+    <lastmod>2021-08-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://www.akarin.moe/tags/Bilibili/</loc>
-    <lastmod>2021-06-30</lastmod>
+    <lastmod>2021-08-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://www.akarin.moe/tags/UWP/</loc>
-    <lastmod>2021-06-30</lastmod>
+    <lastmod>2021-08-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://www.akarin.moe/tags/Authentication/</loc>
-    <lastmod>2021-06-30</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.akarin.moe/tags/English/</loc>
-    <lastmod>2021-06-30</lastmod>
+    <lastmod>2021-08-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://www.akarin.moe/tags/Fix/</loc>
-    <lastmod>2021-06-30</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.akarin.moe/tags/%E7%A5%9E%E8%88%9FK640E/</loc>
-    <lastmod>2021-06-30</lastmod>
+    <lastmod>2021-08-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://www.akarin.moe/tags/IE/</loc>
-    <lastmod>2021-06-30</lastmod>
+    <lastmod>2021-08-06</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.akarin.moe/tags/%E7%A5%9E%E8%88%9FK640E/</loc>
+    <lastmod>2021-08-06</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.akarin.moe/tags/English/</loc>
+    <lastmod>2021-08-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://www.akarin.moe/tags/Lumia/</loc>
-    <lastmod>2021-06-30</lastmod>
+    <lastmod>2021-08-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://www.akarin.moe/tags/%E7%B1%B3%E5%AE%B6%E6%89%AB%E5%9C%B0%E6%9C%BA%E5%99%A8%E4%BA%BA/</loc>
-    <lastmod>2021-06-30</lastmod>
+    <lastmod>2021-08-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://www.akarin.moe/tags/Travel/</loc>
-    <lastmod>2021-06-30</lastmod>
+    <lastmod>2021-08-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://www.akarin.moe/tags/Nextcloud/</loc>
-    <lastmod>2021-06-30</lastmod>
+    <lastmod>2021-08-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://www.akarin.moe/tags/Windows-10/</loc>
-    <lastmod>2021-06-30</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.akarin.moe/tags/Synology/</loc>
-    <lastmod>2021-06-30</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.akarin.moe/tags/NAS/</loc>
-    <lastmod>2021-06-30</lastmod>
+    <lastmod>2021-08-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://www.akarin.moe/tags/Microsoft-Surface/</loc>
-    <lastmod>2021-06-30</lastmod>
+    <lastmod>2021-08-06</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.akarin.moe/tags/Synology/</loc>
+    <lastmod>2021-08-06</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.akarin.moe/tags/NAS/</loc>
+    <lastmod>2021-08-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://www.akarin.moe/tags/Tripview/</loc>
-    <lastmod>2021-06-30</lastmod>
+    <lastmod>2021-08-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://www.akarin.moe/tags/Microsft-Surface/</loc>
-    <lastmod>2021-06-30</lastmod>
+    <lastmod>2021-08-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://www.akarin.moe/tags/Type-Cover/</loc>
-    <lastmod>2021-06-30</lastmod>
+    <lastmod>2021-08-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://www.akarin.moe/tags/UnionPay/</loc>
-    <lastmod>2021-06-30</lastmod>
+    <lastmod>2021-08-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://www.akarin.moe/tags/VMware/</loc>
-    <lastmod>2021-06-30</lastmod>
+    <lastmod>2021-08-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://www.akarin.moe/tags/Lenovo/</loc>
-    <lastmod>2021-06-30</lastmod>
+    <lastmod>2021-08-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://www.akarin.moe/tags/hexo/</loc>
-    <lastmod>2021-06-30</lastmod>
+    <lastmod>2021-08-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://www.akarin.moe/tags/OneDrive/</loc>
-    <lastmod>2021-06-30</lastmod>
+    <lastmod>2021-08-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://www.akarin.moe/tags/Ubuntu/</loc>
-    <lastmod>2021-06-30</lastmod>
+    <lastmod>2021-08-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://www.akarin.moe/tags/ubuntu/</loc>
-    <lastmod>2021-06-30</lastmod>
+    <lastmod>2021-08-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
@@ -434,175 +434,175 @@
   
   <url>
     <loc>https://www.akarin.moe/categories/Australia/</loc>
-    <lastmod>2021-06-30</lastmod>
+    <lastmod>2021-08-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://www.akarin.moe/categories/Bilibili/</loc>
-    <lastmod>2021-06-30</lastmod>
+    <lastmod>2021-08-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://www.akarin.moe/categories/Authentication/</loc>
-    <lastmod>2021-06-30</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.akarin.moe/categories/English/</loc>
-    <lastmod>2021-06-30</lastmod>
+    <lastmod>2021-08-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://www.akarin.moe/categories/Fix/</loc>
-    <lastmod>2021-06-30</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.akarin.moe/categories/Bilibili/UWP/</loc>
-    <lastmod>2021-06-30</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.akarin.moe/categories/%E7%A5%9E%E8%88%9FK640E/</loc>
-    <lastmod>2021-06-30</lastmod>
+    <lastmod>2021-08-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://www.akarin.moe/categories/IE/</loc>
-    <lastmod>2021-06-30</lastmod>
+    <lastmod>2021-08-06</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.akarin.moe/categories/%E7%A5%9E%E8%88%9FK640E/</loc>
+    <lastmod>2021-08-06</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.akarin.moe/categories/English/</loc>
+    <lastmod>2021-08-06</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.akarin.moe/categories/Bilibili/UWP/</loc>
+    <lastmod>2021-08-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://www.akarin.moe/categories/Lumia/</loc>
-    <lastmod>2021-06-30</lastmod>
+    <lastmod>2021-08-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://www.akarin.moe/categories/%E7%B1%B3%E5%AE%B6%E6%89%AB%E5%9C%B0%E6%9C%BA%E5%99%A8%E4%BA%BA/</loc>
-    <lastmod>2021-06-30</lastmod>
+    <lastmod>2021-08-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://www.akarin.moe/categories/Life/</loc>
-    <lastmod>2021-06-30</lastmod>
+    <lastmod>2021-08-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://www.akarin.moe/categories/Nextcloud/</loc>
-    <lastmod>2021-06-30</lastmod>
+    <lastmod>2021-08-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://www.akarin.moe/categories/Windows-10/</loc>
-    <lastmod>2021-06-30</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.akarin.moe/categories/Synology/</loc>
-    <lastmod>2021-06-30</lastmod>
+    <lastmod>2021-08-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://www.akarin.moe/categories/Microsoft/</loc>
-    <lastmod>2021-06-30</lastmod>
+    <lastmod>2021-08-06</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.akarin.moe/categories/Synology/</loc>
+    <lastmod>2021-08-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://www.akarin.moe/categories/Tripview/</loc>
-    <lastmod>2021-06-30</lastmod>
+    <lastmod>2021-08-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://www.akarin.moe/categories/Type-Cover/</loc>
-    <lastmod>2021-06-30</lastmod>
+    <lastmod>2021-08-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://www.akarin.moe/categories/UnionPay/</loc>
-    <lastmod>2021-06-30</lastmod>
+    <lastmod>2021-08-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://www.akarin.moe/categories/VMware/</loc>
-    <lastmod>2021-06-30</lastmod>
+    <lastmod>2021-08-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://www.akarin.moe/categories/Lenovo/</loc>
-    <lastmod>2021-06-30</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.akarin.moe/categories/hexo/</loc>
-    <lastmod>2021-06-30</lastmod>
+    <lastmod>2021-08-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://www.akarin.moe/categories/Synology/NAS/</loc>
-    <lastmod>2021-06-30</lastmod>
+    <lastmod>2021-08-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://www.akarin.moe/categories/hexo/OneDrive/</loc>
-    <lastmod>2021-06-30</lastmod>
+    <loc>https://www.akarin.moe/categories/hexo/</loc>
+    <lastmod>2021-08-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://www.akarin.moe/categories/Ubuntu/</loc>
-    <lastmod>2021-06-30</lastmod>
+    <lastmod>2021-08-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://www.akarin.moe/categories/ubuntu/</loc>
-    <lastmod>2021-06-30</lastmod>
+    <lastmod>2021-08-06</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.akarin.moe/categories/hexo/OneDrive/</loc>
+    <lastmod>2021-08-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>

@@ -1,726 +1,881 @@
 <?xml version="1.0" encoding="utf-8"?>
-<search> 
-  
-  
-    
-    <entry>
-      <title>sudo，caddy，docker，以及报错。</title>
-      <link href="/2019/12/10/ubuntu-sudo/"/>
-      <url>/2019/12/10/ubuntu-sudo/</url>
-      
-        <content type="html"><![CDATA[<p>尽管很多命令行，或者个人习惯，都喜欢在一些命令之前添加sudo，但其实这十分危险。</p><p>拿caddy举例：如果第一次运行caddy的时候是直接运行而且是sudo运行的，那么caddy会直接在root下生成证书：这会导致一系列的问题：比如caddy.service默认以www-data运行，必须手动切换至root才能正常。</p><p>这是一个特别奇怪的事情：明明sudo是为了使用更高的权限以获得最完美的使用体验，但是很多东西并不需要sudo，sudo了反而会导致它的文件生成在root，从而导致与之相关的服务会莫名其妙失效或者bug。</p>]]></content>
-      
-      
+<search>
+  <entry>
+    <title>澳洲生存指南（1）——虚拟运营商</title>
+    <url>/2017/05/22/Australia1/</url>
+    <content><![CDATA[<p>这个系列其实根本不和澳洲相关……因为里面的一些东西可能全世界都通用。</p>
+<p>首先普及一下。</p>
+<p>尽管允许自由竞争，但是在澳大利亚，只有三家运营商有自己的基站，别的都属于虚拟运营商。</p>
+<p>三家最大的运营商分别为：</p>
+<p>澳洲电信（Telstra），名字取telecom和Australia。挂个澳洲的名字，不用想，背后或多或少有国营背景（虽然名义上是私营的……）</p>
+<p>Optus yes，母公司为新加坡电信。</p>
+<p>vodafone，欧洲最大的运营商。</p>
+<p>三家最大的运营商就一家是澳洲的……不过澳洲政府貌似不怎么在乎……</p>
+<p>别的运营商都是虚拟运营商，然而虚拟运营商到处都是坑。</p>
+<p>虚拟运营商是租别的运营商的网络的，然而所有的虚拟运营商卖的卡不知道为什么里面的APN设置全是别的运营商的……</p>
+<p>这就很尴尬了，因为所有虚拟运营商的APN都是需要自己设置的。</p>
+<p>这个APN的存在很迷……非常玄学。</p>
+<p>另一件事是其实在澳洲或者外国，找客服往往是很有效的事情。</p>
+<p>但是我一般都懒得找客服……因为和客服扯皮实在是件坑爹的事情。</p>
+]]></content>
       <categories>
-          
-          <category> ubuntu </category>
-          
+        <category>Australia</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> ubuntu </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>如何为Nextcloud启动二次验证中的Telegram验证码</title>
-      <link href="/2019/12/07/Nextcloud-Telegram-F2A/"/>
-      <url>/2019/12/07/Nextcloud-Telegram-F2A/</url>
-      
-        <content type="html"><![CDATA[<p>Nextcloud其实还是挺好弄的，它甚至可以兼容v2，表面上是个网盘实际上后面是一个代理。</p><blockquote><p><a href="https://nextcloud-twofactor-gateway.readthedocs.io/en/stable/Admin%20Documentation/">https://nextcloud-twofactor-gateway.readthedocs.io/en/stable/Admin%20Documentation/</a></p></blockquote><p>这是官方的教程，咋一看特别的语焉不详，关键就出在Nextcloud的occ，occ是Nextcloud官方推出的一种命令行一样的东西，本意是快速设置一些功能，但是不知道为什么没做进去网页GUI里，总之就搞得刚接触Nextcloud的人对occ一脸懵逼了。</p><p>总之先</p><blockquote><p>cd /var/www/html/nextcloud</p></blockquote><p>这条命令是定位到Nextcloud路径所在地。一般的Nextcloud教程都是让你安装到这个路径的。</p><p>然后如果你现在ls一下你会看见有一个叫occ的玩意躺在Nextcloud的文件夹里，那么那个东西是怎么调用的呢？</p><p>在Ubuntu/Debian里面，直接</p><blockquote><p>sudo -u www-data php occ twofactorauth:gateway:configure telegram</p></blockquote><p>其实中文还是有非常多关于occ的教程的，这个倒是不难找到，只是要在官方的前面加上一些sudo啊php啊什么的前缀就是了。</p><p>然后接下来跟着官方的教程去Telegram注册bot就好了。</p><p>This gateways allows you to send messages via the Telegram protocol. In order to send messages, you have to register a Telegram Bot, which is used to send authentication codes to users after they have initiated a conversation and entered their Telegram ID.</p><p>Follow these steps to activate the Telegram authentication gateway:</p><p>Register a Telegram Bot.</p><p>Open your Telegram client, search for @BotFather and start a conversation.</p><p>Send /newbot to start the bot setup process.</p><p>Send the name of the bot, e.g. ‘My own NC bot’.</p><p>Send the username of the bot, e.g. ‘my_nc_bot’.</p><p>BotFather confirms that a new bot has successfully been set-up and provides the HTTP API access token to you, e.g. ‘123456789:AAbbCCddEEffGGhhIIjjKKllMMnnOOppQQ’.</p><p>Activate the Nextcloud Twofactor Gateway for Telegram Open a command shell on your Nextcloud server, navigate to the Nextcloud directory and run the following command: bash occ twofactorauth:gateway:configure telegram Please enter your Telegram bot token: 123456789:AAbbCCddEEffGGhhIIjjKKllMMnnOOppQQ Using 123456789:AAbbCCddEEffGGhhIIjjKKllMMnnOOppQQ.</p><p>The Telegram authentication gateway has now successfully been set-up. Follow the instructions in the User Documentation to activate the Gateway for a specific user.</p>]]></content>
-      
-      
+      <tags>
+        <tag>Australia</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>澳洲生存指南（2）——垃圾的网络</title>
+    <url>/2017/05/22/Australia2/</url>
+    <content><![CDATA[<p>在我上一篇文章中提及了三大运营商：Telstra，Optus，Vodafone。<br>在这三家里面干ISP的只有两家：Telstra，Optus。</p>
+<p>澳洲的光纤叫做NBN（National Boardband Network），去办光纤的时候不要傻傻的说fiber了。</p>
+<p>澳洲的光纤，是和别处不同的：都是政府统一建设的，每一户有且只有一条光纤，光纤可以随时换ISP。上网的人，只要打个电话，给初装费——这是几年前的事，现在可以网上操作了，——连通网络，就能上网了。倘肯多花点钱，便可以加个互联网电视，或者固话了。如果出到几百刀，那就能有无限流量，但这些顾客，多是个人用户，大抵没有这样阔绰。只有企业用户，才去申请无限流量的网络，疯狂的使用。</p>
+<p>是的，澳洲的ISP，全部是有流量限制的，每个月从最低10GB到最高500GB或1000GB，弄无限流量的一般都是企业用户，只有少数的运营商提供无限流量，也只有少数的用户选择无限流量。</p>
+<p>澳洲的ISP不止两家，数量可能有十几家，二十几家，但能亲自去和NBN要网络的可能就Telstra为首的那几家，别的不是没有最高优先权就是租Telstra或者别家网络的。</p>
+<p>简单地说，Telstra财大气粗，相当于中国电信，网络最稳定，质量最强大，但是贵。</p>
+<p>Telstra开通了一个WiFi叫做Telstra Air，和中国移动的CMCC不同，Telstra Air是使用宽带账号作为登录账号的。至于这个WiFi是无限的还是算进你的流量的就不知道了。</p>
+<p>而且Telstra Air覆盖挺广的……</p>
+<p>Optus是有无限流量的，但是澳洲的企业有个坏毛病：总喜欢让人去签一些两年或者四年这种长期协议的合同……</p>
+<p>Optus的NBN套餐有固话选项，所谓的固话就是NBN光纤盒子通过RJ45接口连接Optus路由器，路由器有RJ11接口给电话使用。重点来了！！！Optus附赠的垃圾路由器供电是带不起一个老式电话的！只有无绳电话机能用！</p>
+<p>什么是老式电话呢？</p>
+<p><img src="https://www.akarin.moe/images/Australia2/1.jpg" alt="pic"></p>
+<p>这种，没有独立供电的。</p>
+<p>无绳电话机就是这种了。</p>
+<p><img src="https://www.akarin.moe/images/Australia2/2.jpg" alt="pic"></p>
+<p>这种是有独立供电的！这种才能用！</p>
+<p>这种固话的价格一般都会便宜的不可思议，打特定国际电话甚至是免费的。</p>
+<p>当然了，因为这丫走VOIP啊……</p>
+<p>当然了Telstra也有这种绑定套餐的。</p>
+<p>另一件事就是据说我们学校要扔掉自己建的垃圾网站，把所有的资源转向Microsoft某个服务……</p>
+<p>应该是Microsoft Azure吧……</p>
+<p>顺便一提Microsoft Azure最近的财报增长102%……而Windows Phone下跌71%……</p>
+<p>那句话怎么说来着？</p>
+<p>我们一年赔4个亿，收Android专利费一年赚8个亿，所以我们的移动部门一年净赚4个亿。</p>
+<p>小伙子明天来微软上班吧。</p>
+]]></content>
       <categories>
-          
-          <category> Nextcloud </category>
-          
+        <category>Australia</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> Nextcloud </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>从hexo到OneDrive再到另一个OneDrive</title>
-      <link href="/2019/11/30/hexo-OneDrive-AnotherOneDrive/"/>
-      <url>/2019/11/30/hexo-OneDrive-AnotherOneDrive/</url>
-      
-        <content type="html"><![CDATA[<p>利用OneDrive同步hexo并不是不可行，但需要单独新开一个。</p><p>hexo最大的问题在于它里面有上万个文件，随便一次更新文章就会导致几千个文件的变动，这对OneDrive来说简直是致命的：原因在于OneDrive的工作原理是“同步”，OneDrive并不是按照文件数量来计算的，而是按照“文件变动次数”来计算的，这就导致了每变更一个文件OneDrive就需要和服务器同步一次，而删除文件再更新文件就是二倍数。</p><p>如果你不想你的OneDrive直接卡死，我推荐你在对hexo进行大变动（比如删除整个hexo文件夹）的时候直接在网页版操作，这样子服务器就不需要与服务器同步（嗯？）所以处理效率是最高的。</p><p>所以，最好的处理办法是，单独给hexo开一个OneDrive，不要让hexo放在你自己日常用的OneDrive账号。实际上hexo并不大，也就几百MB，它的问题主要是文件过多而已。</p>]]></content>
-      
-      
+      <tags>
+        <tag>Australia</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>澳洲生存指南（3）：你的护照不能用了该怎么办？</title>
+    <url>/2017/05/23/Australia3/</url>
+    <content><![CDATA[<p>这已经是快半年的事情了。<br>为什么标题会是“不能用”呢？</p>
+<p>因为在我的定义里，“不能用了”指的是过期了或者是破损了。</p>
+<p>至于丢失的……虽然可能流程一样……但是我并不知道具体的区别。</p>
+<p>首先，如果你的护照还在，那么你第一件要做的事情就是：</p>
+<p><a href="http://ppt.mfa.gov.cn/appo/">http://ppt.mfa.gov.cn/appo/</a><br>去这个网站预约你的时间。</p>
+<p>该填的就填，不会填的瞎填也没什么，反正到时候是要见你本人的</p>
+<p>然后网站需要你上传一张你自己的证件照，恕我直言，如果你最近没有正儿八经的拍过证件照，那么随便传一张无背景的正面照，标不标准不重要，<strong>悉尼领事馆有个照相机，5AUD一次，实惠方便</strong></p>
+<p><strong>领事馆只接受银行卡付款，不接受现金</strong></p>
+<p>支不支持银联就不知道了，反正最好带张visa卡去</p>
+<p>然后预约好了的话，就准备准备材料什么的，包括去VEVO打印你的签证资料啊什么的</p>
+<p>其实主要是领事馆都是说中文的，服务都还不错</p>
+<p>地点在：</p>
+<p>Central Station下火车，然后坐什么都好……自己去谷歌地图查，反正在有个加油站的地方下车，然后往左走，走过两三个小巷子就过马路然后进巷子，看见一些人在对面练功的就是了。</p>
+<p>拜托去办事之前准备好你们所有的材料，能准备的就准备，不要自己材料准备不齐全又去为难工作人员完了还在知乎一通抱怨什么“吃皇粮”“晋升无望”“狗才摸鱼”之类的</p>
+<p>如果你是还能用的护照只是因为各种原因换新的话，领事馆是会有具体的日期给你的</p>
+<p>如果不是的话……那你就要过个一阵子去</p>
+<p><a href="http://ppt.mfa.gov.cn/appo/">http://ppt.mfa.gov.cn/appo/</a><br>这个网站去查了</p>
+<p>大概一个月左右吧……</p>
+<p>工本费好像是20AUD？不记得了</p>
+<p>反正记得</p>
+<p><strong>只接受银行卡</strong></p>
+<p>然后拿到了你的新的护照，如果你突然发现自己：</p>
+<p><strong>1、 短期内需要回国或者去其他地方旅游</strong></p>
+<p><strong>2、 需要用到护照</strong></p>
+<p>一条条来</p>
+<p>针对第一种情况有两个解决方案</p>
+<p><strong>第一种，临时的办法：</strong></p>
+<p>拿着你的新护照和你的旧护照一起出镜</p>
+<p>海关是认这种方案的（消息来源于4月份，澳大利亚移民中心的工作人员）</p>
+<p><strong>第二种，正式的办法：</strong></p>
+<p>把你的澳洲签证转移到新的护照上。</p>
+<p>这里分两种情况。</p>
+<p><strong>第一种：</strong> 如果你的签证是在澳大利亚官网申请的签证，你的签证可以在immiaccount查到的话，那你直接在那里改你的护照信息就可以。</p>
+<p><strong>第二种：</strong> 你的签证由海外签发，无法在immiaccount上查询。</p>
+<p>按照<a href="https://www.border.gov.au/Lega/Lega/Form/Immi-FAQs/how-can-i-update-my-address-or-passport-details">澳大利亚移民局</a>的官方信息，你首先需要下载929表格。</p>
+<p>然后填写完毕后通过信件寄到指定地址。</p>
+<p>当然，如果你懒得动的话……我这里有另外一种办法，虽然确实可行，但是不在官方的方法上，所以就不说了。</p>
+<p>根据澳大利亚移民中心工作人员的信息，现在已经不支持带着证件去移民中心当场办了。所以现在官方唯一的方法就是寄信。</p>
+<p>针对第二种情况：</p>
+<p>直接用新护照就行，这里不查护照和签证的绑定情况的。</p>
+]]></content>
       <categories>
-          
-          <category> hexo </category>
-          
+        <category>Australia</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> hexo </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Ubuntu下对于Websocket/HTTP2+TLS+web与mtproto的探索</title>
-      <link href="/2019/07/09/test/"/>
-      <url>/2019/07/09/test/</url>
-      
-        <content type="html"><![CDATA[<p>首先你需要有caddy。</p><p>Caddy其实是特别傻瓜化的东西，它本身其实特别绿色纯净版，在<a href="https://caddyserver.com/download">CaddyServer</a>里面勾选http.forwardproxy还有http.proxyprotocol，hook.service可以要也可以不要。</p><p>下载下来之后随便放在什么home之类的就可以了，要用的时候在和caddy一样的地方写一个Caddyfile，然后执行caddy它就会读取Caddyfile然后执行。</p><p>如果你想要ws+tls+web，那么Caddyfile里面填：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">yourdomain.com</span><br><span class="line">&#123;</span><br><span class="line">  log ./caddy.log</span><br><span class="line">  root /www/public</span><br><span class="line">  proxy /test localhost:10000 &#123;</span><br><span class="line">    websocket</span><br><span class="line">    header_upstream -Origin</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>把yourdomain.com改成你自己的域名，/www/public是你放网页的地方，proxy是把 yourdomain.com/test 指向10000端口反代。</p><p>另一边填：</p><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;inbound&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;port&quot;</span>: <span class="number">10000</span>,</span><br><span class="line">    <span class="attr">&quot;listen&quot;</span>:<span class="string">&quot;127.0.0.1&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;protocol&quot;</span>: <span class="string">&quot;vmess&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;settings&quot;</span>: &#123;</span><br><span class="line">      <span class="attr">&quot;clients&quot;</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">          <span class="attr">&quot;id&quot;</span>: <span class="string">&quot;你的uuid&quot;</span>,</span><br><span class="line">          <span class="attr">&quot;alterId&quot;</span>: <span class="number">64</span></span><br><span class="line">        &#125;</span><br><span class="line">      ]</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">&quot;streamSettings&quot;</span>: &#123;</span><br><span class="line">      <span class="attr">&quot;network&quot;</span>: <span class="string">&quot;ws&quot;</span>,</span><br><span class="line">      <span class="attr">&quot;wsSettings&quot;</span>: &#123;</span><br><span class="line">      <span class="attr">&quot;path&quot;</span>: <span class="string">&quot;/test&quot;</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">&quot;outbound&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;protocol&quot;</span>: <span class="string">&quot;freedom&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;settings&quot;</span>: &#123;&#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>其中uuid换成自己的就可以了。</p><hr><p>如果是h2+tls+web的话，那么Caddyfile里面填：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">https://yourdomain.com &#123;</span><br><span class="line">  root /www/public</span><br><span class="line">  proxy /test https://localhost:10000 &#123;</span><br><span class="line">    insecure_skip_verify</span><br><span class="line">    header_upstream X-Forwarded-Proto &quot;https&quot;</span><br><span class="line">    header_upstream Host &quot;yourdomain.com&quot;</span><br><span class="line">  &#125;</span><br><span class="line">  header / &#123;</span><br><span class="line">    Strict-Transport-Security &quot;max-age=31536000;&quot;</span><br><span class="line">    X-XSS-Protection &quot;1; mode=block&quot;</span><br><span class="line">    X-Content-Type-Options &quot;nosniff&quot;</span><br><span class="line">    X-Frame-Options &quot;DENY&quot;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>然后你需要sudo -i切换到root模式，然后软链caddy的证书过来。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ln -s /etc/ssl/caddy/acme/acme-v02.api.letsencrypt.org/sites/&lt;yourdomain.com&gt;/&lt;yourdomain.com&gt;.crt /etc/v2ray/v2ray.crt</span><br><span class="line"></span><br><span class="line">ln -s /etc/ssl/caddy/acme/acme-v02.api.letsencrypt.org/sites/&lt;yourdomain.com&gt;/&lt;yourdomain.com&gt;.key /etc/v2ray/v2ray.key</span><br></pre></td></tr></table></figure><p>把命令里面的两个yourdomain.com都换成自己的域名。</p><p>然后另一边填：</p><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;log&quot;</span> : &#123;</span><br><span class="line">    <span class="attr">&quot;access&quot;</span>: <span class="string">&quot;/var/log/v2ray/access.log&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;error&quot;</span>: <span class="string">&quot;/var/log/v2ray/error.log&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;loglevel&quot;</span>: <span class="string">&quot;warning&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  <span class="attr">&quot;inbound&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;port&quot;</span>: <span class="number">10000</span>,</span><br><span class="line">    <span class="attr">&quot;listen&quot;</span>: <span class="string">&quot;127.0.0.1&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;protocol&quot;</span>: <span class="string">&quot;vmess&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;settings&quot;</span>: &#123;</span><br><span class="line">      <span class="attr">&quot;clients&quot;</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">          <span class="attr">&quot;id&quot;</span>: <span class="string">&quot;你的uuid&quot;</span>,</span><br><span class="line">          <span class="attr">&quot;level&quot;</span>: <span class="number">1</span>,</span><br><span class="line">          <span class="attr">&quot;alterId&quot;</span>: <span class="number">64</span></span><br><span class="line">        &#125;</span><br><span class="line">      ]</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    <span class="attr">&quot;streamSettings&quot;</span>: &#123;</span><br><span class="line">      <span class="attr">&quot;network&quot;</span>: <span class="string">&quot;h2&quot;</span>,</span><br><span class="line">      <span class="attr">&quot;security&quot;</span>: <span class="string">&quot;tls&quot;</span>,</span><br><span class="line">      <span class="attr">&quot;httpSettings&quot;</span>: &#123;</span><br><span class="line">        <span class="attr">&quot;path&quot;</span>: <span class="string">&quot;/test&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;host&quot;</span>: [<span class="string">&quot;yourdomain.com&quot;</span>]</span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="attr">&quot;tlsSettings&quot;</span>: &#123;</span><br><span class="line">        <span class="attr">&quot;serverName&quot;</span>: <span class="string">&quot;yourdomain.com&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;certificates&quot;</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">          <span class="attr">&quot;certificateFile&quot;</span>: <span class="string">&quot;/etc/v2ray/v2ray.crt&quot;</span>,</span><br><span class="line">          <span class="attr">&quot;keyFile&quot;</span>: <span class="string">&quot;/etc/v2ray/v2ray.key&quot;</span></span><br><span class="line">        &#125;</span><br><span class="line">      ]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br><span class="line"></span><br><span class="line"><span class="attr">&quot;outbound&quot;</span>: &#123;</span><br><span class="line">  <span class="attr">&quot;protocol&quot;</span>: <span class="string">&quot;freedom&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;settings&quot;</span>: &#123;&#125;</span><br><span class="line">&#125;,</span><br><span class="line"><span class="attr">&quot;outboundDetour&quot;</span>: [</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">&quot;protocol&quot;</span>: <span class="string">&quot;blackhole&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;settings&quot;</span>: &#123;&#125;,</span><br><span class="line">    <span class="attr">&quot;tag&quot;</span>: <span class="string">&quot;blocked&quot;</span></span><br><span class="line">  &#125;</span><br><span class="line">],</span><br><span class="line"></span><br><span class="line"><span class="attr">&quot;routing&quot;</span>: &#123;</span><br><span class="line">  <span class="attr">&quot;strategy&quot;</span>: <span class="string">&quot;rules&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;settings&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;rules&quot;</span>: [</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">&quot;type&quot;</span>: <span class="string">&quot;field&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;ip&quot;</span>: [</span><br><span class="line">          <span class="string">&quot;0.0.0.0/8&quot;</span>,</span><br><span class="line">          <span class="string">&quot;10.0.0.0/8&quot;</span>,</span><br><span class="line">          <span class="string">&quot;100.64.0.0/10&quot;</span>,</span><br><span class="line">          <span class="string">&quot;127.0.0.0/8&quot;</span>,</span><br><span class="line">          <span class="string">&quot;169.254.0.0/16&quot;</span>,</span><br><span class="line">          <span class="string">&quot;172.16.0.0/12&quot;</span>,</span><br><span class="line">          <span class="string">&quot;192.0.0.0/24&quot;</span>,</span><br><span class="line">          <span class="string">&quot;192.0.2.0/24&quot;</span>,</span><br><span class="line">          <span class="string">&quot;192.168.0.0/16&quot;</span>,</span><br><span class="line">          <span class="string">&quot;198.18.0.0/15&quot;</span>,</span><br><span class="line">          <span class="string">&quot;198.51.100.0/24&quot;</span>,</span><br><span class="line">          <span class="string">&quot;203.0.113.0/24&quot;</span>,</span><br><span class="line">          <span class="string">&quot;::1/128&quot;</span>,</span><br><span class="line">          <span class="string">&quot;fc00::/7&quot;</span>,</span><br><span class="line">          <span class="string">&quot;fe80::/10&quot;</span></span><br><span class="line">        ],</span><br><span class="line">        <span class="attr">&quot;outboundTag&quot;</span>: <span class="string">&quot;blocked&quot;</span></span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>如果ws需要加上mtproto服务的话：</p><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;inbounds&quot;</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">&quot;port&quot;</span>: <span class="number">10000</span>,</span><br><span class="line">      <span class="attr">&quot;listen&quot;</span>:<span class="string">&quot;127.0.0.1&quot;</span>,</span><br><span class="line">      <span class="attr">&quot;protocol&quot;</span>: <span class="string">&quot;vmess&quot;</span>,</span><br><span class="line">      <span class="attr">&quot;settings&quot;</span>: &#123;</span><br><span class="line">        <span class="attr">&quot;clients&quot;</span>: [</span><br><span class="line">          &#123;</span><br><span class="line">            <span class="attr">&quot;id&quot;</span>: <span class="string">&quot;你的uuid&quot;</span>,</span><br><span class="line">            <span class="attr">&quot;alterId&quot;</span>: <span class="number">64</span></span><br><span class="line">          &#125;</span><br><span class="line">        ]</span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="attr">&quot;streamSettings&quot;</span>: &#123;</span><br><span class="line">        <span class="attr">&quot;network&quot;</span>: <span class="string">&quot;ws&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;wsSettings&quot;</span>: &#123;</span><br><span class="line">        <span class="attr">&quot;path&quot;</span>: <span class="string">&quot;/test&quot;</span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">&quot;tag&quot;</span>: <span class="string">&quot;tg-in&quot;</span>, </span><br><span class="line">      <span class="attr">&quot;port&quot;</span>: <span class="number">10001</span>, </span><br><span class="line">      <span class="attr">&quot;protocol&quot;</span>: <span class="string">&quot;mtproto&quot;</span>, </span><br><span class="line">      <span class="attr">&quot;settings&quot;</span>: &#123;</span><br><span class="line">        <span class="attr">&quot;users&quot;</span>: [</span><br><span class="line">          &#123;</span><br><span class="line">            <span class="attr">&quot;secret&quot;</span>: <span class="string">&quot;你的uuid&quot;</span></span><br><span class="line">          &#125;</span><br><span class="line">        ]</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  ], </span><br><span class="line">  <span class="attr">&quot;outbounds&quot;</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">&quot;protocol&quot;</span>: <span class="string">&quot;freedom&quot;</span>, </span><br><span class="line">      <span class="attr">&quot;settings&quot;</span>: &#123; &#125;</span><br><span class="line">    &#125;, </span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">&quot;tag&quot;</span>: <span class="string">&quot;tg-out&quot;</span>, </span><br><span class="line">      <span class="attr">&quot;protocol&quot;</span>: <span class="string">&quot;mtproto&quot;</span>, </span><br><span class="line">      <span class="attr">&quot;settings&quot;</span>: &#123; &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  ], </span><br><span class="line">  <span class="attr">&quot;routing&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;rules&quot;</span>: [</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">&quot;type&quot;</span>: <span class="string">&quot;field&quot;</span>, </span><br><span class="line">        <span class="attr">&quot;inboundTag&quot;</span>: [</span><br><span class="line">          <span class="string">&quot;tg-in&quot;</span></span><br><span class="line">        ], </span><br><span class="line">        <span class="attr">&quot;outboundTag&quot;</span>: <span class="string">&quot;tg-out&quot;</span></span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>如果h2需要加上mtproto的话：</p><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;inbounds&quot;</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">&quot;port&quot;</span>: <span class="number">10000</span>,</span><br><span class="line">      <span class="attr">&quot;listen&quot;</span>: <span class="string">&quot;127.0.0.1&quot;</span>,</span><br><span class="line">      <span class="attr">&quot;protocol&quot;</span>: <span class="string">&quot;vmess&quot;</span>,</span><br><span class="line">      <span class="attr">&quot;settings&quot;</span>: &#123;</span><br><span class="line">        <span class="attr">&quot;clients&quot;</span>: [</span><br><span class="line">          &#123;</span><br><span class="line">            <span class="attr">&quot;id&quot;</span>: <span class="string">&quot;你的uuid&quot;</span>,</span><br><span class="line">            <span class="attr">&quot;level&quot;</span>: <span class="number">1</span>,</span><br><span class="line">            <span class="attr">&quot;alterId&quot;</span>: <span class="number">64</span></span><br><span class="line">          &#125;</span><br><span class="line">        ]</span><br><span class="line">      &#125;,</span><br><span class="line">  </span><br><span class="line">      <span class="attr">&quot;streamSettings&quot;</span>: &#123;</span><br><span class="line">        <span class="attr">&quot;network&quot;</span>: <span class="string">&quot;h2&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;security&quot;</span>: <span class="string">&quot;tls&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;httpSettings&quot;</span>: &#123;</span><br><span class="line">          <span class="attr">&quot;path&quot;</span>: <span class="string">&quot;/test&quot;</span>,</span><br><span class="line">          <span class="attr">&quot;host&quot;</span>: [<span class="string">&quot;yourdomain.com&quot;</span>]</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">&quot;tlsSettings&quot;</span>: &#123;</span><br><span class="line">          <span class="attr">&quot;serverName&quot;</span>: <span class="string">&quot;yourdomain.com&quot;</span>,</span><br><span class="line">          <span class="attr">&quot;certificates&quot;</span>: [</span><br><span class="line">          &#123;</span><br><span class="line">            <span class="attr">&quot;certificateFile&quot;</span>: <span class="string">&quot;/etc/v2ray/v2ray.crt&quot;</span>,</span><br><span class="line">            <span class="attr">&quot;keyFile&quot;</span>: <span class="string">&quot;/etc/v2ray/v2ray.key&quot;</span></span><br><span class="line">          &#125;</span><br><span class="line">        ]</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">&quot;tag&quot;</span>: <span class="string">&quot;tg-in&quot;</span>, </span><br><span class="line">      <span class="attr">&quot;port&quot;</span>: <span class="number">10001</span>, </span><br><span class="line">      <span class="attr">&quot;protocol&quot;</span>: <span class="string">&quot;mtproto&quot;</span>, </span><br><span class="line">      <span class="attr">&quot;settings&quot;</span>: &#123;</span><br><span class="line">        <span class="attr">&quot;users&quot;</span>: [</span><br><span class="line">          &#123;</span><br><span class="line">            <span class="attr">&quot;secret&quot;</span>: <span class="string">&quot;你的uuid&quot;</span></span><br><span class="line">          &#125;</span><br><span class="line">        ]</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  ], </span><br><span class="line">  <span class="attr">&quot;outbounds&quot;</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">&quot;protocol&quot;</span>: <span class="string">&quot;freedom&quot;</span>, </span><br><span class="line">      <span class="attr">&quot;settings&quot;</span>: &#123; &#125;</span><br><span class="line">    &#125;, </span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">&quot;tag&quot;</span>: <span class="string">&quot;tg-out&quot;</span>, </span><br><span class="line">      <span class="attr">&quot;protocol&quot;</span>: <span class="string">&quot;mtproto&quot;</span>, </span><br><span class="line">      <span class="attr">&quot;settings&quot;</span>: &#123; &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  ], </span><br><span class="line">  <span class="attr">&quot;routing&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;rules&quot;</span>: [</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">&quot;type&quot;</span>: <span class="string">&quot;field&quot;</span>, </span><br><span class="line">        <span class="attr">&quot;inboundTag&quot;</span>: [</span><br><span class="line">          <span class="string">&quot;tg-in&quot;</span></span><br><span class="line">        ], </span><br><span class="line">        <span class="attr">&quot;outboundTag&quot;</span>: <span class="string">&quot;tg-out&quot;</span></span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>以上。</p>]]></content>
-      
-      
+      <tags>
+        <tag>Australia</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>村里的生活（4）如何让在土澳的生活更加的和中国接轨</title>
+    <url>/2017/05/23/Australia4/</url>
+    <content><![CDATA[<p>有双卡双待手机的同学，日常怎么用才最省钱呢？<br>可以参考一下我准备使用的方案：</p>
+<p>aldimobile作为听电话收短信的卡，15AUD走PAYG，15AUD用一年爽歪歪</p>
+<p>lebara走流量，5AUD一月有500MB，为什么选这个呢，是因为这是我找到的唯一一个卖5AUD流量包的。</p>
+<p>在土澳要如何叫车呢？</p>
+<p>首先，打开你的支付宝</p>
+<p><img src="https://www.akarin.moe/images/source/alipay.png" alt="pic"></p>
+<p>看见那个优步用车了吗？</p>
+<p>嗯，真的超好用，输入出发地和目的地即可</p>
+<p>没有很多繁琐的功能……其实可以说是支付宝的“小程序”吧</p>
+<p>走的支付宝结账，其实支付宝的国际化挺强的……</p>
+<p>重要的是，比起当地的出租车，便宜啊！！！还支付宝结算哎！</p>
+<p>然后，其实，如果</p>
+<p>你过来澳洲玩的时候，没来得及或者不记得办一张visa卡</p>
+<p>那么，放心的拿着银联卡来吧</p>
+<p>不提那些名贵奢华品了，那些为了圈中国人的钱有几个不支持银联卡的</p>
+<p>重点是，四大澳洲银行全支持！</p>
+]]></content>
       <categories>
-          
-          <category> Ubuntu </category>
-          
+        <category>Australia</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> Ubuntu </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>新西兰之旅</title>
-      <link href="/2019/04/05/NewZealandPlanning/"/>
-      <url>/2019/04/05/NewZealandPlanning/</url>
-      
-        <content type="html"><![CDATA[<p>已经……好久没用过hexo写博客了……可能都已经快忘记怎么使用hexo了……</p><p>这几天在忙很多事情，更新护照，更新签证，新西兰计划，驾考……还有一堆需要置备的东西（x</p><p>之前我的护照丢了，所以我重新在悉尼大使馆补办了一本新的护照，于是我需要把我的新护照更新到我的澳洲签证上。<br>这个几乎已经是老生常谈了，但是其实也有一些值得一说的点——</p><p>首先，根据2019年4月5号的情况来看，把新护照更新到澳洲签证上有两种方法：</p><ol><li>使用澳洲移民局官方签证管理系统Immiaccount</li><li>填写929信息更新表格，并将表格与新旧护照信息一并发送至<a href="mailto:&#57;&#50;&#x39;&#x40;&#x68;&#x6f;&#109;&#101;&#x61;&#102;&#x66;&#x61;&#x69;&#x72;&#x73;&#46;&#99;&#111;&#x6d;&#46;&#x61;&#x75;">&#57;&#50;&#x39;&#x40;&#x68;&#x6f;&#109;&#101;&#x61;&#102;&#x66;&#x61;&#x69;&#x72;&#x73;&#46;&#99;&#111;&#x6d;&#46;&#x61;&#x75;</a></li></ol><p>先说后面一种。<br>929邮箱一直是个很神奇的存在——在一两年前更新护照的方法一种是immiaccount，另一种则是让你邮寄到移民局……这谁有这个功夫啊，但移民局邮箱作为一种特殊渠道，一直以半公开的形式流传于民间。直到这一两年，澳洲重组政府部门，组建内政部——这个部门其实更是个神奇的存在，一手遮天，大权独揽……不过不展开太多。于是，移民局邮箱便正式替代了以往第二种方法。</p><p>但发邮件给移民局来更新护照信息有什么坏处呢？</p><p>慢！！令人发指的慢！！！自从929邮箱被作为官方immiaccount替代品之后，效率疯狂降低，官方邮箱的接收更是附件数量和大小都有限制，现在的929邮箱官方声明是“Up to 4 weeks”——这怎么忍！一个月的时间，黄花菜都凉了！</p><p>于是，为什么会有这种替代品呢？<br>替代品替代品，意思很明白，澳洲政府希望大家其实是去用immiaccount的。</p><p>出于各种特殊的原因，immiaccount有可能“没法使用”，这里先提一个问题：如果immiaccount真的那么多bug，政府可能会首推它么？</p><p>那么不能使用immiaccount的情况有哪些呢？</p><p>澳大利亚签证分为两种途径——一种是通过移民局官方系统immiaccount申请的签证——在穷游网上有很多“网签”就是这类。网签的好处在于它可以完全在家足不出户就完成签证申请，不需要跑大使馆，不需要邮寄材料，连财产证明都是可以打开网上银行直接下载个PDF流水当证明的。而且，关键是售后全呀！不用天天傻逼兮兮地等移民局电话，中介费完全省了，如果你护照丢了，立刻登录immiaccount就改好了，超方便有没有！</p><p>这里就要说到另一种途径——也是最传统的途径——中介申请了。通过中介/澳洲大使馆申请下来的签证，它们在官方签证系统有你的记录，这时，你需要Import你的签证到immiaccount，也就是Import application。顺便一提，已完成application的签证也算的。关键来了：如果你是移民签证，或者你是别的什么签证，但是你不是主申请人，那么你需要填的是主申请人的信息而不是你的信息。你的信息资料是在主申请人为单位的Group之下的。在immiaccount点Import Application，然后reference number是你的IMMI Grant Notification（正签信）上的Transaction reference number，Main Applicant Detail里填生日，然后travel document number填护照，country of travel document护照是哪国就填哪国，这样子你就可以import以主申请人为单位的一个family了。然后找到update details，然后change of passport details（这些和网上的都大同小异啦），记得不要选“丢失”，直接选broken就好，不然丢失的是要发929表到官方邮箱的。</p><p>如果你找不到以上需要的信息怎么办呢？那说明你没有好好看正签信。（大雾）</p><p>总之，去完新西兰我可能会写一篇新西兰游记（大概吧）</p><p>（咕咕咕）</p>]]></content>
-      
-      
+      <tags>
+        <tag>Australia</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>哔哩哔哩动画UWP版</title>
+    <url>/2017/03/25/BilibiliUWP/</url>
+    <content><![CDATA[<p>一开始是因为Adobe flash player这史前遗留文明对电脑的风扇损害极大，并且不知道为什么缓存死活有问题加载不了视频，所以便在微软应用商店找了哔哩哔哩动画的UWP版。</p>
+<p>然后怀着好奇的心情打开了那个画质测试视频（因为知乎的链接是要跳转的所以直接上av号：av932932）。</p>
+<p>一开始的时候居然流畅的放出来了！但是后面无限小电视……</p>
+]]></content>
       <categories>
-          
-          <category> Life </category>
-          
+        <category>Bilibili</category>
+        <category>UWP</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> Travel </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>这可能是最详细的澳大利亚银联刷卡攻略</title>
-      <link href="/2018/07/29/UnionPayInAustralia/"/>
-      <url>/2018/07/29/UnionPayInAustralia/</url>
-      
-        <content type="html"><![CDATA[<p>首先，要明白一些基本知识。</p><p>澳大利亚的POS机种类其实并不多，经过多年的发展基本上趋于小众化了</p><p><strong>所以“在澳大利亚能不能刷银联”=“这个POS机支不支持银联”</strong></p><p><strong>第二，尽信书不如无书，因为商家对POS机的自助定制权非常大，商家往往有权要求一个POS机是否对接开通银联</strong></p><p>第三，一个地方可能支持银联而不支持American Express，或者不支持银联也不支持AMEX，原因是银联在海外的手续费比Visa/Master偏高，有的商家可能不太乐意去接受</p><p>在你阅读这篇文章之前，我想直接简单的告诉你来澳洲的话到底该怎么样：能带银联卡来这边过得很舒服，但还是需要visa卡做备份，银联的支持率大概在85%左右，而且15%大部分集中在大商家~！剩下的都是商家因为手续费而不支持银联……（残念</p><p>明白了这个关键性信息我们就可以直接去调查研究所有的POS机，从而明白这个商家支不支持银联了！</p><p>接下来我想普及一下关于刷卡的几个小知识。</p><p>中国的银联银行卡一般都是带QuickPass标志的，这意味着这是一张支持银联闪付的银行卡。<br>各大厂商自己的各种pay如mipay或者huawei pay大多数用的是eSE标准，而各大银行app自己的那个“云闪付”则大多数是HCE标准。额外信息的话我在网上找到一篇不错的博客，欢迎大家结合来看，对详细信息有个补充。 <a href="http://blog.zengrong.net/post/2450.html">http://blog.zengrong.net/post/2450.html</a></p><p><strong>注意：所有的银联信用卡都不需要输入密码，银联借记卡则需要输入密码</strong></p><h2 id="名词解释："><a href="#名词解释：" class="headerlink" title="名词解释："></a>名词解释：</h2><p><strong>“银联实体卡”“I/S”</strong>：POS机仅支持Insert（插入）或者Swipe（刷卡）</p><p><strong>eSE</strong>：各大手机自己的“pay”：如apple pay，mipay，Samsung pay，huawei pay，meizu pay等</p><p><strong>HCE</strong>：各大app自己的“pay”：如“Google pay”（原Android pay），“招商银行app一闪通”，“中国银行app云闪付”等</p><p><strong>商家定义度</strong>：商家定义度指的是这个POS机被商家自定义支不支持银联的可能性，有的POS机相对而言没有那么好定义，也就是说定义度高的POS机本攻略往往与实际情况不符，定义度低的POS机则会相对更符合本攻略</p><p><strong>商家定义表现形式</strong>：当一个POS机被商家定义过后是什么样子的</p><p><strong>银联支持度</strong>：对银联支持到了什么程度，分（不支持），（仅支持I/S），（支持I/S，eSE和HCE）三个档次，并且会标注是否显示银联logo。</p><p>让我们进入正题吧！</p><h2 id="第一家银行：Commonwealth-Bank（澳洲联邦银行）"><a href="#第一家银行：Commonwealth-Bank（澳洲联邦银行）" class="headerlink" title="第一家银行：Commonwealth Bank（澳洲联邦银行）"></a>第一家银行：Commonwealth Bank（澳洲联邦银行）</h2><p>前国企，相当于土澳的宇宙行。<br>这是他们旧款的POS机<br><img src="https://www.akarin.moe/images/POSinAustralia/comm_old.jpg" alt="pic"><br>这是他们新款的POS机<br><img src="https://www.akarin.moe/images/POSinAustralia/conn_new.jpg" alt="pic"><br>联邦银行新款旧款都不显示银联标志，新旧款的POS机都只支持I/S，均不支持Tap。</p><p><strong>银联支持度</strong>：新/旧：仅支持I/S，不显示银联logo<br><strong>商家定义度</strong>：低<br><strong>商家定义表现形式</strong>：没有任何提示，因为本来POS机也不显示银联logo，如不支持一般店内会标注出来的</p><h2 id="第二家银行：ANZ（澳新银行）"><a href="#第二家银行：ANZ（澳新银行）" class="headerlink" title="第二家银行：ANZ（澳新银行）"></a>第二家银行：ANZ（澳新银行）</h2><p>POS机样式：<br><img src="https://www.akarin.moe/images/POSinAustralia/anz_old.jpg" alt="pic"><br>新款POS机：<br><img src="https://www.akarin.moe/images/POSinAustralia/anz_new.jpg" alt="pic"><br>旧款POS机是ANZ在市面上99.99%流通的POS机，新款的基本可以忽略不计，但是要注意的是新款POS机不支持银联，新版的似乎只有墨尔本的博多元助拉面在用。</p><p>事实上ANZ还有一款非常非常旧的POS机，这个只支持V/M的说<br><img src="https://www.akarin.moe/images/POSinAustralia/anz_old2.jpg" alt="pic"><br>不过这个已经很少见了</p><p><strong>银联支持度</strong>：支持I/S，eSE和HCE，显示银联logo<br><strong>商家定义度</strong>：低<br><strong>商家定义表现形式</strong>：如果商家不支持银联则银联logo不会显示在POS机上，比如7-11，比如rebel</p><h2 id="第三家银行：NAB（澳洲国民银行）"><a href="#第三家银行：NAB（澳洲国民银行）" class="headerlink" title="第三家银行：NAB（澳洲国民银行）"></a>第三家银行：NAB（澳洲国民银行）</h2><p>POS机样式：<br><img src="https://www.akarin.moe/images/POSinAustralia/nab_new.jpg" alt="pic"><br>NAB的POS机很少会被商家自己定制<br>但是NAB还有另外一种POS机<br><img src="https://www.akarin.moe/images/POSinAustralia/nab_old.jpg" alt="pic"><br>这种POS机仅支持银联实体卡……并且显示银联logo</p><p><strong>银联支持度</strong>：<br>新：支持I/S，eSE和HCE，不显示银联logo<br>旧：仅支持I/S，显示银联logo<br><strong>商家定义度</strong>：极低<br><strong>商家定义表现形式</strong>：无</p><h2 id="第四家银行：Westpac（西太平洋银行）"><a href="#第四家银行：Westpac（西太平洋银行）" class="headerlink" title="第四家银行：Westpac（西太平洋银行）"></a>第四家银行：Westpac（西太平洋银行）</h2><p>POS机样式：<br><img src="https://www.akarin.moe/images/POSinAustralia/westpac1.jpg" alt="pic"><br>只有当Westpac的POS机显示的是这样子的：<br><img src="https://www.akarin.moe/images/POSinAustralia/westpac.jpg" alt="pic"><br>才可以支持银联，只有字而没有“menu”等字样或者显示金额的时候不显示银联，那么一定是商家自定义过</p><p><strong>银联支持度</strong>：支持I/S，eSE，不支持HCE，显示银联logo<br><strong>商家定义度</strong>：高<br><strong>商家定义表现形式</strong>：不显示westpac的logo和menu，只显示字</p><h2 id="第五家银行：St-George（圣乔治银行）"><a href="#第五家银行：St-George（圣乔治银行）" class="headerlink" title="第五家银行：St.George（圣乔治银行）"></a>第五家银行：St.George（圣乔治银行）</h2><p>POS机样式：<br><img src="https://www.akarin.moe/images/POSinAustralia/St.george.jpg" alt="pic"></p><p><strong>银联支持度</strong>：支持I/S，支持eSE，不支持HCE<br><strong>商家定义度</strong>：中<br><strong>商家定义表现形式</strong>：不显示st george的logo和menu，只显示字</p><h2 id="第六家银行：Bendigo（本迪戈银行）"><a href="#第六家银行：Bendigo（本迪戈银行）" class="headerlink" title="第六家银行：Bendigo（本迪戈银行）"></a>第六家银行：Bendigo（本迪戈银行）</h2><p><strong>银联支持度</strong>：不支持<br><strong>商家定义度</strong>：无数据<br><strong>商家定义表现形式</strong>：无</p><h2 id="第七家银行：SunCorp"><a href="#第七家银行：SunCorp" class="headerlink" title="第七家银行：SunCorp"></a>第七家银行：SunCorp</h2><p>POS机样式：<br><img src="https://www.akarin.moe/images/POSinAustralia/Suncorp.jpg" alt="pic"><br>SunCorp的商家自定义出奇的高，所以虽然SunCorp自己本身并不支持银联，但是有的华人商家用了SunCorp之后强行和SunCorp谈然后开启了银联通道</p><p><strong>银联支持度</strong>：不支持<br><strong>商家定义度</strong>：中<br><strong>商家定义表现形式</strong>：无</p><p>———————————–分割线—————————————-</p><p>以下要介绍的都是单独的POS机品牌，他们并没有银行。</p><h2 id="第一家POS机：Tyro"><a href="#第一家POS机：Tyro" class="headerlink" title="第一家POS机：Tyro"></a>第一家POS机：Tyro</h2><p>POS机样式：<br><img src="https://www.akarin.moe/images/POSinAustralia/tyro.jpg" alt="pic"><br><img src="https://www.akarin.moe/images/POSinAustralia/tyro2.jpg" alt="pic"><br>这也是一家几乎不存在商家自定义的好文明！（笑</p><p><strong>银联支持度</strong>：仅支持I/S<br><strong>商家定义度</strong>：极低<br><strong>商家定义表现形式</strong>：无</p><h2 id="第二家POS机：QUEST"><a href="#第二家POS机：QUEST" class="headerlink" title="第二家POS机：QUEST"></a>第二家POS机：QUEST</h2><p>POS机样式：<br><img src="https://www.akarin.moe/images/POSinAustralia/quest.jpg" alt="pic"><br>这家POS机厂商一般来说小店铺是不会用的……似乎都是大一点规模的才会使用到，这家POS机厂商定义度极其的高，必须要根据店铺因地制宜，下面的商家支持是指以下商家使用了QUEST POS机，但是却开通了银联</p><p><strong>银联支持度</strong>：不支持<br><strong>商家强行定义支持银联</strong>：Chemist Warehouse<br><strong>商家定义度</strong>：极高<br><strong>商家定义表现形式</strong>：以店内具体信息为准，比如country road的quest POS机没有任何信息，但是却摆出了一个银联返现的小牌子</p><h2 id="追加信息：根据QUEST和支付宝的合作，似乎有的QUEST的POS机已经开始在商家不知道的情况下支持支付宝了，典型的例子有DAISO，这个日本的10元店在明确标识不支持银联以及AMEX的情况下，他们的POS机出现了支付宝标志……-但是请不要对这个抱有太多的信心，因为这个需要商家自己去谈，并不是QUEST统一开放的。不过QUEST一般是服装店用的比较多。"><a href="#追加信息：根据QUEST和支付宝的合作，似乎有的QUEST的POS机已经开始在商家不知道的情况下支持支付宝了，典型的例子有DAISO，这个日本的10元店在明确标识不支持银联以及AMEX的情况下，他们的POS机出现了支付宝标志……-但是请不要对这个抱有太多的信心，因为这个需要商家自己去谈，并不是QUEST统一开放的。不过QUEST一般是服装店用的比较多。" class="headerlink" title="追加信息：根据QUEST和支付宝的合作，似乎有的QUEST的POS机已经开始在商家不知道的情况下支持支付宝了，典型的例子有DAISO，这个日本的10元店在明确标识不支持银联以及AMEX的情况下，他们的POS机出现了支付宝标志…… 但是请不要对这个抱有太多的信心，因为这个需要商家自己去谈，并不是QUEST统一开放的。不过QUEST一般是服装店用的比较多。"></a>追加信息：根据QUEST和支付宝的合作，似乎有的QUEST的POS机已经开始在商家不知道的情况下支持支付宝了，典型的例子有DAISO，这个日本的10元店在明确标识不支持银联以及AMEX的情况下，他们的POS机出现了支付宝标志…… 但是请不要对这个抱有太多的信心，因为这个需要商家自己去谈，并不是QUEST统一开放的。不过QUEST一般是服装店用的比较多。</h2><p>顺便一提，QUEST有的POS机是通过NAB来清算的，所以有的POS机可以识别出银联，具体方法为把银联卡插入！！！插入！！！插入！！！（insert！！！）到POS机，如果出现要求输入密码，就是支持银联。</p><p>QUEST其实有一部分是走的NAB的清算网络，这就导致了如果你刚好遇到了那么就可以刷银联，具体检测方式是只要把银联卡插进去，那么如果提示输入密码的话就是可以用过银联来支付。</p><h2 id="第三家POS机：smartpay"><a href="#第三家POS机：smartpay" class="headerlink" title="第三家POS机：smartpay"></a>第三家POS机：smartpay</h2><p>POS机样式：<br><img src="https://www.akarin.moe/images/POSinAustralia/smartpay.jpg" alt="pic"><br>不支持银联，原因是这个走的其实是bendigo还是Suncorp的清算通道……</p><p><strong>银联支持度</strong>：不支持<br><strong>商家定义度</strong>：无数据<br><strong>商家定义表现形式</strong>：无</p><h2 id="第四家：Square"><a href="#第四家：Square" class="headerlink" title="第四家：Square"></a>第四家：Square</h2><p>POS机样式：<br><img src="https://www.akarin.moe/images/POSinAustralia/square.jpg" alt="pic"><br>不支持银联，他们的作用是让小商贩不用扛着个POS机到处跑，用手机就能读取信用卡信息然后刷卡……不过提一句，在美国的square是支持银联的……</p><p><strong>银联支持度</strong>：不支持<br><strong>商家定义度</strong>：极低<br><strong>商家定义表现形式</strong>：无</p><h2 id="第五家：Ingenico"><a href="#第五家：Ingenico" class="headerlink" title="第五家：Ingenico"></a>第五家：Ingenico</h2><p>POS机样式：<br><img src="https://www.akarin.moe/images/POSinAustralia/ingenico.jpg" alt="pic"><br>绝大多数使用ingenico POS机的都是连锁店，所以其实简单地说就是以下列出来的商家均不可用银联：<br>麦当劳，Coles，flybuys成员：Target，Kmart，hungry jack（汉堡王）</p><p><strong>银联支持度</strong>：不支持<br><strong>商家定义度</strong>：无数据<br><strong>商家定义表现形式</strong>：无</p><h2 id="第六家：Bank-of-Queensland（昆士兰银行）"><a href="#第六家：Bank-of-Queensland（昆士兰银行）" class="headerlink" title="第六家：Bank of Queensland（昆士兰银行）"></a>第六家：Bank of Queensland（昆士兰银行）</h2><p><img src="https://www.akarin.moe/images/POSinAustralia/BOQ.jpg" alt="pic"></p><p>不支持银联</p><p>————————————又是一个分割线—————————————-</p><p>这部分则是自定义高的商家了</p><h2 id="第一个商家：Woolworths"><a href="#第一个商家：Woolworths" class="headerlink" title="第一个商家：Woolworths"></a>第一个商家：Woolworths</h2><p>POS机样式：<br><img src="https://www.akarin.moe/images/POSinAustralia/woolies.jpg" alt="pic"><br>全线支持银联，支持银联云闪付，支持银联云闪付app免密</p><p><strong>银联支持度</strong>：支持I/S，eSE和HCE</p><p>因为银联与Woolworths集团达成了合作，所以Woolworths集团旗下所有集团（包括但不限于BIG W），都可以使用银联卡，识别Woolworths集团的方式是看他们接不接受Woolworths Rewards Card，或者看他们的POS机是不是和Woolworths的一样。</p><p>顺便截取银联官网的一段信息：在当地可用银联卡的实体商店中，有一半支持云闪付，包括百货公司Myer、全澳最大的家具家电连锁集团Harvey Norman、平价服饰品牌店优衣库、无印良品等。（其实他们用的都是ANZ的POS机（笑））</p><h2 id="第二个商家：7-11"><a href="#第二个商家：7-11" class="headerlink" title="第二个商家：7-11"></a>第二个商家：7-11</h2><p>NSW不支持，Melbourne待议。</p><p><strong>银联支持度</strong>：不支持</p><h2 id="rebel"><a href="#rebel" class="headerlink" title="rebel"></a>rebel</h2><p>不支持银联，简直一个坑比企业啊，支持jcb支持amex就是不支持银联，mmp</p><p><strong>注：根据2018年6月14号的测试，新版opal卡机可以正确识别银联卡为PBOC DEBIT以及CMB DEBIT CARD（招商银行特有标识），但是却不让支付……这非常的迷啊，可能是不知道出于什么目的他们把交易设置成了免密码，然而银联在海外怎么可能不需要密码呢（</strong></p><p><strong>Cabcharge</strong>：全澳洲90%或者95%的出租车都有配备Cabcharge POS机。唯一不同的是悉尼市区的出租车一般是只用cabcharge的POS机，而偏远地区的出租车可能会有两套POS机，一套自己的，另一套则是cabcharge的。这种情况下这些司机可能会把cabcharge的POS机藏起来放在抽屉里，你只需要要求他们使用cabcharge的POS机就可以了。cabcharge的POS机支持银联以及支付宝。支付宝具体调出方式是让司机按“PAY”，然后按“APP”就可以了，此时POS机就会显示一个二维码让你扫。刷银联卡的方式是按CARD，然后只能swipe（在侧边刷卡），不可以insert（插入）或者tap（银联闪付）。</p><p><strong>自动售货机</strong>：全部不支持。</p><p>===================TIPS====================<br>并不是所有的连锁店都会采用统一POS机，KFC有的地方可能是ANZ所以支持tap，有的地方是commonwealth就只支持I/S了</p><p>大多数时候这篇文章是起作用的，但是经常会有商家对自己的POS机进行customization，比如我看见一家华人开的店用的SunCorp的POS机却在门外贴着银联的标签，还有澳洲Town Hall附近的那家卡地亚，明明是那种易什么通（走SunCorp通道结算的）却也在门口贴银联标，还有chemist warehouse这种QUEST强行支持银联的也是……很多时候支不支持银联完全是商家的事情，只不过大多数银行是默认开放对银联的支持的，但是一个很重要的问题在于银联在海外的费率是正常收的，并没有国内政策强推的那种低到可怕的费率……所以银联与AMEX被decline这种事情见得多了就平常心了<em>(:з)∠)</em></p><p><a href="http://2016web.unionpayintl.com/en/enproducts/eninnovative/enquickpass/index.shtml">http://2016web.unionpayintl.com/en/enproducts/eninnovative/enquickpass/index.shtml</a></p><p>以上是银联对于商家的正式支持列表，但是很多时候商家的POS机其实已经反映了这个POS机能不能使用银联了，所以这种列表很大程度上只能算是一个补充吧</p><p>顺便一提：如果你想的话，澳洲是支持中国银联卡退税的</p><p>=======================分割线~===============<br>所以：总结：</p><h1 id="支持银联的："><a href="#支持银联的：" class="headerlink" title="支持银联的："></a>支持银联的：</h1><p>Commonwealth Bank：仅I/S<br>ANZ：I/S，eSE和HCE<br>NAB：I/S，eSE和HCE<br>Westpac：I/S和eSE<br>St.George：I/S和eSE<br>Tyro：仅I/S<br>Woolworths：I/S，eSE和HCE<br><del>Opal充值机器：仅I/S</del><br>Cabcharge：仅Swipe，支持支付宝。</p><p>#支持支付宝的：<br><del>DAISO</del><br>Chemist Warehouse<br>Uber（通过支付宝内的“优步用车”）<br>CabCharge</p><h1 id="不支持银联的："><a href="#不支持银联的：" class="headerlink" title="不支持银联的："></a>不支持银联的：</h1><p>QUEST<br>smartpay<br>Square<br>ingenico：麦当劳，Coles，Kmart，Target，Hungry Jack<br>Bendigo<br>SunCorp<br>7-11<br>BOQ</p><p>支持银联的都是大银行<del>不支持银联的都是小企业</del>这样一想其实还好啦~w</p><p>好了就到这里啦，以上支持的和不支持的加起来就可以概括澳洲99%的商铺了！</p>]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>从hexo到OneDrive</title>
-      <link href="/2017/09/27/hexo-OneDrive/"/>
-      <url>/2017/09/27/hexo-OneDrive/</url>
-      
-        <content type="html"><![CDATA[<p>是的，利用OneDrive来同步hexo文件夹是完全可行的。</p><p>起因是我的神船当台式机用了，但是和Surface居然每次都要更新两部分……而且文章还一边有一边没有的……所以把hexo转移到OneDrive了。</p><p>OneDrive虽然同步……但是有的时候很不稳定……作为一个新的尝试还在测试ing……</p>]]></content>
-      
-      
+      <tags>
+        <tag>Bilibili</tag>
+        <tag>UWP</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>为你的网页加个没卵用的认证</title>
+    <url>/2017/01/16/Authentication/</url>
+    <content><![CDATA[<p>其实也不见得有多安全，就是随便拦拦一些东西防止麻烦事情找上门……<br>首先在你的home目录建立个htpasswd文件。</p>
+<p>然后去<a href="http://tool.oschina.net/htpasswd">这里</a>生成你的用户名和密码，生成的参数写入htpasswd。记得加密方式选择Crypt。</p>
+<p>在Nginx的conf里面找个你觉得能运行的地方加</p>
+<p><code>auth_basic &quot;Please provide password&quot;;</code><br><code>auth_basic_user_file /home/htpasswd;    </code></p>
+<p>就好了。</p>
+<p>这样子的话一个简单的401就可以有防止麻烦事加防盗链的作用了。</p>
+]]></content>
       <categories>
-          
-          <category> hexo </category>
-          
-          <category> OneDrive </category>
-          
+        <category>Authentication</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> hexo </tag>
-            
-            <tag> OneDrive </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Surface Type Cover评测</title>
-      <link href="/2017/08/27/TypeCover/"/>
-      <url>/2017/08/27/TypeCover/</url>
-      
-        <content type="html"><![CDATA[<p>外包装。<br><img src="https://www.akarin.moe/images/surface/typecover/1.jpg" alt="pic"></p><p>背面。<br><img src="https://www.akarin.moe/images/surface/typecover/2.jpg" alt="pic"></p><p>下面的那个标签的S/N码就是Surface Type Cover的序列号了，在微软里面可以注册防伪。</p><p>本体：<br><img src="https://www.akarin.moe/images/surface/typecover/3.jpg" alt="pic"></p><p>背面：<br><img src="https://www.akarin.moe/images/surface/typecover/4.jpg" alt="pic"></p><p>买的黑色，毕竟红色还是太骚了……</p><p>好了。说说手感吧。</p><p>……不是专业的键盘评测的，不懂什么键程绵软之类的玩意……</p><p>键程其实还算可以了……</p><p>触摸板看见同学的那个3代简直觉得她真可怜……</p><p>触摸板下面的按键其实是一块，通过判断手指方位来完成左右键的判断。</p><p>Surface的键盘接口其实是个魔改的总线接口……</p><p>emmm……通俗的说就是这其实是个USB改过来的。</p><p>带背光，晚上的时候打字非常有用。</p><p>然后……能打字就行了……反正用的挺顺的_(:зゝ∠)_</p>]]></content>
-      
-      
+      <tags>
+        <tag>Authentication</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>修缮</title>
+    <url>/2016/12/26/Fix/</url>
+    <content><![CDATA[<p>修修补补又一年。</p>
+]]></content>
       <categories>
-          
-          <category> Type Cover </category>
-          
+        <category>Fix</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> Microsft Surface </tag>
-            
-            <tag> Type Cover </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Surface Pro 4贴纸</title>
-      <link href="/2017/08/27/SurfacePro4Stickers/"/>
-      <url>/2017/08/27/SurfacePro4Stickers/</url>
-      
-        <content type="html"><![CDATA[<p>前方多图。</p><p><img src="https://www.akarin.moe/images/surface/stickers/1.jpg" alt="pic"></p><p><img src="https://www.akarin.moe/images/surface/stickers/2.jpg" alt="pic"></p><p><img src="https://www.akarin.moe/images/surface/stickers/3.jpg" alt="pic"></p><p><img src="https://www.akarin.moe/images/surface/stickers/4.jpg" alt="pic"></p><p><img src="https://www.akarin.moe/images/surface/stickers/5.jpg" alt="pic"></p><p><img src="https://www.akarin.moe/images/surface/stickers/6.jpg" alt="pic"></p><p>整个色调粉粉的好少女心呀2333333333</p>]]></content>
-      
-      
+      <tags>
+        <tag>Fix</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>随手小记：天灭IE</title>
+    <url>/2017/05/22/IE/</url>
+    <content><![CDATA[<p>今天往网站上传了一篇文章，然后发现图片死活加载不出来。<br>看了看资源，全部莫名其妙的自动变成HTTPS了……然而引用链接是没有HTTPS的……</p>
+<p>急死我了……也不知道是怎么回事他就是全局HTTPS。</p>
+<p>但是IE 11却可以打开……</p>
+<p>反正很迷，总不能只用IE不用Firefox和chrome吧</p>
+<p>然后把资源做了个反代之后就有HTTPS了。</p>
+<p>然后在看源代码时看到meta头，发现是自己之前定义了CSP，全部强制upgrade-insecure-requests了。</p>
+<p>……那为什么IE 11没有响应我的meta头？？？</p>
+<p>……</p>
+<blockquote>
+<p>这就是”网页安全政策”（Content Security Policy，缩写CSP）的来历 ….. IE10 和IE11 根本就不支持……</p>
+</blockquote>
+<p>可以，这很IE。</p>
+]]></content>
       <categories>
-          
-          <category> Microsoft </category>
-          
+        <category>IE</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> Microsoft Surface </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>村里的生活（4）如何让在土澳的生活更加的和中国接轨</title>
-      <link href="/2017/05/23/Australia4/"/>
-      <url>/2017/05/23/Australia4/</url>
-      
-        <content type="html"><![CDATA[<p>有双卡双待手机的同学，日常怎么用才最省钱呢？<br>可以参考一下我准备使用的方案：</p><p>aldimobile作为听电话收短信的卡，15AUD走PAYG，15AUD用一年爽歪歪</p><p>lebara走流量，5AUD一月有500MB，为什么选这个呢，是因为这是我找到的唯一一个卖5AUD流量包的。</p><p>在土澳要如何叫车呢？</p><p>首先，打开你的支付宝</p><p><img src="https://www.akarin.moe/images/source/alipay.png" alt="pic"></p><p>看见那个优步用车了吗？</p><p>嗯，真的超好用，输入出发地和目的地即可</p><p>没有很多繁琐的功能……其实可以说是支付宝的“小程序”吧</p><p>走的支付宝结账，其实支付宝的国际化挺强的……</p><p>重要的是，比起当地的出租车，便宜啊！！！还支付宝结算哎！</p><p>然后，其实，如果</p><p>你过来澳洲玩的时候，没来得及或者不记得办一张visa卡</p><p>那么，放心的拿着银联卡来吧</p><p>不提那些名贵奢华品了，那些为了圈中国人的钱有几个不支持银联卡的</p><p>重点是，四大澳洲银行全支持！</p>]]></content>
-      
-      
+      <tags>
+        <tag>IE</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>神船K640E改造计划</title>
+    <url>/2017/05/03/K640E/</url>
+    <content><![CDATA[<p>不要问我为什么不一步到位入个好点的本子……<br>总之现在已经砸了将近3500+了……</p>
+<p>改造完毕的有：</p>
+<p>i5 4200M</p>
+<p>Atheros AR5B22（计划换博通的……不过能用就用了反正有5G就可以了）</p>
+<p>8+8GB ADATA DDR3L 1600</p>
+<p>crucial MX100 256GB</p>
+<p>HGST HTS721010A9E630</p>
+<p>当然这些换起来都比较简单。</p>
+<p>接下来的计划中打算换掉这块垃圾的TN京东方屏。</p>
+<p>预选中有一款三星的量产中的，另一款是友达的停产的玩意。</p>
+<p>据不知名网友说接口和普通屏不一样位置不对……还在研究中。</p>
+<p>全套下来基本要4000多</p>
+<p>当然有的不能动的……我们也可以……</p>
+<p>比如940M对吧。</p>
+<p>这种辣鸡马甲卡afterburner的coreclock直接拉满也只能多个135MHz（当然什么电压限制之类的通通没弄）</p>
+<p>反正拉满了之后散热屁事没有还是压在60-70度左右……</p>
+<p>memory clock作死拉满了然后老黄的驱动崩了……</p>
+<p>唉……</p>
+<p>但是弄电压部分的话估计这HM86顶不住……</p>
+<p>……</p>
+<p>为什么我不直接弄台K650D……</p>
+<p>唉……</p>
+<p>慢慢来吧。。。。。。</p>
+]]></content>
       <categories>
-          
-          <category> Australia </category>
-          
+        <category>神舟K640E</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> Australia </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>银联在澳洲的支持情况</title>
-      <link href="/2017/05/23/UnionPay/"/>
-      <url>/2017/05/23/UnionPay/</url>
-      
-        <content type="html"><![CDATA[<p>其实标题党一点，我甚至可以写成米pay在澳洲的支持情况呢……<br>好了，细数一下吧</p><p>有哪些POS机或者商家支持银联了？</p><h2 id="以下是支持的POS机：（未标注的即不显示银联标）"><a href="#以下是支持的POS机：（未标注的即不显示银联标）" class="headerlink" title="以下是支持的POS机：（未标注的即不显示银联标）"></a>以下是支持的POS机：（未标注的即不显示银联标）</h2><p>ANZ（显示银联标）</p><p>NAB</p><p>St.George Bank（显示银联标）</p><p>westpac（特地注明支持银联）</p><p>commonwealth bank</p><p>顺便提一句，上面的这四家，是澳洲四大银行，相当于中国的工农中建</p><h2 id="以下是支持银联的商家："><a href="#以下是支持银联的商家：" class="headerlink" title="以下是支持银联的商家："></a>以下是支持银联的商家：</h2><p>Woolworths：重点说一下，其实Woolworths算是银联的重点合作伙伴，在银联的官网有新闻的，说要今年内全面普及，华人区的已经支持了，Erina fair那家，也已经支持了，看来范围确实在扩大而不只是华人区，但是有一个很重要的点，现在的Woolworths似乎是<strong>强制要求银联信用卡</strong>的。</p><h2 id="以下是特地列出来不支持的："><a href="#以下是特地列出来不支持的：" class="headerlink" title="以下是特地列出来不支持的："></a>以下是特地列出来不支持的：</h2><p><strong>ingenico</strong></p><p>使用这种POS机的商家有：</p><p>也许是Coles flybuys联盟成员：包括但不限于：Coles，target，Kmart</p><p>麦当劳</p><p><strong>bendigo（不支持云闪付，未测试实体卡）</strong></p><h2 id="实测不支持或暂不支持“银联云闪付”的POS机有："><a href="#实测不支持或暂不支持“银联云闪付”的POS机有：" class="headerlink" title="实测不支持或暂不支持“银联云闪付”的POS机有："></a>实测不支持或暂不支持“银联云闪付”的POS机有：</h2><p>不支持：Commonwealth bank</p><p>薛定谔的支持：westpac</p><h2 id="实测支持“银联云闪付”的POS机有："><a href="#实测支持“银联云闪付”的POS机有：" class="headerlink" title="实测支持“银联云闪付”的POS机有："></a>实测支持“银联云闪付”的POS机有：</h2><p>NAB</p><p>ANZ</p><p>St.George</p><p>友情提示：</p><p>银联卡因为网络问题有可能会无法支付</p><p>具体表现于：</p><p>ANZ：error 96</p><p>这时可能并不是你的卡有什么问题，而是银联清算系统的网络问题。</p><p>但是请你这个时候不要一个劲的去刷。</p><p>请你换一家别的POS机的商家东西。因为这种情况似乎在15分钟内在同一POS网络是不会好转的。</p>]]></content>
-      
-      
+      <tags>
+        <tag>神舟K640E</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>阿卡林服务器英文站上线啦~</title>
+    <url>/2017/05/10/English/</url>
+    <content><![CDATA[<p>如题所示，阿卡林服务器今天终于迎来了它的国际站点~<br>有兴趣的可以戳<a href="https://en.akarin.moe/">这里</a>去看看哦~</p>
+]]></content>
       <categories>
-          
-          <category> UnionPay </category>
-          
+        <category>English</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> UnionPay </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>澳洲生存指南（3）：你的护照不能用了该怎么办？</title>
-      <link href="/2017/05/23/Australia3/"/>
-      <url>/2017/05/23/Australia3/</url>
-      
-        <content type="html"><![CDATA[<p>这已经是快半年的事情了。<br>为什么标题会是“不能用”呢？</p><p>因为在我的定义里，“不能用了”指的是过期了或者是破损了。</p><p>至于丢失的……虽然可能流程一样……但是我并不知道具体的区别。</p><p>首先，如果你的护照还在，那么你第一件要做的事情就是：</p><p><a href="http://ppt.mfa.gov.cn/appo/">http://ppt.mfa.gov.cn/appo/</a><br>去这个网站预约你的时间。</p><p>该填的就填，不会填的瞎填也没什么，反正到时候是要见你本人的</p><p>然后网站需要你上传一张你自己的证件照，恕我直言，如果你最近没有正儿八经的拍过证件照，那么随便传一张无背景的正面照，标不标准不重要，<strong>悉尼领事馆有个照相机，5AUD一次，实惠方便</strong></p><p><strong>领事馆只接受银行卡付款，不接受现金</strong></p><p>支不支持银联就不知道了，反正最好带张visa卡去</p><p>然后预约好了的话，就准备准备材料什么的，包括去VEVO打印你的签证资料啊什么的</p><p>其实主要是领事馆都是说中文的，服务都还不错</p><p>地点在：</p><p>Central Station下火车，然后坐什么都好……自己去谷歌地图查，反正在有个加油站的地方下车，然后往左走，走过两三个小巷子就过马路然后进巷子，看见一些人在对面练功的就是了。</p><p>拜托去办事之前准备好你们所有的材料，能准备的就准备，不要自己材料准备不齐全又去为难工作人员完了还在知乎一通抱怨什么“吃皇粮”“晋升无望”“狗才摸鱼”之类的</p><p>如果你是还能用的护照只是因为各种原因换新的话，领事馆是会有具体的日期给你的</p><p>如果不是的话……那你就要过个一阵子去</p><p><a href="http://ppt.mfa.gov.cn/appo/">http://ppt.mfa.gov.cn/appo/</a><br>这个网站去查了</p><p>大概一个月左右吧……</p><p>工本费好像是20AUD？不记得了</p><p>反正记得</p><p><strong>只接受银行卡</strong></p><p>然后拿到了你的新的护照，如果你突然发现自己：</p><p><strong>1、 短期内需要回国或者去其他地方旅游</strong></p><p><strong>2、 需要用到护照</strong></p><p>一条条来</p><p>针对第一种情况有两个解决方案</p><p><strong>第一种，临时的办法：</strong></p><p>拿着你的新护照和你的旧护照一起出镜</p><p>海关是认这种方案的（消息来源于4月份，澳大利亚移民中心的工作人员）</p><p><strong>第二种，正式的办法：</strong></p><p>把你的澳洲签证转移到新的护照上。</p><p>这里分两种情况。</p><p><strong>第一种：</strong> 如果你的签证是在澳大利亚官网申请的签证，你的签证可以在immiaccount查到的话，那你直接在那里改你的护照信息就可以。</p><p><strong>第二种：</strong> 你的签证由海外签发，无法在immiaccount上查询。</p><p>按照<a href="https://www.border.gov.au/Lega/Lega/Form/Immi-FAQs/how-can-i-update-my-address-or-passport-details">澳大利亚移民局</a>的官方信息，你首先需要下载929表格。</p><p>然后填写完毕后通过信件寄到指定地址。</p><p>当然，如果你懒得动的话……我这里有另外一种办法，虽然确实可行，但是不在官方的方法上，所以就不说了。</p><p>根据澳大利亚移民中心工作人员的信息，现在已经不支持带着证件去移民中心当场办了。所以现在官方唯一的方法就是寄信。</p><p>针对第二种情况：</p><p>直接用新护照就行，这里不查护照和签证的绑定情况的。</p>]]></content>
-      
-      
+      <tags>
+        <tag>English</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Lumia 435 评测</title>
+    <url>/2017/03/25/Lumia435/</url>
+    <content><![CDATA[<p>售价400多人民币，全新。<br>好了我们先来看看配置……</p>
+<p>CPU：高通骁龙200</p>
+<p>（四核处理器，单核速度可达 1.2 GHz）（ 4x ARM® Cortex™ A7）</p>
+<p>GPU：Adreno 302</p>
+<p>屏幕：一块480*800 WVGA分辨率的TFT屏幕，235dpi</p>
+<p>RAM：1GB LPDDR2</p>
+<p>ROM：8GB</p>
+<p>电池：1560mAh</p>
+<p>相机：后置200万像素，前置30万像素……</p>
+<p>可扩展SD卡，已插入一张32GB的Samsung SD橙卡。</p>
+<p>系统：Windows 10 Mobile 16055</p>
+<p>先说使用体验吧。</p>
+<p>一拿回来是Windows phone 8.1，我是一个大写的懵逼的。因为我根本没用过WP手机。</p>
+<p>开机之后和Android一样需要输入各种资料，但是开机时却卡死在了安装应用……我的心情真的是崩溃的，一台手机拿回来居然要等个30分钟才能用……（此处指的是Windows Phone 8.1）</p>
+<p>我也没兴趣去体验WP 8.1，直接Win10M走起。</p>
+<p>然后我又卡死在升级顾问了。对，我的账号未满18岁，微软泥煤的……</p>
+<p>于是机智的我去申请了一个新的老的不能再老的微软账号……</p>
+<p>然后升级足足用了两三个小时……</p>
+<p>然后就是我熟悉的Windows 10界面了。</p>
+<p>当然还没完，刚升级完的版本号是10586.1xx（不记得了），还得升级14393……又是好几个小时……</p>
+<p>—————上面就是你刚拿到新的Lumia该干的事情了。—————</p>
+<p>接下来，我震惊的是这手机全程不发热……</p>
+<p>真的是不发热。</p>
+<p>后来想想也是。高通骁龙200能怎么发热呢？就算全开还不是绰绰有余？</p>
+<p>Win10M的界面和Windows 10是很像的，所以有的在电脑端无法解释为什么这样设计的地方放在手机上就无比的清楚，比如后台的设计，还有浪费空间的磁贴……</p>
+<p>但是毫不客气的说一句，WP 8.1的设计和排版真的太烂，全部大字体，直到Win10M的设计出来后才有所改观，我用的不是老人机啊喂。</p>
+<p>总的来说，应用少……功能也少，但是它展现了一台UWP手机应有的素质，以及UWP无限的可能。</p>
+<p>当然……</p>
+<p>随机只有一块电池，附赠的充电头甚至不是一个USB充电头加一根数据线，而是连起来的……</p>
+<p>微软你是有多抠……</p>
+<p>充电速度就不说了，别说什么5V2A了，自带的充电头居然只有可怜的5V0.5A左右……</p>
+<p>我只能说，微软确实有实力用骁龙410做出Android上骁龙600的体验，但是你想这么干，行，先让UWP壮大再说，现在，乖乖的按照低价走量，再说什么苹果万年1GB吧。</p>
+<p>当然UWP的不完善也是大坑，比如微软永远不会告诉你出了什么事，只会给你一段错误代码，比如UWP不支持输入法，也许后续会改……</p>
+<p>Cortana在搜索里面启动，王牌应用的启动隐藏的这么深，我很好奇微软是不是傻了……</p>
+<p>续航方面一天妥妥的，考虑到毕竟只有1560mAh。</p>
+<p>后台机制偶尔会遇到正在恢复，但是次数不多，遇到了也就一两秒。</p>
+<p>开狂野飙车8没有问题。画面稳定。不开玩笑。只能说勉强能开，但是帧数没眼看。</p>
+<p>我真不知道该夸高通的Adreno 302还是该夸UWP神优化……</p>
+<p>应用确实缺，但是各种第三方基本能拉平。刷微博有官方，知乎有第三方，哔哩哔哩两个第三方，QQ和微信都是官方的，微信能收红包也能扫码支付（仅限中文模式下），但是微信无法调出一个二维码供商家扫。看片也不会用手机去看，那么小。推送可能会略有问题。</p>
+<p>总的来说作为低端机，它发挥了超出我预想的水平。</p>
+<p>这个是我发现的一个小亮点：双击居然可以亮屏！这可是超低端的手机啊……微软你到底在想什么的……</p>
+<p>然而就是一个让人崩溃的事情：状态栏没有剩余电量百分比！一定要下拉才能看到！</p>
+<p>双击亮屏这种东西远没有状态栏电量百分比重要啊！！！</p>
+<p>进入onedrive之前要求输入设置好的PIN，这点很喜欢。</p>
+<p>屏幕截图，一开始我用的是电源键加win键，但是微软却提示我说他们更改了屏幕截图的方式，转成了电源键加音量上键……</p>
+<p>截图很好用，何时何地都能截。</p>
+<p>对了，设置里有个选项是全局加密，勾了以后本来性能就不行的机子会彻底卡死吧……</p>
+<p>还是无法理解为什么Lumia 435这种机子连双击亮屏都做上去了然而却不能在状态栏显示电量百分比……</p>
+<p>微软拼音居然可以滑行输入……</p>
+<p>微软win键长按可以下拉悬停……（都4寸了还搞这个……）</p>
+<p>我真的服了。</p>
+<p>一大堆东西，就是没有电量百分比。</p>
+<p>好了，说了这么多，算是给从来没接触过Windows 10 Mobile的同学们一个小小的扫盲吧。</p>
+]]></content>
       <categories>
-          
-          <category> Australia </category>
-          
+        <category>Lumia</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> Australia </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Windows 10 RS1细节</title>
-      <link href="/2017/05/22/QuickAssistant/"/>
-      <url>/2017/05/22/QuickAssistant/</url>
-      
-        <content type="html"><![CDATA[<p>这个一周年更新别的我就不说了，我说些比较冷门的。</p><p>14393终于确定了有快速助手这个软件。</p><p>很不幸的是，由于UWP现在还属于半残废的状态，这个应用其实是个win32。</p><p>然而它却假装自己是个UWP应用。</p><p>嘛能用就好对吧。</p><p>使用方法和注意事项如下：</p><p>两台电脑都打开这个软件。</p><p>这个软件在开始菜单中输入「快速助手」可以搜索到。</p><p>这软件本体在system32/<del>quickass.exe</del>quickassist.exe（快速交易啊不是，快速助手……）</p><p>这软件只能由提供协助者发起邀请。</p><p>要求微软账号。</p><p>开启一个邀请后会有一个邀请码。</p><p>获取协助者输入后就可以了。</p><p>在自己家里测试，第一次还在我的台式机上崩溃了……重启了一次，重开之后成功了。</p><p>速度很快，界面也挺简洁，对windows支持很好（废话），比QQ的远程控制要可靠很多，QQ的在win10时不时的抽风，一会能控制一会不能，毕竟QQ要兼容windows xp到windows 10而快速助手只能在14393使用……</p><p>跨国测试了一下快速助手，一边为中国 广东电信 50M宽带，另一边为澳洲 Optus 100M宽带，测试运行十分顺畅，将近一个小时的维修时间中仅有一次崩溃（还是我作死在对面那台只有一块iris 530做显卡的i3 6100的电脑上打开了GTA5……）比QQ的远程控制不知道高到哪里去了，而且连接的过程和体验也十分顺畅，非常好，给九分，不怕骄傲。</p><p>最重要的一点，支持UAC！支持UAC！不像QQ一样碰见UAC就挂掉！</p><p>扣掉的一分是扣在只能在windows 10 14393上使用和那一次的卡死崩溃。</p><p>另一件事是sticky notes（便利贴）应用变成了UWP应用，这是件好事，然而不能联网同步（要是联网了要OneNote干嘛……），嘛总之还是不错的。</p><p>还有一个应用，叫做「连接」。</p><p>简单的说就是把电脑变成一个miracast接收器，让手机能把屏幕投射到电脑上。</p><p>帮亲戚弄电脑弄手机就可以直接「快速助手」+「连接」啦。</p><p>当然辣鸡的手机是不滋磁miracast的……</p><p>总共大概三件事：</p><p>一个，把windows以前的远程连接变成了快速助手。第二个，sticky notes变成了UWP应用。第三个，就是我們知道的miracast。如果说还有一点什么成绩就是把win32的设置往UWP上迁移！这个对系统的命运有很大的关系。但这些都是次要的，主要就是三件事情，很惭愧，就做了一点微小的工作，谢谢大家。</p>]]></content>
-      
-      
+      <tags>
+        <tag>Lumia</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>米家系列：米家扫地机器人深度评测</title>
+    <url>/2017/03/25/MijiaRobot/</url>
+    <content><![CDATA[<p>买来的米家扫地机器人已经有半个月了，我想我可以坐下来好好的写一下米家扫地机器人的使用感受了。</p>
+<h1 id="外观"><a href="#外观" class="headerlink" title="外观"></a>外观</h1><p><img src="https://www.akarin.moe/images/mijiarobot/1.jpg" alt="pic"></p>
+<p>简洁的外观，简洁的设计，好看。</p>
+<h1 id="上手体验"><a href="#上手体验" class="headerlink" title="上手体验"></a>上手体验</h1><p>所有米家系列的产品基本上都可以通过米家APP来管理，好评。</p>
+<p>米家APP功能还算丰富，好评。</p>
+<p>需要的才开始下载插件，好评。</p>
+<p>服务器坑比，海外用户不得不一遍又一遍的刷新才能下载成功，差评。（顺便说一句，小米的官方网站mi.com也是如此坑比，原因是小米的缓存服务器用的域名是.cn，简直是慢的要死了。）</p>
+<h1 id="实测"><a href="#实测" class="headerlink" title="实测"></a>实测</h1><p>不得不说米家APP本身的好用以及SLAM算法真的不是开玩笑的。<br><img src="https://www.akarin.moe/images/mijiarobot/2.png" alt="pic"></p>
+<p>这是一次完整扫地后的图。</p>
+<p>米家扫地机器人（下称小白）</p>
+<p>首先我们看：左上角的那部分是因为有推拉门的限制，那部分可以忽略掉。</p>
+<p>中部下面两个半圆处有莫名其妙的溢出，我只能说这不是小米的锅，因为那两个半圆的墙壁并不是普通的墙，那两部分是玻璃……所以估计是小白的探头没法扫描到……</p>
+<p>总的来说小白扫的很全，很细。每一个角落都能保证打扫到。</p>
+<h1 id="续航及速度"><a href="#续航及速度" class="headerlink" title="续航及速度"></a>续航及速度</h1><p><img src="https://www.akarin.moe/images/mijiarobot/3.png" alt="pic"></p>
+<p>一分钟可以扫0.95平方米，用完一次还剩19%的电，果然所谓的大电池真不是吹的。</p>
+<h1 id="售价"><a href="#售价" class="headerlink" title="售价"></a>售价</h1><p>我爸一开始是买了这个的。</p>
+<p><a href="http://www.ebay.com.au/itm/7-in-1-Vacuum-Cleaner-LED-Robotic-Automatic-Recharge-Floor-Sweeper-Mop-Robot-Red-/350884454064?hash=item51b257deb0:g:w7UAAOSwknJX1huD">7 in 1 Vacuum Cleaner LED Robotic Automatic Recharge Floor Sweeper Mop Robot Red | eBay</a></p>
+<p>这么个破玩意现在还卖349.95AUD（300多AUD入的，按照当时的汇率基本也在1700左右）</p>
+<p>然而买回来发现这丫经常卡住……</p>
+<p>然后我安利了一发小白。</p>
+<p>SLAM卡个毛线啦！</p>
+<h1 id="固件升级"><a href="#固件升级" class="headerlink" title="固件升级"></a>固件升级</h1><p>有一个固件是3.3.6_003028，这个固件加入了遥控小白的功能……</p>
+<p>然而，连接小白没有以前稳定了……</p>
+<h1 id="保养问题"><a href="#保养问题" class="headerlink" title="保养问题"></a>保养问题</h1><p>最近它只能绕着自己周围一小圈扫一小圈就回去，咨询了工程师之后检查了了一下，清理了边角的灰尘就好了……好了……</p>
+<p>只能说要好好爱护和保养……毕竟不算很顽强…… _(:зゝ∠)_<br><img src="https://www.akarin.moe/images/mijiarobot/4.png" alt="pic"></p>
+<p>综上所述，1699的价格，我认为，相当值得购买。</p>
+<p>（手机米家app提示被卡住的时候，可以尝试强行启动让机器人脱离苦海。）</p>
+]]></content>
       <categories>
-          
-          <category> Windows 10 </category>
-          
+        <category>米家扫地机器人</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> Windows 10 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>澳洲生存指南（2）——垃圾的网络</title>
-      <link href="/2017/05/22/Australia2/"/>
-      <url>/2017/05/22/Australia2/</url>
-      
-        <content type="html"><![CDATA[<p>在我上一篇文章中提及了三大运营商：Telstra，Optus，Vodafone。<br>在这三家里面干ISP的只有两家：Telstra，Optus。</p><p>澳洲的光纤叫做NBN（National Boardband Network），去办光纤的时候不要傻傻的说fiber了。</p><p>澳洲的光纤，是和别处不同的：都是政府统一建设的，每一户有且只有一条光纤，光纤可以随时换ISP。上网的人，只要打个电话，给初装费——这是几年前的事，现在可以网上操作了，——连通网络，就能上网了。倘肯多花点钱，便可以加个互联网电视，或者固话了。如果出到几百刀，那就能有无限流量，但这些顾客，多是个人用户，大抵没有这样阔绰。只有企业用户，才去申请无限流量的网络，疯狂的使用。</p><p>是的，澳洲的ISP，全部是有流量限制的，每个月从最低10GB到最高500GB或1000GB，弄无限流量的一般都是企业用户，只有少数的运营商提供无限流量，也只有少数的用户选择无限流量。</p><p>澳洲的ISP不止两家，数量可能有十几家，二十几家，但能亲自去和NBN要网络的可能就Telstra为首的那几家，别的不是没有最高优先权就是租Telstra或者别家网络的。</p><p>简单地说，Telstra财大气粗，相当于中国电信，网络最稳定，质量最强大，但是贵。</p><p>Telstra开通了一个WiFi叫做Telstra Air，和中国移动的CMCC不同，Telstra Air是使用宽带账号作为登录账号的。至于这个WiFi是无限的还是算进你的流量的就不知道了。</p><p>而且Telstra Air覆盖挺广的……</p><p>Optus是有无限流量的，但是澳洲的企业有个坏毛病：总喜欢让人去签一些两年或者四年这种长期协议的合同……</p><p>Optus的NBN套餐有固话选项，所谓的固话就是NBN光纤盒子通过RJ45接口连接Optus路由器，路由器有RJ11接口给电话使用。重点来了！！！Optus附赠的垃圾路由器供电是带不起一个老式电话的！只有无绳电话机能用！</p><p>什么是老式电话呢？</p><p><img src="https://www.akarin.moe/images/Australia2/1.jpg" alt="pic"></p><p>这种，没有独立供电的。</p><p>无绳电话机就是这种了。</p><p><img src="https://www.akarin.moe/images/Australia2/2.jpg" alt="pic"></p><p>这种是有独立供电的！这种才能用！</p><p>这种固话的价格一般都会便宜的不可思议，打特定国际电话甚至是免费的。</p><p>当然了，因为这丫走VOIP啊……</p><p>当然了Telstra也有这种绑定套餐的。</p><p>另一件事就是据说我们学校要扔掉自己建的垃圾网站，把所有的资源转向Microsoft某个服务……</p><p>应该是Microsoft Azure吧……</p><p>顺便一提Microsoft Azure最近的财报增长102%……而Windows Phone下跌71%……</p><p>那句话怎么说来着？</p><p>我们一年赔4个亿，收Android专利费一年赚8个亿，所以我们的移动部门一年净赚4个亿。</p><p>小伙子明天来微软上班吧。</p>]]></content>
-      
-      
+      <tags>
+        <tag>米家扫地机器人</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>新西兰之旅</title>
+    <url>/2019/04/05/NewZealandPlanning/</url>
+    <content><![CDATA[<p>已经……好久没用过hexo写博客了……可能都已经快忘记怎么使用hexo了……</p>
+<p>这几天在忙很多事情，更新护照，更新签证，新西兰计划，驾考……还有一堆需要置备的东西（x</p>
+<p>之前我的护照丢了，所以我重新在悉尼大使馆补办了一本新的护照，于是我需要把我的新护照更新到我的澳洲签证上。<br>这个几乎已经是老生常谈了，但是其实也有一些值得一说的点——</p>
+<p>首先，根据2019年4月5号的情况来看，把新护照更新到澳洲签证上有两种方法：</p>
+<ol>
+<li>使用澳洲移民局官方签证管理系统Immiaccount</li>
+<li>填写929信息更新表格，并将表格与新旧护照信息一并发送至<a href="mailto:&#57;&#50;&#x39;&#64;&#104;&#111;&#x6d;&#101;&#97;&#x66;&#x66;&#x61;&#105;&#114;&#115;&#46;&#x63;&#111;&#109;&#46;&#x61;&#x75;">&#57;&#50;&#x39;&#64;&#104;&#111;&#x6d;&#101;&#97;&#x66;&#x66;&#x61;&#105;&#114;&#115;&#46;&#x63;&#111;&#109;&#46;&#x61;&#x75;</a></li>
+</ol>
+<p>先说后面一种。<br>929邮箱一直是个很神奇的存在——在一两年前更新护照的方法一种是immiaccount，另一种则是让你邮寄到移民局……这谁有这个功夫啊，但移民局邮箱作为一种特殊渠道，一直以半公开的形式流传于民间。直到这一两年，澳洲重组政府部门，组建内政部——这个部门其实更是个神奇的存在，一手遮天，大权独揽……不过不展开太多。于是，移民局邮箱便正式替代了以往第二种方法。</p>
+<p>但发邮件给移民局来更新护照信息有什么坏处呢？</p>
+<p>慢！！令人发指的慢！！！自从929邮箱被作为官方immiaccount替代品之后，效率疯狂降低，官方邮箱的接收更是附件数量和大小都有限制，现在的929邮箱官方声明是“Up to 4 weeks”——这怎么忍！一个月的时间，黄花菜都凉了！</p>
+<p>于是，为什么会有这种替代品呢？<br>替代品替代品，意思很明白，澳洲政府希望大家其实是去用immiaccount的。</p>
+<p>出于各种特殊的原因，immiaccount有可能“没法使用”，这里先提一个问题：如果immiaccount真的那么多bug，政府可能会首推它么？</p>
+<p>那么不能使用immiaccount的情况有哪些呢？</p>
+<p>澳大利亚签证分为两种途径——一种是通过移民局官方系统immiaccount申请的签证——在穷游网上有很多“网签”就是这类。网签的好处在于它可以完全在家足不出户就完成签证申请，不需要跑大使馆，不需要邮寄材料，连财产证明都是可以打开网上银行直接下载个PDF流水当证明的。而且，关键是售后全呀！不用天天傻逼兮兮地等移民局电话，中介费完全省了，如果你护照丢了，立刻登录immiaccount就改好了，超方便有没有！</p>
+<p>这里就要说到另一种途径——也是最传统的途径——中介申请了。通过中介/澳洲大使馆申请下来的签证，它们在官方签证系统有你的记录，这时，你需要Import你的签证到immiaccount，也就是Import application。顺便一提，已完成application的签证也算的。关键来了：如果你是移民签证，或者你是别的什么签证，但是你不是主申请人，那么你需要填的是主申请人的信息而不是你的信息。你的信息资料是在主申请人为单位的Group之下的。在immiaccount点Import Application，然后reference number是你的IMMI Grant Notification（正签信）上的Transaction reference number，Main Applicant Detail里填生日，然后travel document number填护照，country of travel document护照是哪国就填哪国，这样子你就可以import以主申请人为单位的一个family了。然后找到update details，然后change of passport details（这些和网上的都大同小异啦），记得不要选“丢失”，直接选broken就好，不然丢失的是要发929表到官方邮箱的。</p>
+<p>如果你找不到以上需要的信息怎么办呢？那说明你没有好好看正签信。（大雾）</p>
+<p>总之，去完新西兰我可能会写一篇新西兰游记（大概吧）</p>
+<p>（咕咕咕）</p>
+]]></content>
       <categories>
-          
-          <category> Australia </category>
-          
+        <category>Life</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> Australia </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>澳洲生存指南（1）——虚拟运营商</title>
-      <link href="/2017/05/22/Australia1/"/>
-      <url>/2017/05/22/Australia1/</url>
-      
-        <content type="html"><![CDATA[<p>这个系列其实根本不和澳洲相关……因为里面的一些东西可能全世界都通用。</p><p>首先普及一下。</p><p>尽管允许自由竞争，但是在澳大利亚，只有三家运营商有自己的基站，别的都属于虚拟运营商。</p><p>三家最大的运营商分别为：</p><p>澳洲电信（Telstra），名字取telecom和Australia。挂个澳洲的名字，不用想，背后或多或少有国营背景（虽然名义上是私营的……）</p><p>Optus yes，母公司为新加坡电信。</p><p>vodafone，欧洲最大的运营商。</p><p>三家最大的运营商就一家是澳洲的……不过澳洲政府貌似不怎么在乎……</p><p>别的运营商都是虚拟运营商，然而虚拟运营商到处都是坑。</p><p>虚拟运营商是租别的运营商的网络的，然而所有的虚拟运营商卖的卡不知道为什么里面的APN设置全是别的运营商的……</p><p>这就很尴尬了，因为所有虚拟运营商的APN都是需要自己设置的。</p><p>这个APN的存在很迷……非常玄学。</p><p>另一件事是其实在澳洲或者外国，找客服往往是很有效的事情。</p><p>但是我一般都懒得找客服……因为和客服扯皮实在是件坑爹的事情。</p>]]></content>
-      
-      
+      <tags>
+        <tag>Travel</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>如何为Nextcloud启动二次验证中的Telegram验证码</title>
+    <url>/2019/12/07/Nextcloud-Telegram-F2A/</url>
+    <content><![CDATA[<p>Nextcloud其实还是挺好弄的，它甚至可以兼容v2，表面上是个网盘实际上后面是一个代理。</p>
+<blockquote>
+<p><a href="https://nextcloud-twofactor-gateway.readthedocs.io/en/stable/Admin%20Documentation/">https://nextcloud-twofactor-gateway.readthedocs.io/en/stable/Admin%20Documentation/</a></p>
+</blockquote>
+<p>这是官方的教程，咋一看特别的语焉不详，关键就出在Nextcloud的occ，occ是Nextcloud官方推出的一种命令行一样的东西，本意是快速设置一些功能，但是不知道为什么没做进去网页GUI里，总之就搞得刚接触Nextcloud的人对occ一脸懵逼了。</p>
+<p>总之先</p>
+<blockquote>
+<p>cd /var/www/html/nextcloud</p>
+</blockquote>
+<p>这条命令是定位到Nextcloud路径所在地。一般的Nextcloud教程都是让你安装到这个路径的。</p>
+<p>然后如果你现在ls一下你会看见有一个叫occ的玩意躺在Nextcloud的文件夹里，那么那个东西是怎么调用的呢？</p>
+<p>在Ubuntu/Debian里面，直接</p>
+<blockquote>
+<p>sudo -u www-data php occ twofactorauth:gateway:configure telegram</p>
+</blockquote>
+<p>其实中文还是有非常多关于occ的教程的，这个倒是不难找到，只是要在官方的前面加上一些sudo啊php啊什么的前缀就是了。</p>
+<p>然后接下来跟着官方的教程去Telegram注册bot就好了。</p>
+<p>This gateways allows you to send messages via the Telegram protocol. In order to send messages, you have to register a Telegram Bot, which is used to send authentication codes to users after they have initiated a conversation and entered their Telegram ID.</p>
+<p>Follow these steps to activate the Telegram authentication gateway:</p>
+<p>Register a Telegram Bot.</p>
+<p>Open your Telegram client, search for @BotFather and start a conversation.</p>
+<p>Send /newbot to start the bot setup process.</p>
+<p>Send the name of the bot, e.g. ‘My own NC bot’.</p>
+<p>Send the username of the bot, e.g. ‘my_nc_bot’.</p>
+<p>BotFather confirms that a new bot has successfully been set-up and provides the HTTP API access token to you, e.g. ‘123456789:AAbbCCddEEffGGhhIIjjKKllMMnnOOppQQ’.</p>
+<p>Activate the Nextcloud Twofactor Gateway for Telegram Open a command shell on your Nextcloud server, navigate to the Nextcloud directory and run the following command: bash occ twofactorauth:gateway:configure telegram Please enter your Telegram bot token: 123456789:AAbbCCddEEffGGhhIIjjKKllMMnnOOppQQ Using 123456789:AAbbCCddEEffGGhhIIjjKKllMMnnOOppQQ.</p>
+<p>The Telegram authentication gateway has now successfully been set-up. Follow the instructions in the User Documentation to activate the Gateway for a specific user.</p>
+]]></content>
       <categories>
-          
-          <category> Australia </category>
-          
+        <category>Nextcloud</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> Australia </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>随手小记：天灭IE</title>
-      <link href="/2017/05/22/IE/"/>
-      <url>/2017/05/22/IE/</url>
-      
-        <content type="html"><![CDATA[<p>今天往网站上传了一篇文章，然后发现图片死活加载不出来。<br>看了看资源，全部莫名其妙的自动变成HTTPS了……然而引用链接是没有HTTPS的……</p><p>急死我了……也不知道是怎么回事他就是全局HTTPS。</p><p>但是IE 11却可以打开……</p><p>反正很迷，总不能只用IE不用Firefox和chrome吧</p><p>然后把资源做了个反代之后就有HTTPS了。</p><p>然后在看源代码时看到meta头，发现是自己之前定义了CSP，全部强制upgrade-insecure-requests了。</p><p>……那为什么IE 11没有响应我的meta头？？？</p><p>……</p><blockquote><p>这就是”网页安全政策”（Content Security Policy，缩写CSP）的来历 ….. IE10 和IE11 根本就不支持……</p></blockquote><p>可以，这很IE。</p>]]></content>
-      
-      
+      <tags>
+        <tag>Nextcloud</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>自留地</title>
+    <url>/2016/12/22/Private/</url>
+    <content><![CDATA[<h1 id="第一篇文章"><a href="#第一篇文章" class="headerlink" title="第一篇文章"></a>第一篇文章</h1><h4 id="Tachibana-Lolo"><a href="#Tachibana-Lolo" class="headerlink" title="Tachibana Lolo"></a>Tachibana Lolo</h4><p>嗯，就这样。还在研究中。没什么好东西。基本用于展示而已。</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Windows 10 RS1细节</title>
+    <url>/2017/05/22/QuickAssistant/</url>
+    <content><![CDATA[<p>这个一周年更新别的我就不说了，我说些比较冷门的。</p>
+<p>14393终于确定了有快速助手这个软件。</p>
+<p>很不幸的是，由于UWP现在还属于半残废的状态，这个应用其实是个win32。</p>
+<p>然而它却假装自己是个UWP应用。</p>
+<p>嘛能用就好对吧。</p>
+<p>使用方法和注意事项如下：</p>
+<p>两台电脑都打开这个软件。</p>
+<p>这个软件在开始菜单中输入「快速助手」可以搜索到。</p>
+<p>这软件本体在system32/<del>quickass.exe</del>quickassist.exe（快速交易啊不是，快速助手……）</p>
+<p>这软件只能由提供协助者发起邀请。</p>
+<p>要求微软账号。</p>
+<p>开启一个邀请后会有一个邀请码。</p>
+<p>获取协助者输入后就可以了。</p>
+<p>在自己家里测试，第一次还在我的台式机上崩溃了……重启了一次，重开之后成功了。</p>
+<p>速度很快，界面也挺简洁，对windows支持很好（废话），比QQ的远程控制要可靠很多，QQ的在win10时不时的抽风，一会能控制一会不能，毕竟QQ要兼容windows xp到windows 10而快速助手只能在14393使用……</p>
+<p>跨国测试了一下快速助手，一边为中国 广东电信 50M宽带，另一边为澳洲 Optus 100M宽带，测试运行十分顺畅，将近一个小时的维修时间中仅有一次崩溃（还是我作死在对面那台只有一块iris 530做显卡的i3 6100的电脑上打开了GTA5……）比QQ的远程控制不知道高到哪里去了，而且连接的过程和体验也十分顺畅，非常好，给九分，不怕骄傲。</p>
+<p>最重要的一点，支持UAC！支持UAC！不像QQ一样碰见UAC就挂掉！</p>
+<p>扣掉的一分是扣在只能在windows 10 14393上使用和那一次的卡死崩溃。</p>
+<p>另一件事是sticky notes（便利贴）应用变成了UWP应用，这是件好事，然而不能联网同步（要是联网了要OneNote干嘛……），嘛总之还是不错的。</p>
+<p>还有一个应用，叫做「连接」。</p>
+<p>简单的说就是把电脑变成一个miracast接收器，让手机能把屏幕投射到电脑上。</p>
+<p>帮亲戚弄电脑弄手机就可以直接「快速助手」+「连接」啦。</p>
+<p>当然辣鸡的手机是不滋磁miracast的……</p>
+<p>总共大概三件事：</p>
+<p>一个，把windows以前的远程连接变成了快速助手。第二个，sticky notes变成了UWP应用。第三个，就是我們知道的miracast。如果说还有一点什么成绩就是把win32的设置往UWP上迁移！这个对系统的命运有很大的关系。但这些都是次要的，主要就是三件事情，很惭愧，就做了一点微小的工作，谢谢大家。</p>
+]]></content>
       <categories>
-          
-          <category> IE </category>
-          
+        <category>Windows 10</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> IE </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>阿卡林服务器英文站上线啦~</title>
-      <link href="/2017/05/10/English/"/>
-      <url>/2017/05/10/English/</url>
-      
-        <content type="html"><![CDATA[<p>如题所示，阿卡林服务器今天终于迎来了它的国际站点~<br>有兴趣的可以戳<a href="https://en.akarin.moe/">这里</a>去看看哦~</p>]]></content>
-      
-      
+      <tags>
+        <tag>Windows 10</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Surface Pro 4贴纸</title>
+    <url>/2017/08/27/SurfacePro4Stickers/</url>
+    <content><![CDATA[<p>前方多图。</p>
+<p><img src="https://www.akarin.moe/images/surface/stickers/1.jpg" alt="pic"></p>
+<p><img src="https://www.akarin.moe/images/surface/stickers/2.jpg" alt="pic"></p>
+<p><img src="https://www.akarin.moe/images/surface/stickers/3.jpg" alt="pic"></p>
+<p><img src="https://www.akarin.moe/images/surface/stickers/4.jpg" alt="pic"></p>
+<p><img src="https://www.akarin.moe/images/surface/stickers/5.jpg" alt="pic"></p>
+<p><img src="https://www.akarin.moe/images/surface/stickers/6.jpg" alt="pic"></p>
+<p>整个色调粉粉的好少女心呀2333333333</p>
+]]></content>
       <categories>
-          
-          <category> English </category>
-          
+        <category>Microsoft</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> English </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>神船K640E改造计划</title>
-      <link href="/2017/05/03/K640E/"/>
-      <url>/2017/05/03/K640E/</url>
-      
-        <content type="html"><![CDATA[<p>不要问我为什么不一步到位入个好点的本子……<br>总之现在已经砸了将近3500+了……</p><p>改造完毕的有：</p><p>i5 4200M</p><p>Atheros AR5B22（计划换博通的……不过能用就用了反正有5G就可以了）</p><p>8+8GB ADATA DDR3L 1600</p><p>crucial MX100 256GB</p><p>HGST HTS721010A9E630</p><p>当然这些换起来都比较简单。</p><p>接下来的计划中打算换掉这块垃圾的TN京东方屏。</p><p>预选中有一款三星的量产中的，另一款是友达的停产的玩意。</p><p>据不知名网友说接口和普通屏不一样位置不对……还在研究中。</p><p>全套下来基本要4000多</p><p>当然有的不能动的……我们也可以……</p><p>比如940M对吧。</p><p>这种辣鸡马甲卡afterburner的coreclock直接拉满也只能多个135MHz（当然什么电压限制之类的通通没弄）</p><p>反正拉满了之后散热屁事没有还是压在60-70度左右……</p><p>memory clock作死拉满了然后老黄的驱动崩了……</p><p>唉……</p><p>但是弄电压部分的话估计这HM86顶不住……</p><p>……</p><p>为什么我不直接弄台K650D……</p><p>唉……</p><p>慢慢来吧。。。。。。</p>]]></content>
-      
-      
+      <tags>
+        <tag>Microsoft Surface</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>对群晖NAS的思考</title>
+    <url>/2017/03/23/Synology/</url>
+    <content><![CDATA[<p>今天参观了一下学校的机房，有感而发。<br>事实上，从一开始我的定位就不太对劲了。</p>
+<p>群晖NAS并不能做太多的事，你不能用着它的网页服务器还说它什么都不能干……</p>
+<p>从一开始，群晖的定位就是NAS啊……</p>
+<p>一个NAS就应该只是放文件资料的……围绕文件资料的备份，影音分享，云备份这些，都是非常好的，但是NAS首先是插硬盘放资料的。</p>
+<p>所以，下一次，看见用NAS做网页服务器的，只需善意的提醒一句：群晖的主要功能是存放资料而不是当网页服务器即可，不要自以为自己很懂一样随随便便就是大神一顿上去嘲讽小白，嘲笑小白的无知，顺便贬低一下垃圾群晖。</p>
+<p>最后，放一张学校的机房照吧。<br><img src="https://www.akarin.moe/images/source/1.jpg" alt="pic"></p>
+]]></content>
       <categories>
-          
-          <category> 神舟K640E </category>
-          
+        <category>Synology</category>
+        <category>NAS</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> 神舟K640E </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>哔哩哔哩动画UWP版</title>
-      <link href="/2017/03/25/BilibiliUWP/"/>
-      <url>/2017/03/25/BilibiliUWP/</url>
-      
-        <content type="html"><![CDATA[<p>一开始是因为Adobe flash player这史前遗留文明对电脑的风扇损害极大，并且不知道为什么缓存死活有问题加载不了视频，所以便在微软应用商店找了哔哩哔哩动画的UWP版。</p><p>然后怀着好奇的心情打开了那个画质测试视频（因为知乎的链接是要跳转的所以直接上av号：av932932）。</p><p>一开始的时候居然流畅的放出来了！但是后面无限小电视……</p>]]></content>
-      
-      
+      <tags>
+        <tag>Synology</tag>
+        <tag>NAS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>群晖NAS（1）：扯淡的Ass和高度魔改的USB</title>
+    <url>/2016/12/27/SynologyNAS/</url>
+    <content><![CDATA[<p>首先要明白一件事情：什么是群晖。<br>群晖，耳熟能详，作为出名的NAS厂商，有着十分广大的受众用户。</p>
+<p>群晖的NAS系统叫做DSM，而群晖又分为两种群晖：黑群晖和白群晖。</p>
+<p>白群晖（也叫白裙）指的是从群晖官方买的NAS。</p>
+<p>黑群晖（也叫黑裙）指的是通过一些手段，去干预，影响……让群晖的DSM系统能跑在别的机器上。</p>
+<p>“机器”，对于上面提到的“机器”，有什么要求呢？</p>
+<p>或者说，跑DSM的最低配置是什么？</p>
+<p>没有最低配置。从i7-6700K到AMD速龙，都能跑起来。</p>
+<p>本文采用的教程是DSM 6.0版本。</p>
+<p>DSM现在比较多的版本是6.0和5.2，5.2的比较多人去踩坑……但是谁让作者用的就是6.0呢对吧╮(╯▽╰)╭</p>
+<p>介绍一下黑群晖是怎么工作的。</p>
+<p>本质上，DSM是一个Linux系统。破解版DSM是没法直接启动的，黑群晖的解决方案是把引导文件写入U盘，所以你的系统文件已经在硬盘里了你只是没法启动。U盘里是没有系统文件的。</p>
+<p>所以你每次开机和重启都需要那个U盘。（但是开机了之后可以把U盘拔掉）</p>
+<p>所以我们需要的材料如下：</p>
+<ol>
+<li>一个你用不上的U盘，不要想着NAS可以永久不关机，配置的时候你经常需要重启。U盘容量1G即可（其实128MB足够了……）（不推荐SD卡加读卡器的组合，他们在旧的平台有一定几率读不出来，当然你也可以尝试。）</li>
+<li>一台你用不上的X64平台机器。（本篇以Samsung N455作为例子，N455内置一颗性能极为强悍，高能效的Intel 4核 Atom N145处理器，快的令人不可思议……）</li>
+<li>另一台电脑。</li>
+</ol>
+<p>首先，抛弃所有网上的安装教程。</p>
+<p>现在你需要：</p>
+<ol>
+<li>下载引导文件。[<a href="http://pan.baidu.com/s/1c21db9Y?frm=fujian">度娘链接1</a>][<a href="http://pan.baidu.com/s/1mhH405M">度娘链接2</a> 密码：59h0]（如果这两个都挂了那么邮件联系我即可。）</li>
+<li>下载<a href="http://www.upan.cc/tools/test/ChipEasy.html">ChipEasy芯片无忧</a>。</li>
+<li>下载<a href="https://sourceforge.net/projects/win32diskimager/">Win32 Disk Imager</a>。</li>
+<li>下载SN算号文件。[<a href="http://pan.baidu.com/s/1eRO2nNO">度盘链接</a> 密码：dlni]</li>
+<li>下载一个你自己喜欢的mac地址查看软件，不知道的话就下载<a href="https://www.aida64.com/downloads">AIDA64</a>。</li>
+<li>下载<a href="https://www.synology.com/zh-cn/support/download/DS3615xs">Synology Assistant</a>。</li>
+<li>下载<a href="https://notepad-plus-plus.org/download/v7.2.2.html">Notepad++</a>（非必须，但是强烈推荐。）</li>
+</ol>
+<p>解压你下载的文件，找到synoboot.img，然后用Win32 Disk Imager选中<strong>你U盘的盘符</strong>，写入你的U盘。</p>
+<p>成功之后打开ChipEasy，点击你的U盘，记录下VID和PID。</p>
+<p><img src="https://www.akarin.moe/images/NAS1/chipeasy.jpg" alt="pic"></p>
+<p>打开SN算号文件。</p>
+<p><img src="https://www.akarin.moe/images/NAS1/sn.png" alt="pic"></p>
+<p>在上图所示的地方，找到DS3615xs。</p>
+<p>然后把Serial number记下来，这就是你的SN。</p>
+<p>找到你<strong>打算作为黑群晖的机器</strong>的mac地址，然后取后六位数，然后前面加上001132作为前六位数。比如后六位是aabbcc，那么你的mac地址就应该是001132aabbcc。</p>
+<p>打开你的U盘，在grub文件夹里找到grub.cfg，然后用notepad++打开。</p>
+<p>如下图所示，把框起来的地方里的数据都替换成你自己的数据。</p>
+<p><img src="https://www.akarin.moe/images/NAS1/image.jpg" alt="pic"></p>
+<p>然后保存，把U盘接到你的机器上，引导U盘开机。</p>
+<p><img src="https://www.akarin.moe/images/NAS1/trunon.jpg" alt="pic"></p>
+<p>出现上面这个界面你就可以不用管这台机器了。</p>
+<p>然后打开Synology Assistant，注意：如果这个时候你没法找到你的机器的话，先不要急着去尝试关闭windows防火墙什么的，在你的浏览器里输入find.synology.com尝试搜索。</p>
+<p>DSM有两种安装方式，一种是你提供安装文件，另一种是自动从群晖下载安装文件安装。</p>
+<p>安装过程什么的就按照个人的需要自行修改了。</p>
+<p>完成后你的黑群晖会自动重启一次。</p>
+<p><img src="https://www.akarin.moe/images/NAS1/final.jpg" alt="pic"></p>
+<p>最后的界面就是这样的了。</p>
+<p>以上的内容你也可以在我的<a href="https://zhuanlan.zhihu.com/p/24575486">知乎专栏</a>找到。</p>
+]]></content>
       <categories>
-          
-          <category> Bilibili </category>
-          
-          <category> UWP </category>
-          
+        <category>Synology</category>
+        <category>NAS</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> Bilibili </tag>
-            
-            <tag> UWP </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>一个悉尼必备应用简介</title>
-      <link href="/2017/03/25/Tripview/"/>
-      <url>/2017/03/25/Tripview/</url>
-      
-        <content type="html"><![CDATA[<p>Tripview，一款用于查看悉尼（现在也支持墨尔本了）的train（火车（地铁））和bus时间表的软件。<br>这款应用分lite版和付费版，lite版有广告，不可以记录历史查找</p><p>然而网上却找不到它的付费版apk……</p><p>原因是tripview付费版用了Google的授权认证，即使你通过非法手段安装了这款应用的付费版，它也会检测你手机上谷歌账户的授权，如果没有，就会提示没有证书。</p><p>当然这个问题很好解决，幸运破解器解之。</p><p>总感觉这种技术都是EA这种不好好做游戏却天天想着上Denuvo的厂商才会干的……</p>]]></content>
-      
-      
+      <tags>
+        <tag>Synology</tag>
+        <tag>NAS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>一个悉尼必备应用简介</title>
+    <url>/2017/03/25/Tripview/</url>
+    <content><![CDATA[<p>Tripview，一款用于查看悉尼（现在也支持墨尔本了）的train（火车（地铁））和bus时间表的软件。<br>这款应用分lite版和付费版，lite版有广告，不可以记录历史查找</p>
+<p>然而网上却找不到它的付费版apk……</p>
+<p>原因是tripview付费版用了Google的授权认证，即使你通过非法手段安装了这款应用的付费版，它也会检测你手机上谷歌账户的授权，如果没有，就会提示没有证书。</p>
+<p>当然这个问题很好解决，幸运破解器解之。</p>
+<p>总感觉这种技术都是EA这种不好好做游戏却天天想着上Denuvo的厂商才会干的……</p>
+]]></content>
       <categories>
-          
-          <category> Tripview </category>
-          
+        <category>Tripview</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> Tripview </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>VMware UWP版</title>
-      <link href="/2017/03/25/VMware/"/>
-      <url>/2017/03/25/VMware/</url>
-      
-        <content type="html"><![CDATA[<p>我一般都会放图的，所以你们基本上看图和看标题就能关掉了……<br>主要是今天我随手打开Windows store逛逛时居然发现了VMware horizon的UWP版……</p><p>这也太吃惊了好嘛！</p><p>远程控制这种复杂的玩意什么时候居然能用UWP弄出来了！</p><p>然而体验效果真的还不错……虽然简介光明正大的写着beta版……（现在有几个UWP不是写着beta和内测的（网易云音乐：excuse me？））</p><p>然而最让我震惊的是它的占用空间：<br><img src="https://www.akarin.moe/images/source/vmware2.png" alt="pic"><br>上面的是UWP，下面的是win32……</p><p>微软啊，那么有实力怎么Win10M就这么烂呢…………</p>]]></content>
-      
-      
+      <tags>
+        <tag>Tripview</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Surface Type Cover评测</title>
+    <url>/2017/08/27/TypeCover/</url>
+    <content><![CDATA[<p>外包装。<br><img src="https://www.akarin.moe/images/surface/typecover/1.jpg" alt="pic"></p>
+<p>背面。<br><img src="https://www.akarin.moe/images/surface/typecover/2.jpg" alt="pic"></p>
+<p>下面的那个标签的S/N码就是Surface Type Cover的序列号了，在微软里面可以注册防伪。</p>
+<p>本体：<br><img src="https://www.akarin.moe/images/surface/typecover/3.jpg" alt="pic"></p>
+<p>背面：<br><img src="https://www.akarin.moe/images/surface/typecover/4.jpg" alt="pic"></p>
+<p>买的黑色，毕竟红色还是太骚了……</p>
+<p>好了。说说手感吧。</p>
+<p>……不是专业的键盘评测的，不懂什么键程绵软之类的玩意……</p>
+<p>键程其实还算可以了……</p>
+<p>触摸板看见同学的那个3代简直觉得她真可怜……</p>
+<p>触摸板下面的按键其实是一块，通过判断手指方位来完成左右键的判断。</p>
+<p>Surface的键盘接口其实是个魔改的总线接口……</p>
+<p>emmm……通俗的说就是这其实是个USB改过来的。</p>
+<p>带背光，晚上的时候打字非常有用。</p>
+<p>然后……能打字就行了……反正用的挺顺的_(:зゝ∠)_</p>
+]]></content>
       <categories>
-          
-          <category> VMware </category>
-          
+        <category>Type Cover</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> VMware </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>完全无法理解的Lenovo Yoga13</title>
-      <link href="/2017/03/25/Yoga13/"/>
-      <url>/2017/03/25/Yoga13/</url>
-      
-        <content type="html"><![CDATA[<p>Lenovo Yoga13-ITH 皓月银，一款2012年11月上市的全新ultrabook（超极本）。它的卖点主要集中于「可折叠，可变形」。该机传承了Yoga系列一贯的可折叠式风格，其奥秘就在屏轴的独特设计之中。</p><p>但是，作为一款在2012年末2013年即将到来之际推出的笔记本，它的理念是超前的，它的实现，是落后的。</p><p>我手里刚好就有一台yoga13，13年的时候入的，现在三年了，速度没的说，自从SSD的大潮之后我就没听说过哪个电脑会卡了……</p><p>该机的CPU是Intel core i3-3217U，这注定了这款机器的定位是日常办公，看看电影<del>推推黄油什么的，把特效调到最低甚至还能开开老滚5</del>……</p><p>DDR3L版的4GB内存，在当时应该是算主流水平</p><p>硬盘是128G的SSD，型号是三星的PM830</p><p>13.3英寸，最高分辨率为1600x900的大猩猩玻璃触摸屏在现在看来依旧是十分的惊艳与顺滑，比2012年时三星的低端平板手感不知道要高到哪里去了</p><p>音频系统甚至集成了Conexant专业音频解码芯片，还搭配了Dolby Home Theatre 音效处理技术。</p><p>支持重力感应，支持光线传感器。</p><p>到现在为止好像都没有什么问题？</p><p>怎么可能，要是什么问题都没有就没有这篇文章了。</p><h2 id="第一"><a href="#第一" class="headerlink" title="第一"></a>第一</h2><p>该笔记本的重力感应十分的烂。</p><p>写重力感应驱动的人应该是半夜没关掉电脑喵星人上去随便乱按按出来的，重力感应经常失灵，需要睡眠再唤醒（多次，有时一次过有时……唉不说了）才能启动重力感应</p><p>这重力感应居然还只支持方向……也就是说你甚至不能把这台电脑的重力感应拿来玩游戏……（虽然很重而且微软UWP也没有多少款能玩的游戏但是还是那句老话：我能不用，你不能没有）</p><h2 id="第二"><a href="#第二" class="headerlink" title="第二"></a>第二</h2><p>该笔记本上的快捷键</p><p>升级到Windows 10之后居然失效了……失效了……</p><p>这大概能勉强把锅甩给微软……</p><h2 id="第三"><a href="#第三" class="headerlink" title="第三"></a>第三</h2><p>散热无比感人</p><p>风扇一转起来热的能煎鸡蛋……笔记本通病，但是在yoga13上设计上有小问题就不详细说了……</p><h2 id="第四"><a href="#第四" class="headerlink" title="第四"></a>第四</h2><p>也是我想重点强调的一点：内部设计。</p><p>这是我写这篇文章的开头。</p><p>我们学校在新的学期升级了WiFi，把2.4GHz全部换成了5GHz，这意味着用笔记本的要么换网卡要么插网卡，用手机的要么换手机要么换手机</p><p>于是我想起来我的yoga13是不支持5GHz的，之前在家里铺5GHz的时候已经试过了……</p><p>那么换网卡吧！</p><p>……</p><p>Naive！</p><p>这是整篇文章的重点：内部设计及网卡。</p><p>这台机器太超前了，以至于连内部设计都开始超（dao）前（che），为什么这么说？</p><p>该机的网卡采用的是Realtek RTL8723AU。</p><p>用瑞昱我就不说什么了……</p><p>关键是这块网卡，根本不是PCI-e网卡……这是一块彻彻底底的USB网卡！</p><p><img src="https://www.akarin.moe/images/yoga13/1.png" alt="pic"></p><p>嗯，是够惊叹的，我第一次见到这设计的时候，我只想把设计师拉出来拖到马桶里按死。</p><p>「喂你怎么这么不友善啊，这不是很好的设计吗？这让电脑的尺寸进一步减小啊。」</p><p>哦，我会随便乱**吗？</p><p><img src="https://www.akarin.moe/images/yoga13/2.jpg" alt="pic"></p><p>嗯，这机子里预留了个msata接口……</p><p><img src="https://www.akarin.moe/images/yoga13/3.jpg" alt="pic"></p><p>这么个大好地方！</p><p>要是你这接口是PCI-e我也不会这么生气啊！</p><p>这一款定位日常办公看电影推黄油的超极本为什么需要两个硬盘位啊！？</p><p>设计师是半夜打算研究日本文化的时候发现硬盘居然不够了恼羞成怒设计的吧！？</p><p>这台笔记本，我只用来在上课的时候记记笔记，看看网页什么的，128GB是绰绰有余。这台笔记本的i3低压U就决定了这个笔记本的定位，我完全无法想象为什么在一台定位清晰的笔记本上会有一个根本用不着的预留口</p><p>无比智障的一个预留msata接口，我已经想把设计师按死在下水沟了。</p>]]></content>
-      
-      
+      <tags>
+        <tag>Microsft Surface</tag>
+        <tag>Type Cover</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>银联在澳洲的支持情况</title>
+    <url>/2017/05/23/UnionPay/</url>
+    <content><![CDATA[<p>其实标题党一点，我甚至可以写成米pay在澳洲的支持情况呢……<br>好了，细数一下吧</p>
+<p>有哪些POS机或者商家支持银联了？</p>
+<h2 id="以下是支持的POS机：（未标注的即不显示银联标）"><a href="#以下是支持的POS机：（未标注的即不显示银联标）" class="headerlink" title="以下是支持的POS机：（未标注的即不显示银联标）"></a>以下是支持的POS机：（未标注的即不显示银联标）</h2><p>ANZ（显示银联标）</p>
+<p>NAB</p>
+<p>St.George Bank（显示银联标）</p>
+<p>westpac（特地注明支持银联）</p>
+<p>commonwealth bank</p>
+<p>顺便提一句，上面的这四家，是澳洲四大银行，相当于中国的工农中建</p>
+<h2 id="以下是支持银联的商家："><a href="#以下是支持银联的商家：" class="headerlink" title="以下是支持银联的商家："></a>以下是支持银联的商家：</h2><p>Woolworths：重点说一下，其实Woolworths算是银联的重点合作伙伴，在银联的官网有新闻的，说要今年内全面普及，华人区的已经支持了，Erina fair那家，也已经支持了，看来范围确实在扩大而不只是华人区，但是有一个很重要的点，现在的Woolworths似乎是<strong>强制要求银联信用卡</strong>的。</p>
+<h2 id="以下是特地列出来不支持的："><a href="#以下是特地列出来不支持的：" class="headerlink" title="以下是特地列出来不支持的："></a>以下是特地列出来不支持的：</h2><p><strong>ingenico</strong></p>
+<p>使用这种POS机的商家有：</p>
+<p>也许是Coles flybuys联盟成员：包括但不限于：Coles，target，Kmart</p>
+<p>麦当劳</p>
+<p><strong>bendigo（不支持云闪付，未测试实体卡）</strong></p>
+<h2 id="实测不支持或暂不支持“银联云闪付”的POS机有："><a href="#实测不支持或暂不支持“银联云闪付”的POS机有：" class="headerlink" title="实测不支持或暂不支持“银联云闪付”的POS机有："></a>实测不支持或暂不支持“银联云闪付”的POS机有：</h2><p>不支持：Commonwealth bank</p>
+<p>薛定谔的支持：westpac</p>
+<h2 id="实测支持“银联云闪付”的POS机有："><a href="#实测支持“银联云闪付”的POS机有：" class="headerlink" title="实测支持“银联云闪付”的POS机有："></a>实测支持“银联云闪付”的POS机有：</h2><p>NAB</p>
+<p>ANZ</p>
+<p>St.George</p>
+<p>友情提示：</p>
+<p>银联卡因为网络问题有可能会无法支付</p>
+<p>具体表现于：</p>
+<p>ANZ：error 96</p>
+<p>这时可能并不是你的卡有什么问题，而是银联清算系统的网络问题。</p>
+<p>但是请你这个时候不要一个劲的去刷。</p>
+<p>请你换一家别的POS机的商家东西。因为这种情况似乎在15分钟内在同一POS网络是不会好转的。</p>
+]]></content>
       <categories>
-          
-          <category> Lenovo </category>
-          
+        <category>UnionPay</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> Lenovo </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>米家系列：米家扫地机器人深度评测</title>
-      <link href="/2017/03/25/MijiaRobot/"/>
-      <url>/2017/03/25/MijiaRobot/</url>
-      
-        <content type="html"><![CDATA[<p>买来的米家扫地机器人已经有半个月了，我想我可以坐下来好好的写一下米家扫地机器人的使用感受了。</p><h1 id="外观"><a href="#外观" class="headerlink" title="外观"></a>外观</h1><p><img src="https://www.akarin.moe/images/mijiarobot/1.jpg" alt="pic"></p><p>简洁的外观，简洁的设计，好看。</p><h1 id="上手体验"><a href="#上手体验" class="headerlink" title="上手体验"></a>上手体验</h1><p>所有米家系列的产品基本上都可以通过米家APP来管理，好评。</p><p>米家APP功能还算丰富，好评。</p><p>需要的才开始下载插件，好评。</p><p>服务器坑比，海外用户不得不一遍又一遍的刷新才能下载成功，差评。（顺便说一句，小米的官方网站mi.com也是如此坑比，原因是小米的缓存服务器用的域名是.cn，简直是慢的要死了。）</p><h1 id="实测"><a href="#实测" class="headerlink" title="实测"></a>实测</h1><p>不得不说米家APP本身的好用以及SLAM算法真的不是开玩笑的。<br><img src="https://www.akarin.moe/images/mijiarobot/2.png" alt="pic"></p><p>这是一次完整扫地后的图。</p><p>米家扫地机器人（下称小白）</p><p>首先我们看：左上角的那部分是因为有推拉门的限制，那部分可以忽略掉。</p><p>中部下面两个半圆处有莫名其妙的溢出，我只能说这不是小米的锅，因为那两个半圆的墙壁并不是普通的墙，那两部分是玻璃……所以估计是小白的探头没法扫描到……</p><p>总的来说小白扫的很全，很细。每一个角落都能保证打扫到。</p><h1 id="续航及速度"><a href="#续航及速度" class="headerlink" title="续航及速度"></a>续航及速度</h1><p><img src="https://www.akarin.moe/images/mijiarobot/3.png" alt="pic"></p><p>一分钟可以扫0.95平方米，用完一次还剩19%的电，果然所谓的大电池真不是吹的。</p><h1 id="售价"><a href="#售价" class="headerlink" title="售价"></a>售价</h1><p>我爸一开始是买了这个的。</p><p><a href="http://www.ebay.com.au/itm/7-in-1-Vacuum-Cleaner-LED-Robotic-Automatic-Recharge-Floor-Sweeper-Mop-Robot-Red-/350884454064?hash=item51b257deb0:g:w7UAAOSwknJX1huD">7 in 1 Vacuum Cleaner LED Robotic Automatic Recharge Floor Sweeper Mop Robot Red | eBay</a></p><p>这么个破玩意现在还卖349.95AUD（300多AUD入的，按照当时的汇率基本也在1700左右）</p><p>然而买回来发现这丫经常卡住……</p><p>然后我安利了一发小白。</p><p>SLAM卡个毛线啦！</p><h1 id="固件升级"><a href="#固件升级" class="headerlink" title="固件升级"></a>固件升级</h1><p>有一个固件是3.3.6_003028，这个固件加入了遥控小白的功能……</p><p>然而，连接小白没有以前稳定了……</p><h1 id="保养问题"><a href="#保养问题" class="headerlink" title="保养问题"></a>保养问题</h1><p>最近它只能绕着自己周围一小圈扫一小圈就回去，咨询了工程师之后检查了了一下，清理了边角的灰尘就好了……好了……</p><p>只能说要好好爱护和保养……毕竟不算很顽强…… _(:зゝ∠)_<br><img src="https://www.akarin.moe/images/mijiarobot/4.png" alt="pic"></p><p>综上所述，1699的价格，我认为，相当值得购买。</p><p>（手机米家app提示被卡住的时候，可以尝试强行启动让机器人脱离苦海。）</p>]]></content>
-      
-      
+      <tags>
+        <tag>UnionPay</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>VMware UWP版</title>
+    <url>/2017/03/25/VMware/</url>
+    <content><![CDATA[<p>我一般都会放图的，所以你们基本上看图和看标题就能关掉了……<br>主要是今天我随手打开Windows store逛逛时居然发现了VMware horizon的UWP版……</p>
+<p>这也太吃惊了好嘛！</p>
+<p>远程控制这种复杂的玩意什么时候居然能用UWP弄出来了！</p>
+<p>然而体验效果真的还不错……虽然简介光明正大的写着beta版……（现在有几个UWP不是写着beta和内测的（网易云音乐：excuse me？））</p>
+<p>然而最让我震惊的是它的占用空间：<br><img src="https://www.akarin.moe/images/source/vmware2.png" alt="pic"><br>上面的是UWP，下面的是win32……</p>
+<p>微软啊，那么有实力怎么Win10M就这么烂呢…………</p>
+]]></content>
       <categories>
-          
-          <category> 米家扫地机器人 </category>
-          
+        <category>VMware</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> 米家扫地机器人 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Lumia 435 评测</title>
-      <link href="/2017/03/25/Lumia435/"/>
-      <url>/2017/03/25/Lumia435/</url>
-      
-        <content type="html"><![CDATA[<p>售价400多人民币，全新。<br>好了我们先来看看配置……</p><p>CPU：高通骁龙200</p><p>（四核处理器，单核速度可达 1.2 GHz）（ 4x ARM® Cortex™ A7）</p><p>GPU：Adreno 302</p><p>屏幕：一块480*800 WVGA分辨率的TFT屏幕，235dpi</p><p>RAM：1GB LPDDR2</p><p>ROM：8GB</p><p>电池：1560mAh</p><p>相机：后置200万像素，前置30万像素……</p><p>可扩展SD卡，已插入一张32GB的Samsung SD橙卡。</p><p>系统：Windows 10 Mobile 16055</p><p>先说使用体验吧。</p><p>一拿回来是Windows phone 8.1，我是一个大写的懵逼的。因为我根本没用过WP手机。</p><p>开机之后和Android一样需要输入各种资料，但是开机时却卡死在了安装应用……我的心情真的是崩溃的，一台手机拿回来居然要等个30分钟才能用……（此处指的是Windows Phone 8.1）</p><p>我也没兴趣去体验WP 8.1，直接Win10M走起。</p><p>然后我又卡死在升级顾问了。对，我的账号未满18岁，微软泥煤的……</p><p>于是机智的我去申请了一个新的老的不能再老的微软账号……</p><p>然后升级足足用了两三个小时……</p><p>然后就是我熟悉的Windows 10界面了。</p><p>当然还没完，刚升级完的版本号是10586.1xx（不记得了），还得升级14393……又是好几个小时……</p><p>—————上面就是你刚拿到新的Lumia该干的事情了。—————</p><p>接下来，我震惊的是这手机全程不发热……</p><p>真的是不发热。</p><p>后来想想也是。高通骁龙200能怎么发热呢？就算全开还不是绰绰有余？</p><p>Win10M的界面和Windows 10是很像的，所以有的在电脑端无法解释为什么这样设计的地方放在手机上就无比的清楚，比如后台的设计，还有浪费空间的磁贴……</p><p>但是毫不客气的说一句，WP 8.1的设计和排版真的太烂，全部大字体，直到Win10M的设计出来后才有所改观，我用的不是老人机啊喂。</p><p>总的来说，应用少……功能也少，但是它展现了一台UWP手机应有的素质，以及UWP无限的可能。</p><p>当然……</p><p>随机只有一块电池，附赠的充电头甚至不是一个USB充电头加一根数据线，而是连起来的……</p><p>微软你是有多抠……</p><p>充电速度就不说了，别说什么5V2A了，自带的充电头居然只有可怜的5V0.5A左右……</p><p>我只能说，微软确实有实力用骁龙410做出Android上骁龙600的体验，但是你想这么干，行，先让UWP壮大再说，现在，乖乖的按照低价走量，再说什么苹果万年1GB吧。</p><p>当然UWP的不完善也是大坑，比如微软永远不会告诉你出了什么事，只会给你一段错误代码，比如UWP不支持输入法，也许后续会改……</p><p>Cortana在搜索里面启动，王牌应用的启动隐藏的这么深，我很好奇微软是不是傻了……</p><p>续航方面一天妥妥的，考虑到毕竟只有1560mAh。</p><p>后台机制偶尔会遇到正在恢复，但是次数不多，遇到了也就一两秒。</p><p>开狂野飙车8没有问题。画面稳定。不开玩笑。只能说勉强能开，但是帧数没眼看。</p><p>我真不知道该夸高通的Adreno 302还是该夸UWP神优化……</p><p>应用确实缺，但是各种第三方基本能拉平。刷微博有官方，知乎有第三方，哔哩哔哩两个第三方，QQ和微信都是官方的，微信能收红包也能扫码支付（仅限中文模式下），但是微信无法调出一个二维码供商家扫。看片也不会用手机去看，那么小。推送可能会略有问题。</p><p>总的来说作为低端机，它发挥了超出我预想的水平。</p><p>这个是我发现的一个小亮点：双击居然可以亮屏！这可是超低端的手机啊……微软你到底在想什么的……</p><p>然而就是一个让人崩溃的事情：状态栏没有剩余电量百分比！一定要下拉才能看到！</p><p>双击亮屏这种东西远没有状态栏电量百分比重要啊！！！</p><p>进入onedrive之前要求输入设置好的PIN，这点很喜欢。</p><p>屏幕截图，一开始我用的是电源键加win键，但是微软却提示我说他们更改了屏幕截图的方式，转成了电源键加音量上键……</p><p>截图很好用，何时何地都能截。</p><p>对了，设置里有个选项是全局加密，勾了以后本来性能就不行的机子会彻底卡死吧……</p><p>还是无法理解为什么Lumia 435这种机子连双击亮屏都做上去了然而却不能在状态栏显示电量百分比……</p><p>微软拼音居然可以滑行输入……</p><p>微软win键长按可以下拉悬停……（都4寸了还搞这个……）</p><p>我真的服了。</p><p>一大堆东西，就是没有电量百分比。</p><p>好了，说了这么多，算是给从来没接触过Windows 10 Mobile的同学们一个小小的扫盲吧。</p>]]></content>
-      
-      
+      <tags>
+        <tag>VMware</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>这可能是最详细的澳大利亚银联刷卡攻略</title>
+    <url>/2018/07/29/UnionPayInAustralia/</url>
+    <content><![CDATA[<p>首先，要明白一些基本知识。</p>
+<p>澳大利亚的POS机种类其实并不多，经过多年的发展基本上趋于小众化了</p>
+<p><strong>所以“在澳大利亚能不能刷银联”=“这个POS机支不支持银联”</strong></p>
+<p><strong>第二，尽信书不如无书，因为商家对POS机的自助定制权非常大，商家往往有权要求一个POS机是否对接开通银联</strong></p>
+<p>第三，一个地方可能支持银联而不支持American Express，或者不支持银联也不支持AMEX，原因是银联在海外的手续费比Visa/Master偏高，有的商家可能不太乐意去接受</p>
+<p>在你阅读这篇文章之前，我想直接简单的告诉你来澳洲的话到底该怎么样：能带银联卡来这边过得很舒服，但还是需要visa卡做备份，银联的支持率大概在85%左右，而且15%大部分集中在大商家~！剩下的都是商家因为手续费而不支持银联……（残念</p>
+<p>明白了这个关键性信息我们就可以直接去调查研究所有的POS机，从而明白这个商家支不支持银联了！</p>
+<p>接下来我想普及一下关于刷卡的几个小知识。</p>
+<p>中国的银联银行卡一般都是带QuickPass标志的，这意味着这是一张支持银联闪付的银行卡。<br>各大厂商自己的各种pay如mipay或者huawei pay大多数用的是eSE标准，而各大银行app自己的那个“云闪付”则大多数是HCE标准。额外信息的话我在网上找到一篇不错的博客，欢迎大家结合来看，对详细信息有个补充。 <a href="http://blog.zengrong.net/post/2450.html">http://blog.zengrong.net/post/2450.html</a></p>
+<p><strong>注意：所有的银联信用卡都不需要输入密码，银联借记卡则需要输入密码</strong></p>
+<h2 id="名词解释："><a href="#名词解释：" class="headerlink" title="名词解释："></a>名词解释：</h2><p><strong>“银联实体卡”“I/S”</strong>：POS机仅支持Insert（插入）或者Swipe（刷卡）</p>
+<p><strong>eSE</strong>：各大手机自己的“pay”：如apple pay，mipay，Samsung pay，huawei pay，meizu pay等</p>
+<p><strong>HCE</strong>：各大app自己的“pay”：如“Google pay”（原Android pay），“招商银行app一闪通”，“中国银行app云闪付”等</p>
+<p><strong>商家定义度</strong>：商家定义度指的是这个POS机被商家自定义支不支持银联的可能性，有的POS机相对而言没有那么好定义，也就是说定义度高的POS机本攻略往往与实际情况不符，定义度低的POS机则会相对更符合本攻略</p>
+<p><strong>商家定义表现形式</strong>：当一个POS机被商家定义过后是什么样子的</p>
+<p><strong>银联支持度</strong>：对银联支持到了什么程度，分（不支持），（仅支持I/S），（支持I/S，eSE和HCE）三个档次，并且会标注是否显示银联logo。</p>
+<p>让我们进入正题吧！</p>
+<h2 id="第一家银行：Commonwealth-Bank（澳洲联邦银行）"><a href="#第一家银行：Commonwealth-Bank（澳洲联邦银行）" class="headerlink" title="第一家银行：Commonwealth Bank（澳洲联邦银行）"></a>第一家银行：Commonwealth Bank（澳洲联邦银行）</h2><p>前国企，相当于土澳的宇宙行。<br>这是他们旧款的POS机<br><img src="https://www.akarin.moe/images/POSinAustralia/comm_old.jpg" alt="pic"><br>这是他们新款的POS机<br><img src="https://www.akarin.moe/images/POSinAustralia/conn_new.jpg" alt="pic"><br>联邦银行新款旧款都不显示银联标志，新旧款的POS机都只支持I/S，均不支持Tap。</p>
+<p><strong>银联支持度</strong>：新/旧：仅支持I/S，不显示银联logo<br><strong>商家定义度</strong>：低<br><strong>商家定义表现形式</strong>：没有任何提示，因为本来POS机也不显示银联logo，如不支持一般店内会标注出来的</p>
+<h2 id="第二家银行：ANZ（澳新银行）"><a href="#第二家银行：ANZ（澳新银行）" class="headerlink" title="第二家银行：ANZ（澳新银行）"></a>第二家银行：ANZ（澳新银行）</h2><p>POS机样式：<br><img src="https://www.akarin.moe/images/POSinAustralia/anz_old.jpg" alt="pic"><br>新款POS机：<br><img src="https://www.akarin.moe/images/POSinAustralia/anz_new.jpg" alt="pic"><br>旧款POS机是ANZ在市面上99.99%流通的POS机，新款的基本可以忽略不计，但是要注意的是新款POS机不支持银联，新版的似乎只有墨尔本的博多元助拉面在用。</p>
+<p>事实上ANZ还有一款非常非常旧的POS机，这个只支持V/M的说<br><img src="https://www.akarin.moe/images/POSinAustralia/anz_old2.jpg" alt="pic"><br>不过这个已经很少见了</p>
+<p><strong>银联支持度</strong>：支持I/S，eSE和HCE，显示银联logo<br><strong>商家定义度</strong>：低<br><strong>商家定义表现形式</strong>：如果商家不支持银联则银联logo不会显示在POS机上，比如7-11，比如rebel</p>
+<h2 id="第三家银行：NAB（澳洲国民银行）"><a href="#第三家银行：NAB（澳洲国民银行）" class="headerlink" title="第三家银行：NAB（澳洲国民银行）"></a>第三家银行：NAB（澳洲国民银行）</h2><p>POS机样式：<br><img src="https://www.akarin.moe/images/POSinAustralia/nab_new.jpg" alt="pic"><br>NAB的POS机很少会被商家自己定制<br>但是NAB还有另外一种POS机<br><img src="https://www.akarin.moe/images/POSinAustralia/nab_old.jpg" alt="pic"><br>这种POS机仅支持银联实体卡……并且显示银联logo</p>
+<p><strong>银联支持度</strong>：<br>新：支持I/S，eSE和HCE，不显示银联logo<br>旧：仅支持I/S，显示银联logo<br><strong>商家定义度</strong>：极低<br><strong>商家定义表现形式</strong>：无</p>
+<h2 id="第四家银行：Westpac（西太平洋银行）"><a href="#第四家银行：Westpac（西太平洋银行）" class="headerlink" title="第四家银行：Westpac（西太平洋银行）"></a>第四家银行：Westpac（西太平洋银行）</h2><p>POS机样式：<br><img src="https://www.akarin.moe/images/POSinAustralia/westpac1.jpg" alt="pic"><br>只有当Westpac的POS机显示的是这样子的：<br><img src="https://www.akarin.moe/images/POSinAustralia/westpac.jpg" alt="pic"><br>才可以支持银联，只有字而没有“menu”等字样或者显示金额的时候不显示银联，那么一定是商家自定义过</p>
+<p><strong>银联支持度</strong>：支持I/S，eSE，不支持HCE，显示银联logo<br><strong>商家定义度</strong>：高<br><strong>商家定义表现形式</strong>：不显示westpac的logo和menu，只显示字</p>
+<h2 id="第五家银行：St-George（圣乔治银行）"><a href="#第五家银行：St-George（圣乔治银行）" class="headerlink" title="第五家银行：St.George（圣乔治银行）"></a>第五家银行：St.George（圣乔治银行）</h2><p>POS机样式：<br><img src="https://www.akarin.moe/images/POSinAustralia/St.george.jpg" alt="pic"></p>
+<p><strong>银联支持度</strong>：支持I/S，支持eSE，不支持HCE<br><strong>商家定义度</strong>：中<br><strong>商家定义表现形式</strong>：不显示st george的logo和menu，只显示字</p>
+<h2 id="第六家银行：Bendigo（本迪戈银行）"><a href="#第六家银行：Bendigo（本迪戈银行）" class="headerlink" title="第六家银行：Bendigo（本迪戈银行）"></a>第六家银行：Bendigo（本迪戈银行）</h2><p><strong>银联支持度</strong>：不支持<br><strong>商家定义度</strong>：无数据<br><strong>商家定义表现形式</strong>：无</p>
+<h2 id="第七家银行：SunCorp"><a href="#第七家银行：SunCorp" class="headerlink" title="第七家银行：SunCorp"></a>第七家银行：SunCorp</h2><p>POS机样式：<br><img src="https://www.akarin.moe/images/POSinAustralia/Suncorp.jpg" alt="pic"><br>SunCorp的商家自定义出奇的高，所以虽然SunCorp自己本身并不支持银联，但是有的华人商家用了SunCorp之后强行和SunCorp谈然后开启了银联通道</p>
+<p><strong>银联支持度</strong>：不支持<br><strong>商家定义度</strong>：中<br><strong>商家定义表现形式</strong>：无</p>
+<p>———————————–分割线—————————————-</p>
+<p>以下要介绍的都是单独的POS机品牌，他们并没有银行。</p>
+<h2 id="第一家POS机：Tyro"><a href="#第一家POS机：Tyro" class="headerlink" title="第一家POS机：Tyro"></a>第一家POS机：Tyro</h2><p>POS机样式：<br><img src="https://www.akarin.moe/images/POSinAustralia/tyro.jpg" alt="pic"><br><img src="https://www.akarin.moe/images/POSinAustralia/tyro2.jpg" alt="pic"><br>这也是一家几乎不存在商家自定义的好文明！（笑</p>
+<p><strong>银联支持度</strong>：仅支持I/S<br><strong>商家定义度</strong>：极低<br><strong>商家定义表现形式</strong>：无</p>
+<h2 id="第二家POS机：QUEST"><a href="#第二家POS机：QUEST" class="headerlink" title="第二家POS机：QUEST"></a>第二家POS机：QUEST</h2><p>POS机样式：<br><img src="https://www.akarin.moe/images/POSinAustralia/quest.jpg" alt="pic"><br>这家POS机厂商一般来说小店铺是不会用的……似乎都是大一点规模的才会使用到，这家POS机厂商定义度极其的高，必须要根据店铺因地制宜，下面的商家支持是指以下商家使用了QUEST POS机，但是却开通了银联</p>
+<p><strong>银联支持度</strong>：不支持<br><strong>商家强行定义支持银联</strong>：Chemist Warehouse<br><strong>商家定义度</strong>：极高<br><strong>商家定义表现形式</strong>：以店内具体信息为准，比如country road的quest POS机没有任何信息，但是却摆出了一个银联返现的小牌子</p>
+<h2 id="追加信息：根据QUEST和支付宝的合作，似乎有的QUEST的POS机已经开始在商家不知道的情况下支持支付宝了，典型的例子有DAISO，这个日本的10元店在明确标识不支持银联以及AMEX的情况下，他们的POS机出现了支付宝标志……-但是请不要对这个抱有太多的信心，因为这个需要商家自己去谈，并不是QUEST统一开放的。不过QUEST一般是服装店用的比较多。"><a href="#追加信息：根据QUEST和支付宝的合作，似乎有的QUEST的POS机已经开始在商家不知道的情况下支持支付宝了，典型的例子有DAISO，这个日本的10元店在明确标识不支持银联以及AMEX的情况下，他们的POS机出现了支付宝标志……-但是请不要对这个抱有太多的信心，因为这个需要商家自己去谈，并不是QUEST统一开放的。不过QUEST一般是服装店用的比较多。" class="headerlink" title="追加信息：根据QUEST和支付宝的合作，似乎有的QUEST的POS机已经开始在商家不知道的情况下支持支付宝了，典型的例子有DAISO，这个日本的10元店在明确标识不支持银联以及AMEX的情况下，他们的POS机出现了支付宝标志…… 但是请不要对这个抱有太多的信心，因为这个需要商家自己去谈，并不是QUEST统一开放的。不过QUEST一般是服装店用的比较多。"></a>追加信息：根据QUEST和支付宝的合作，似乎有的QUEST的POS机已经开始在商家不知道的情况下支持支付宝了，典型的例子有DAISO，这个日本的10元店在明确标识不支持银联以及AMEX的情况下，他们的POS机出现了支付宝标志…… 但是请不要对这个抱有太多的信心，因为这个需要商家自己去谈，并不是QUEST统一开放的。不过QUEST一般是服装店用的比较多。</h2><p>顺便一提，QUEST有的POS机是通过NAB来清算的，所以有的POS机可以识别出银联，具体方法为把银联卡插入！！！插入！！！插入！！！（insert！！！）到POS机，如果出现要求输入密码，就是支持银联。</p>
+<p>QUEST其实有一部分是走的NAB的清算网络，这就导致了如果你刚好遇到了那么就可以刷银联，具体检测方式是只要把银联卡插进去，那么如果提示输入密码的话就是可以用过银联来支付。</p>
+<h2 id="第三家POS机：smartpay"><a href="#第三家POS机：smartpay" class="headerlink" title="第三家POS机：smartpay"></a>第三家POS机：smartpay</h2><p>POS机样式：<br><img src="https://www.akarin.moe/images/POSinAustralia/smartpay.jpg" alt="pic"><br>不支持银联，原因是这个走的其实是bendigo还是Suncorp的清算通道……</p>
+<p><strong>银联支持度</strong>：不支持<br><strong>商家定义度</strong>：无数据<br><strong>商家定义表现形式</strong>：无</p>
+<h2 id="第四家：Square"><a href="#第四家：Square" class="headerlink" title="第四家：Square"></a>第四家：Square</h2><p>POS机样式：<br><img src="https://www.akarin.moe/images/POSinAustralia/square.jpg" alt="pic"><br>不支持银联，他们的作用是让小商贩不用扛着个POS机到处跑，用手机就能读取信用卡信息然后刷卡……不过提一句，在美国的square是支持银联的……</p>
+<p><strong>银联支持度</strong>：不支持<br><strong>商家定义度</strong>：极低<br><strong>商家定义表现形式</strong>：无</p>
+<h2 id="第五家：Ingenico"><a href="#第五家：Ingenico" class="headerlink" title="第五家：Ingenico"></a>第五家：Ingenico</h2><p>POS机样式：<br><img src="https://www.akarin.moe/images/POSinAustralia/ingenico.jpg" alt="pic"><br>绝大多数使用ingenico POS机的都是连锁店，所以其实简单地说就是以下列出来的商家均不可用银联：<br>麦当劳，Coles，flybuys成员：Target，Kmart，hungry jack（汉堡王）</p>
+<p><strong>银联支持度</strong>：不支持<br><strong>商家定义度</strong>：无数据<br><strong>商家定义表现形式</strong>：无</p>
+<h2 id="第六家：Bank-of-Queensland（昆士兰银行）"><a href="#第六家：Bank-of-Queensland（昆士兰银行）" class="headerlink" title="第六家：Bank of Queensland（昆士兰银行）"></a>第六家：Bank of Queensland（昆士兰银行）</h2><p><img src="https://www.akarin.moe/images/POSinAustralia/BOQ.jpg" alt="pic"></p>
+<p>不支持银联</p>
+<p>————————————又是一个分割线—————————————-</p>
+<p>这部分则是自定义高的商家了</p>
+<h2 id="第一个商家：Woolworths"><a href="#第一个商家：Woolworths" class="headerlink" title="第一个商家：Woolworths"></a>第一个商家：Woolworths</h2><p>POS机样式：<br><img src="https://www.akarin.moe/images/POSinAustralia/woolies.jpg" alt="pic"><br>全线支持银联，支持银联云闪付，支持银联云闪付app免密</p>
+<p><strong>银联支持度</strong>：支持I/S，eSE和HCE</p>
+<p>因为银联与Woolworths集团达成了合作，所以Woolworths集团旗下所有集团（包括但不限于BIG W），都可以使用银联卡，识别Woolworths集团的方式是看他们接不接受Woolworths Rewards Card，或者看他们的POS机是不是和Woolworths的一样。</p>
+<p>顺便截取银联官网的一段信息：在当地可用银联卡的实体商店中，有一半支持云闪付，包括百货公司Myer、全澳最大的家具家电连锁集团Harvey Norman、平价服饰品牌店优衣库、无印良品等。（其实他们用的都是ANZ的POS机（笑））</p>
+<h2 id="第二个商家：7-11"><a href="#第二个商家：7-11" class="headerlink" title="第二个商家：7-11"></a>第二个商家：7-11</h2><p>NSW不支持，Melbourne待议。</p>
+<p><strong>银联支持度</strong>：不支持</p>
+<h2 id="rebel"><a href="#rebel" class="headerlink" title="rebel"></a>rebel</h2><p>不支持银联，简直一个坑比企业啊，支持jcb支持amex就是不支持银联，mmp</p>
+<p><strong>注：根据2018年6月14号的测试，新版opal卡机可以正确识别银联卡为PBOC DEBIT以及CMB DEBIT CARD（招商银行特有标识），但是却不让支付……这非常的迷啊，可能是不知道出于什么目的他们把交易设置成了免密码，然而银联在海外怎么可能不需要密码呢（</strong></p>
+<p><strong>Cabcharge</strong>：全澳洲90%或者95%的出租车都有配备Cabcharge POS机。唯一不同的是悉尼市区的出租车一般是只用cabcharge的POS机，而偏远地区的出租车可能会有两套POS机，一套自己的，另一套则是cabcharge的。这种情况下这些司机可能会把cabcharge的POS机藏起来放在抽屉里，你只需要要求他们使用cabcharge的POS机就可以了。cabcharge的POS机支持银联以及支付宝。支付宝具体调出方式是让司机按“PAY”，然后按“APP”就可以了，此时POS机就会显示一个二维码让你扫。刷银联卡的方式是按CARD，然后只能swipe（在侧边刷卡），不可以insert（插入）或者tap（银联闪付）。</p>
+<p><strong>自动售货机</strong>：全部不支持。</p>
+<p>===================TIPS====================<br>并不是所有的连锁店都会采用统一POS机，KFC有的地方可能是ANZ所以支持tap，有的地方是commonwealth就只支持I/S了</p>
+<p>大多数时候这篇文章是起作用的，但是经常会有商家对自己的POS机进行customization，比如我看见一家华人开的店用的SunCorp的POS机却在门外贴着银联的标签，还有澳洲Town Hall附近的那家卡地亚，明明是那种易什么通（走SunCorp通道结算的）却也在门口贴银联标，还有chemist warehouse这种QUEST强行支持银联的也是……很多时候支不支持银联完全是商家的事情，只不过大多数银行是默认开放对银联的支持的，但是一个很重要的问题在于银联在海外的费率是正常收的，并没有国内政策强推的那种低到可怕的费率……所以银联与AMEX被decline这种事情见得多了就平常心了<em>(:з)∠)</em></p>
+<p><a href="http://2016web.unionpayintl.com/en/enproducts/eninnovative/enquickpass/index.shtml">http://2016web.unionpayintl.com/en/enproducts/eninnovative/enquickpass/index.shtml</a></p>
+<p>以上是银联对于商家的正式支持列表，但是很多时候商家的POS机其实已经反映了这个POS机能不能使用银联了，所以这种列表很大程度上只能算是一个补充吧</p>
+<p>顺便一提：如果你想的话，澳洲是支持中国银联卡退税的</p>
+<p>=======================分割线~===============<br>所以：总结：</p>
+<h1 id="支持银联的："><a href="#支持银联的：" class="headerlink" title="支持银联的："></a>支持银联的：</h1><p>Commonwealth Bank：仅I/S<br>ANZ：I/S，eSE和HCE<br>NAB：I/S，eSE和HCE<br>Westpac：I/S和eSE<br>St.George：I/S和eSE<br>Tyro：仅I/S<br>Woolworths：I/S，eSE和HCE<br><del>Opal充值机器：仅I/S</del><br>Cabcharge：仅Swipe，支持支付宝。</p>
+<p>#支持支付宝的：<br><del>DAISO</del><br>Chemist Warehouse<br>Uber（通过支付宝内的“优步用车”）<br>CabCharge</p>
+<h1 id="不支持银联的："><a href="#不支持银联的：" class="headerlink" title="不支持银联的："></a>不支持银联的：</h1><p>QUEST<br>smartpay<br>Square<br>ingenico：麦当劳，Coles，Kmart，Target，Hungry Jack<br>Bendigo<br>SunCorp<br>7-11<br>BOQ</p>
+<p>支持银联的都是大银行<del>不支持银联的都是小企业</del>这样一想其实还好啦~w</p>
+<p>好了就到这里啦，以上支持的和不支持的加起来就可以概括澳洲99%的商铺了！</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>完全无法理解的Lenovo Yoga13</title>
+    <url>/2017/03/25/Yoga13/</url>
+    <content><![CDATA[<p>Lenovo Yoga13-ITH 皓月银，一款2012年11月上市的全新ultrabook（超极本）。它的卖点主要集中于「可折叠，可变形」。该机传承了Yoga系列一贯的可折叠式风格，其奥秘就在屏轴的独特设计之中。</p>
+<p>但是，作为一款在2012年末2013年即将到来之际推出的笔记本，它的理念是超前的，它的实现，是落后的。</p>
+<p>我手里刚好就有一台yoga13，13年的时候入的，现在三年了，速度没的说，自从SSD的大潮之后我就没听说过哪个电脑会卡了……</p>
+<p>该机的CPU是Intel core i3-3217U，这注定了这款机器的定位是日常办公，看看电影<del>推推黄油什么的，把特效调到最低甚至还能开开老滚5</del>……</p>
+<p>DDR3L版的4GB内存，在当时应该是算主流水平</p>
+<p>硬盘是128G的SSD，型号是三星的PM830</p>
+<p>13.3英寸，最高分辨率为1600x900的大猩猩玻璃触摸屏在现在看来依旧是十分的惊艳与顺滑，比2012年时三星的低端平板手感不知道要高到哪里去了</p>
+<p>音频系统甚至集成了Conexant专业音频解码芯片，还搭配了Dolby Home Theatre 音效处理技术。</p>
+<p>支持重力感应，支持光线传感器。</p>
+<p>到现在为止好像都没有什么问题？</p>
+<p>怎么可能，要是什么问题都没有就没有这篇文章了。</p>
+<h2 id="第一"><a href="#第一" class="headerlink" title="第一"></a>第一</h2><p>该笔记本的重力感应十分的烂。</p>
+<p>写重力感应驱动的人应该是半夜没关掉电脑喵星人上去随便乱按按出来的，重力感应经常失灵，需要睡眠再唤醒（多次，有时一次过有时……唉不说了）才能启动重力感应</p>
+<p>这重力感应居然还只支持方向……也就是说你甚至不能把这台电脑的重力感应拿来玩游戏……（虽然很重而且微软UWP也没有多少款能玩的游戏但是还是那句老话：我能不用，你不能没有）</p>
+<h2 id="第二"><a href="#第二" class="headerlink" title="第二"></a>第二</h2><p>该笔记本上的快捷键</p>
+<p>升级到Windows 10之后居然失效了……失效了……</p>
+<p>这大概能勉强把锅甩给微软……</p>
+<h2 id="第三"><a href="#第三" class="headerlink" title="第三"></a>第三</h2><p>散热无比感人</p>
+<p>风扇一转起来热的能煎鸡蛋……笔记本通病，但是在yoga13上设计上有小问题就不详细说了……</p>
+<h2 id="第四"><a href="#第四" class="headerlink" title="第四"></a>第四</h2><p>也是我想重点强调的一点：内部设计。</p>
+<p>这是我写这篇文章的开头。</p>
+<p>我们学校在新的学期升级了WiFi，把2.4GHz全部换成了5GHz，这意味着用笔记本的要么换网卡要么插网卡，用手机的要么换手机要么换手机</p>
+<p>于是我想起来我的yoga13是不支持5GHz的，之前在家里铺5GHz的时候已经试过了……</p>
+<p>那么换网卡吧！</p>
+<p>……</p>
+<p>Naive！</p>
+<p>这是整篇文章的重点：内部设计及网卡。</p>
+<p>这台机器太超前了，以至于连内部设计都开始超（dao）前（che），为什么这么说？</p>
+<p>该机的网卡采用的是Realtek RTL8723AU。</p>
+<p>用瑞昱我就不说什么了……</p>
+<p>关键是这块网卡，根本不是PCI-e网卡……这是一块彻彻底底的USB网卡！</p>
+<p><img src="https://www.akarin.moe/images/yoga13/1.png" alt="pic"></p>
+<p>嗯，是够惊叹的，我第一次见到这设计的时候，我只想把设计师拉出来拖到马桶里按死。</p>
+<p>「喂你怎么这么不友善啊，这不是很好的设计吗？这让电脑的尺寸进一步减小啊。」</p>
+<p>哦，我会随便乱**吗？</p>
+<p><img src="https://www.akarin.moe/images/yoga13/2.jpg" alt="pic"></p>
+<p>嗯，这机子里预留了个msata接口……</p>
+<p><img src="https://www.akarin.moe/images/yoga13/3.jpg" alt="pic"></p>
+<p>这么个大好地方！</p>
+<p>要是你这接口是PCI-e我也不会这么生气啊！</p>
+<p>这一款定位日常办公看电影推黄油的超极本为什么需要两个硬盘位啊！？</p>
+<p>设计师是半夜打算研究日本文化的时候发现硬盘居然不够了恼羞成怒设计的吧！？</p>
+<p>这台笔记本，我只用来在上课的时候记记笔记，看看网页什么的，128GB是绰绰有余。这台笔记本的i3低压U就决定了这个笔记本的定位，我完全无法想象为什么在一台定位清晰的笔记本上会有一个根本用不着的预留口</p>
+<p>无比智障的一个预留msata接口，我已经想把设计师按死在下水沟了。</p>
+]]></content>
       <categories>
-          
-          <category> Lumia </category>
-          
+        <category>Lenovo</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> Lumia </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>对群晖NAS的思考</title>
-      <link href="/2017/03/23/Synology/"/>
-      <url>/2017/03/23/Synology/</url>
-      
-        <content type="html"><![CDATA[<p>今天参观了一下学校的机房，有感而发。<br>事实上，从一开始我的定位就不太对劲了。</p><p>群晖NAS并不能做太多的事，你不能用着它的网页服务器还说它什么都不能干……</p><p>从一开始，群晖的定位就是NAS啊……</p><p>一个NAS就应该只是放文件资料的……围绕文件资料的备份，影音分享，云备份这些，都是非常好的，但是NAS首先是插硬盘放资料的。</p><p>所以，下一次，看见用NAS做网页服务器的，只需善意的提醒一句：群晖的主要功能是存放资料而不是当网页服务器即可，不要自以为自己很懂一样随随便便就是大神一顿上去嘲讽小白，嘲笑小白的无知，顺便贬低一下垃圾群晖。</p><p>最后，放一张学校的机房照吧。<br><img src="https://www.akarin.moe/images/source/1.jpg" alt="pic"></p>]]></content>
-      
-      
+      <tags>
+        <tag>Lenovo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>从hexo到OneDrive再到另一个OneDrive</title>
+    <url>/2019/11/30/hexo-OneDrive-AnotherOneDrive/</url>
+    <content><![CDATA[<p>利用OneDrive同步hexo并不是不可行，但需要单独新开一个。</p>
+<p>hexo最大的问题在于它里面有上万个文件，随便一次更新文章就会导致几千个文件的变动，这对OneDrive来说简直是致命的：原因在于OneDrive的工作原理是“同步”，OneDrive并不是按照文件数量来计算的，而是按照“文件变动次数”来计算的，这就导致了每变更一个文件OneDrive就需要和服务器同步一次，而删除文件再更新文件就是二倍数。</p>
+<p>如果你不想你的OneDrive直接卡死，我推荐你在对hexo进行大变动（比如删除整个hexo文件夹）的时候直接在网页版操作，这样子服务器就不需要与服务器同步（嗯？）所以处理效率是最高的。</p>
+<p>所以，最好的处理办法是，单独给hexo开一个OneDrive，不要让hexo放在你自己日常用的OneDrive账号。实际上hexo并不大，也就几百MB，它的问题主要是文件过多而已。</p>
+]]></content>
       <categories>
-          
-          <category> Synology </category>
-          
-          <category> NAS </category>
-          
+        <category>hexo</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> Synology </tag>
-            
-            <tag> NAS </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>为你的网页加个没卵用的认证</title>
-      <link href="/2017/01/16/Authentication/"/>
-      <url>/2017/01/16/Authentication/</url>
-      
-        <content type="html"><![CDATA[<p>其实也不见得有多安全，就是随便拦拦一些东西防止麻烦事情找上门……<br>首先在你的home目录建立个htpasswd文件。</p><p>然后去<a href="http://tool.oschina.net/htpasswd">这里</a>生成你的用户名和密码，生成的参数写入htpasswd。记得加密方式选择Crypt。</p><p>在Nginx的conf里面找个你觉得能运行的地方加</p><p><code>auth_basic &quot;Please provide password&quot;;</code><br><code>auth_basic_user_file /home/htpasswd;    </code></p><p>就好了。</p><p>这样子的话一个简单的401就可以有防止麻烦事加防盗链的作用了。</p>]]></content>
-      
-      
+      <tags>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>从hexo到OneDrive</title>
+    <url>/2017/09/27/hexo-OneDrive/</url>
+    <content><![CDATA[<p>是的，利用OneDrive来同步hexo文件夹是完全可行的。</p>
+<p>起因是我的神船当台式机用了，但是和Surface居然每次都要更新两部分……而且文章还一边有一边没有的……所以把hexo转移到OneDrive了。</p>
+<p>OneDrive虽然同步……但是有的时候很不稳定……作为一个新的尝试还在测试ing……</p>
+]]></content>
       <categories>
-          
-          <category> Authentication </category>
-          
+        <category>hexo</category>
+        <category>OneDrive</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> Authentication </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>群晖NAS（1）：扯淡的Ass和高度魔改的USB</title>
-      <link href="/2016/12/27/SynologyNAS/"/>
-      <url>/2016/12/27/SynologyNAS/</url>
-      
-        <content type="html"><![CDATA[<p>首先要明白一件事情：什么是群晖。<br>群晖，耳熟能详，作为出名的NAS厂商，有着十分广大的受众用户。</p><p>群晖的NAS系统叫做DSM，而群晖又分为两种群晖：黑群晖和白群晖。</p><p>白群晖（也叫白裙）指的是从群晖官方买的NAS。</p><p>黑群晖（也叫黑裙）指的是通过一些手段，去干预，影响……让群晖的DSM系统能跑在别的机器上。</p><p>“机器”，对于上面提到的“机器”，有什么要求呢？</p><p>或者说，跑DSM的最低配置是什么？</p><p>没有最低配置。从i7-6700K到AMD速龙，都能跑起来。</p><p>本文采用的教程是DSM 6.0版本。</p><p>DSM现在比较多的版本是6.0和5.2，5.2的比较多人去踩坑……但是谁让作者用的就是6.0呢对吧╮(╯▽╰)╭</p><p>介绍一下黑群晖是怎么工作的。</p><p>本质上，DSM是一个Linux系统。破解版DSM是没法直接启动的，黑群晖的解决方案是把引导文件写入U盘，所以你的系统文件已经在硬盘里了你只是没法启动。U盘里是没有系统文件的。</p><p>所以你每次开机和重启都需要那个U盘。（但是开机了之后可以把U盘拔掉）</p><p>所以我们需要的材料如下：</p><ol><li>一个你用不上的U盘，不要想着NAS可以永久不关机，配置的时候你经常需要重启。U盘容量1G即可（其实128MB足够了……）（不推荐SD卡加读卡器的组合，他们在旧的平台有一定几率读不出来，当然你也可以尝试。）</li><li>一台你用不上的X64平台机器。（本篇以Samsung N455作为例子，N455内置一颗性能极为强悍，高能效的Intel 4核 Atom N145处理器，快的令人不可思议……）</li><li>另一台电脑。</li></ol><p>首先，抛弃所有网上的安装教程。</p><p>现在你需要：</p><ol><li>下载引导文件。[<a href="http://pan.baidu.com/s/1c21db9Y?frm=fujian">度娘链接1</a>][<a href="http://pan.baidu.com/s/1mhH405M">度娘链接2</a> 密码：59h0]（如果这两个都挂了那么邮件联系我即可。）</li><li>下载<a href="http://www.upan.cc/tools/test/ChipEasy.html">ChipEasy芯片无忧</a>。</li><li>下载<a href="https://sourceforge.net/projects/win32diskimager/">Win32 Disk Imager</a>。</li><li>下载SN算号文件。[<a href="http://pan.baidu.com/s/1eRO2nNO">度盘链接</a> 密码：dlni]</li><li>下载一个你自己喜欢的mac地址查看软件，不知道的话就下载<a href="https://www.aida64.com/downloads">AIDA64</a>。</li><li>下载<a href="https://www.synology.com/zh-cn/support/download/DS3615xs">Synology Assistant</a>。</li><li>下载<a href="https://notepad-plus-plus.org/download/v7.2.2.html">Notepad++</a>（非必须，但是强烈推荐。）</li></ol><p>解压你下载的文件，找到synoboot.img，然后用Win32 Disk Imager选中<strong>你U盘的盘符</strong>，写入你的U盘。</p><p>成功之后打开ChipEasy，点击你的U盘，记录下VID和PID。</p><p><img src="https://www.akarin.moe/images/NAS1/chipeasy.jpg" alt="pic"></p><p>打开SN算号文件。</p><p><img src="https://www.akarin.moe/images/NAS1/sn.png" alt="pic"></p><p>在上图所示的地方，找到DS3615xs。</p><p>然后把Serial number记下来，这就是你的SN。</p><p>找到你<strong>打算作为黑群晖的机器</strong>的mac地址，然后取后六位数，然后前面加上001132作为前六位数。比如后六位是aabbcc，那么你的mac地址就应该是001132aabbcc。</p><p>打开你的U盘，在grub文件夹里找到grub.cfg，然后用notepad++打开。</p><p>如下图所示，把框起来的地方里的数据都替换成你自己的数据。</p><p><img src="https://www.akarin.moe/images/NAS1/image.jpg" alt="pic"></p><p>然后保存，把U盘接到你的机器上，引导U盘开机。</p><p><img src="https://www.akarin.moe/images/NAS1/trunon.jpg" alt="pic"></p><p>出现上面这个界面你就可以不用管这台机器了。</p><p>然后打开Synology Assistant，注意：如果这个时候你没法找到你的机器的话，先不要急着去尝试关闭windows防火墙什么的，在你的浏览器里输入find.synology.com尝试搜索。</p><p>DSM有两种安装方式，一种是你提供安装文件，另一种是自动从群晖下载安装文件安装。</p><p>安装过程什么的就按照个人的需要自行修改了。</p><p>完成后你的黑群晖会自动重启一次。</p><p><img src="https://www.akarin.moe/images/NAS1/final.jpg" alt="pic"></p><p>最后的界面就是这样的了。</p><p>以上的内容你也可以在我的<a href="https://zhuanlan.zhihu.com/p/24575486">知乎专栏</a>找到。</p>]]></content>
-      
-      
+      <tags>
+        <tag>hexo</tag>
+        <tag>OneDrive</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Ubuntu下对于Websocket/HTTP2+TLS+web与mtproto的探索</title>
+    <url>/2019/07/09/test/</url>
+    <content><![CDATA[<p>首先你需要有caddy。</p>
+<p>Caddy其实是特别傻瓜化的东西，它本身其实特别绿色纯净版，在<a href="https://caddyserver.com/download">CaddyServer</a>里面勾选http.forwardproxy还有http.proxyprotocol，hook.service可以要也可以不要。</p>
+<p>下载下来之后随便放在什么home之类的就可以了，要用的时候在和caddy一样的地方写一个Caddyfile，然后执行caddy它就会读取Caddyfile然后执行。</p>
+<p>如果你想要ws+tls+web，那么Caddyfile里面填：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yourdomain.com</span><br><span class="line">&#123;</span><br><span class="line">  log ./caddy.log</span><br><span class="line">  root /www/public</span><br><span class="line">  proxy /test localhost:10000 &#123;</span><br><span class="line">    websocket</span><br><span class="line">    header_upstream -Origin</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>把yourdomain.com改成你自己的域名，/www/public是你放网页的地方，proxy是把 yourdomain.com/test 指向10000端口反代。</p>
+<p>另一边填：</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;inbound&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;port&quot;</span>: <span class="number">10000</span>,</span><br><span class="line">    <span class="attr">&quot;listen&quot;</span>:<span class="string">&quot;127.0.0.1&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;protocol&quot;</span>: <span class="string">&quot;vmess&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;settings&quot;</span>: &#123;</span><br><span class="line">      <span class="attr">&quot;clients&quot;</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">          <span class="attr">&quot;id&quot;</span>: <span class="string">&quot;你的uuid&quot;</span>,</span><br><span class="line">          <span class="attr">&quot;alterId&quot;</span>: <span class="number">64</span></span><br><span class="line">        &#125;</span><br><span class="line">      ]</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">&quot;streamSettings&quot;</span>: &#123;</span><br><span class="line">      <span class="attr">&quot;network&quot;</span>: <span class="string">&quot;ws&quot;</span>,</span><br><span class="line">      <span class="attr">&quot;wsSettings&quot;</span>: &#123;</span><br><span class="line">      <span class="attr">&quot;path&quot;</span>: <span class="string">&quot;/test&quot;</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">&quot;outbound&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;protocol&quot;</span>: <span class="string">&quot;freedom&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;settings&quot;</span>: &#123;&#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>其中uuid换成自己的就可以了。</p>
+<hr>
+<p>如果是h2+tls+web的话，那么Caddyfile里面填：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">https://yourdomain.com &#123;</span><br><span class="line">  root /www/public</span><br><span class="line">  proxy /test https://localhost:10000 &#123;</span><br><span class="line">    insecure_skip_verify</span><br><span class="line">    header_upstream X-Forwarded-Proto &quot;https&quot;</span><br><span class="line">    header_upstream Host &quot;yourdomain.com&quot;</span><br><span class="line">  &#125;</span><br><span class="line">  header / &#123;</span><br><span class="line">    Strict-Transport-Security &quot;max-age=31536000;&quot;</span><br><span class="line">    X-XSS-Protection &quot;1; mode=block&quot;</span><br><span class="line">    X-Content-Type-Options &quot;nosniff&quot;</span><br><span class="line">    X-Frame-Options &quot;DENY&quot;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后你需要sudo -i切换到root模式，然后软链caddy的证书过来。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ln -s /etc/ssl/caddy/acme/acme-v02.api.letsencrypt.org/sites/&lt;yourdomain.com&gt;/&lt;yourdomain.com&gt;.crt /etc/v2ray/v2ray.crt</span><br><span class="line"></span><br><span class="line">ln -s /etc/ssl/caddy/acme/acme-v02.api.letsencrypt.org/sites/&lt;yourdomain.com&gt;/&lt;yourdomain.com&gt;.key /etc/v2ray/v2ray.key</span><br></pre></td></tr></table></figure>
+
+<p>把命令里面的两个yourdomain.com都换成自己的域名。</p>
+<p>然后另一边填：</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;log&quot;</span> : &#123;</span><br><span class="line">    <span class="attr">&quot;access&quot;</span>: <span class="string">&quot;/var/log/v2ray/access.log&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;error&quot;</span>: <span class="string">&quot;/var/log/v2ray/error.log&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;loglevel&quot;</span>: <span class="string">&quot;warning&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  <span class="attr">&quot;inbound&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;port&quot;</span>: <span class="number">10000</span>,</span><br><span class="line">    <span class="attr">&quot;listen&quot;</span>: <span class="string">&quot;127.0.0.1&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;protocol&quot;</span>: <span class="string">&quot;vmess&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;settings&quot;</span>: &#123;</span><br><span class="line">      <span class="attr">&quot;clients&quot;</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">          <span class="attr">&quot;id&quot;</span>: <span class="string">&quot;你的uuid&quot;</span>,</span><br><span class="line">          <span class="attr">&quot;level&quot;</span>: <span class="number">1</span>,</span><br><span class="line">          <span class="attr">&quot;alterId&quot;</span>: <span class="number">64</span></span><br><span class="line">        &#125;</span><br><span class="line">      ]</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    <span class="attr">&quot;streamSettings&quot;</span>: &#123;</span><br><span class="line">      <span class="attr">&quot;network&quot;</span>: <span class="string">&quot;h2&quot;</span>,</span><br><span class="line">      <span class="attr">&quot;security&quot;</span>: <span class="string">&quot;tls&quot;</span>,</span><br><span class="line">      <span class="attr">&quot;httpSettings&quot;</span>: &#123;</span><br><span class="line">        <span class="attr">&quot;path&quot;</span>: <span class="string">&quot;/test&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;host&quot;</span>: [<span class="string">&quot;yourdomain.com&quot;</span>]</span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="attr">&quot;tlsSettings&quot;</span>: &#123;</span><br><span class="line">        <span class="attr">&quot;serverName&quot;</span>: <span class="string">&quot;yourdomain.com&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;certificates&quot;</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">          <span class="attr">&quot;certificateFile&quot;</span>: <span class="string">&quot;/etc/v2ray/v2ray.crt&quot;</span>,</span><br><span class="line">          <span class="attr">&quot;keyFile&quot;</span>: <span class="string">&quot;/etc/v2ray/v2ray.key&quot;</span></span><br><span class="line">        &#125;</span><br><span class="line">      ]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br><span class="line"></span><br><span class="line"><span class="attr">&quot;outbound&quot;</span>: &#123;</span><br><span class="line">  <span class="attr">&quot;protocol&quot;</span>: <span class="string">&quot;freedom&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;settings&quot;</span>: &#123;&#125;</span><br><span class="line">&#125;,</span><br><span class="line"><span class="attr">&quot;outboundDetour&quot;</span>: [</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">&quot;protocol&quot;</span>: <span class="string">&quot;blackhole&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;settings&quot;</span>: &#123;&#125;,</span><br><span class="line">    <span class="attr">&quot;tag&quot;</span>: <span class="string">&quot;blocked&quot;</span></span><br><span class="line">  &#125;</span><br><span class="line">],</span><br><span class="line"></span><br><span class="line"><span class="attr">&quot;routing&quot;</span>: &#123;</span><br><span class="line">  <span class="attr">&quot;strategy&quot;</span>: <span class="string">&quot;rules&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;settings&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;rules&quot;</span>: [</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">&quot;type&quot;</span>: <span class="string">&quot;field&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;ip&quot;</span>: [</span><br><span class="line">          <span class="string">&quot;0.0.0.0/8&quot;</span>,</span><br><span class="line">          <span class="string">&quot;10.0.0.0/8&quot;</span>,</span><br><span class="line">          <span class="string">&quot;100.64.0.0/10&quot;</span>,</span><br><span class="line">          <span class="string">&quot;127.0.0.0/8&quot;</span>,</span><br><span class="line">          <span class="string">&quot;169.254.0.0/16&quot;</span>,</span><br><span class="line">          <span class="string">&quot;172.16.0.0/12&quot;</span>,</span><br><span class="line">          <span class="string">&quot;192.0.0.0/24&quot;</span>,</span><br><span class="line">          <span class="string">&quot;192.0.2.0/24&quot;</span>,</span><br><span class="line">          <span class="string">&quot;192.168.0.0/16&quot;</span>,</span><br><span class="line">          <span class="string">&quot;198.18.0.0/15&quot;</span>,</span><br><span class="line">          <span class="string">&quot;198.51.100.0/24&quot;</span>,</span><br><span class="line">          <span class="string">&quot;203.0.113.0/24&quot;</span>,</span><br><span class="line">          <span class="string">&quot;::1/128&quot;</span>,</span><br><span class="line">          <span class="string">&quot;fc00::/7&quot;</span>,</span><br><span class="line">          <span class="string">&quot;fe80::/10&quot;</span></span><br><span class="line">        ],</span><br><span class="line">        <span class="attr">&quot;outboundTag&quot;</span>: <span class="string">&quot;blocked&quot;</span></span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果ws需要加上mtproto服务的话：</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;inbounds&quot;</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">&quot;port&quot;</span>: <span class="number">10000</span>,</span><br><span class="line">      <span class="attr">&quot;listen&quot;</span>:<span class="string">&quot;127.0.0.1&quot;</span>,</span><br><span class="line">      <span class="attr">&quot;protocol&quot;</span>: <span class="string">&quot;vmess&quot;</span>,</span><br><span class="line">      <span class="attr">&quot;settings&quot;</span>: &#123;</span><br><span class="line">        <span class="attr">&quot;clients&quot;</span>: [</span><br><span class="line">          &#123;</span><br><span class="line">            <span class="attr">&quot;id&quot;</span>: <span class="string">&quot;你的uuid&quot;</span>,</span><br><span class="line">            <span class="attr">&quot;alterId&quot;</span>: <span class="number">64</span></span><br><span class="line">          &#125;</span><br><span class="line">        ]</span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="attr">&quot;streamSettings&quot;</span>: &#123;</span><br><span class="line">        <span class="attr">&quot;network&quot;</span>: <span class="string">&quot;ws&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;wsSettings&quot;</span>: &#123;</span><br><span class="line">        <span class="attr">&quot;path&quot;</span>: <span class="string">&quot;/test&quot;</span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">&quot;tag&quot;</span>: <span class="string">&quot;tg-in&quot;</span>, </span><br><span class="line">      <span class="attr">&quot;port&quot;</span>: <span class="number">10001</span>, </span><br><span class="line">      <span class="attr">&quot;protocol&quot;</span>: <span class="string">&quot;mtproto&quot;</span>, </span><br><span class="line">      <span class="attr">&quot;settings&quot;</span>: &#123;</span><br><span class="line">        <span class="attr">&quot;users&quot;</span>: [</span><br><span class="line">          &#123;</span><br><span class="line">            <span class="attr">&quot;secret&quot;</span>: <span class="string">&quot;你的uuid&quot;</span></span><br><span class="line">          &#125;</span><br><span class="line">        ]</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  ], </span><br><span class="line">  <span class="attr">&quot;outbounds&quot;</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">&quot;protocol&quot;</span>: <span class="string">&quot;freedom&quot;</span>, </span><br><span class="line">      <span class="attr">&quot;settings&quot;</span>: &#123; &#125;</span><br><span class="line">    &#125;, </span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">&quot;tag&quot;</span>: <span class="string">&quot;tg-out&quot;</span>, </span><br><span class="line">      <span class="attr">&quot;protocol&quot;</span>: <span class="string">&quot;mtproto&quot;</span>, </span><br><span class="line">      <span class="attr">&quot;settings&quot;</span>: &#123; &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  ], </span><br><span class="line">  <span class="attr">&quot;routing&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;rules&quot;</span>: [</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">&quot;type&quot;</span>: <span class="string">&quot;field&quot;</span>, </span><br><span class="line">        <span class="attr">&quot;inboundTag&quot;</span>: [</span><br><span class="line">          <span class="string">&quot;tg-in&quot;</span></span><br><span class="line">        ], </span><br><span class="line">        <span class="attr">&quot;outboundTag&quot;</span>: <span class="string">&quot;tg-out&quot;</span></span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果h2需要加上mtproto的话：</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;inbounds&quot;</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">&quot;port&quot;</span>: <span class="number">10000</span>,</span><br><span class="line">      <span class="attr">&quot;listen&quot;</span>: <span class="string">&quot;127.0.0.1&quot;</span>,</span><br><span class="line">      <span class="attr">&quot;protocol&quot;</span>: <span class="string">&quot;vmess&quot;</span>,</span><br><span class="line">      <span class="attr">&quot;settings&quot;</span>: &#123;</span><br><span class="line">        <span class="attr">&quot;clients&quot;</span>: [</span><br><span class="line">          &#123;</span><br><span class="line">            <span class="attr">&quot;id&quot;</span>: <span class="string">&quot;你的uuid&quot;</span>,</span><br><span class="line">            <span class="attr">&quot;level&quot;</span>: <span class="number">1</span>,</span><br><span class="line">            <span class="attr">&quot;alterId&quot;</span>: <span class="number">64</span></span><br><span class="line">          &#125;</span><br><span class="line">        ]</span><br><span class="line">      &#125;,</span><br><span class="line">  </span><br><span class="line">      <span class="attr">&quot;streamSettings&quot;</span>: &#123;</span><br><span class="line">        <span class="attr">&quot;network&quot;</span>: <span class="string">&quot;h2&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;security&quot;</span>: <span class="string">&quot;tls&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;httpSettings&quot;</span>: &#123;</span><br><span class="line">          <span class="attr">&quot;path&quot;</span>: <span class="string">&quot;/test&quot;</span>,</span><br><span class="line">          <span class="attr">&quot;host&quot;</span>: [<span class="string">&quot;yourdomain.com&quot;</span>]</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">&quot;tlsSettings&quot;</span>: &#123;</span><br><span class="line">          <span class="attr">&quot;serverName&quot;</span>: <span class="string">&quot;yourdomain.com&quot;</span>,</span><br><span class="line">          <span class="attr">&quot;certificates&quot;</span>: [</span><br><span class="line">          &#123;</span><br><span class="line">            <span class="attr">&quot;certificateFile&quot;</span>: <span class="string">&quot;/etc/v2ray/v2ray.crt&quot;</span>,</span><br><span class="line">            <span class="attr">&quot;keyFile&quot;</span>: <span class="string">&quot;/etc/v2ray/v2ray.key&quot;</span></span><br><span class="line">          &#125;</span><br><span class="line">        ]</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">&quot;tag&quot;</span>: <span class="string">&quot;tg-in&quot;</span>, </span><br><span class="line">      <span class="attr">&quot;port&quot;</span>: <span class="number">10001</span>, </span><br><span class="line">      <span class="attr">&quot;protocol&quot;</span>: <span class="string">&quot;mtproto&quot;</span>, </span><br><span class="line">      <span class="attr">&quot;settings&quot;</span>: &#123;</span><br><span class="line">        <span class="attr">&quot;users&quot;</span>: [</span><br><span class="line">          &#123;</span><br><span class="line">            <span class="attr">&quot;secret&quot;</span>: <span class="string">&quot;你的uuid&quot;</span></span><br><span class="line">          &#125;</span><br><span class="line">        ]</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  ], </span><br><span class="line">  <span class="attr">&quot;outbounds&quot;</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">&quot;protocol&quot;</span>: <span class="string">&quot;freedom&quot;</span>, </span><br><span class="line">      <span class="attr">&quot;settings&quot;</span>: &#123; &#125;</span><br><span class="line">    &#125;, </span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">&quot;tag&quot;</span>: <span class="string">&quot;tg-out&quot;</span>, </span><br><span class="line">      <span class="attr">&quot;protocol&quot;</span>: <span class="string">&quot;mtproto&quot;</span>, </span><br><span class="line">      <span class="attr">&quot;settings&quot;</span>: &#123; &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  ], </span><br><span class="line">  <span class="attr">&quot;routing&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;rules&quot;</span>: [</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">&quot;type&quot;</span>: <span class="string">&quot;field&quot;</span>, </span><br><span class="line">        <span class="attr">&quot;inboundTag&quot;</span>: [</span><br><span class="line">          <span class="string">&quot;tg-in&quot;</span></span><br><span class="line">        ], </span><br><span class="line">        <span class="attr">&quot;outboundTag&quot;</span>: <span class="string">&quot;tg-out&quot;</span></span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>以上。</p>
+]]></content>
       <categories>
-          
-          <category> Synology </category>
-          
-          <category> NAS </category>
-          
+        <category>Ubuntu</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> Synology </tag>
-            
-            <tag> NAS </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>修缮</title>
-      <link href="/2016/12/26/Fix/"/>
-      <url>/2016/12/26/Fix/</url>
-      
-        <content type="html"><![CDATA[<p>修修补补又一年。</p>]]></content>
-      
-      
+      <tags>
+        <tag>Ubuntu</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>sudo，caddy，docker，以及报错。</title>
+    <url>/2019/12/10/ubuntu-sudo/</url>
+    <content><![CDATA[<p>尽管很多命令行，或者个人习惯，都喜欢在一些命令之前添加sudo，但其实这十分危险。</p>
+<p>拿caddy举例：如果第一次运行caddy的时候是直接运行而且是sudo运行的，那么caddy会直接在root下生成证书：这会导致一系列的问题：比如caddy.service默认以www-data运行，必须手动切换至root才能正常。</p>
+<p>这是一个特别奇怪的事情：明明sudo是为了使用更高的权限以获得最完美的使用体验，但是很多东西并不需要sudo，sudo了反而会导致它的文件生成在root，从而导致与之相关的服务会莫名其妙失效或者bug。</p>
+]]></content>
       <categories>
-          
-          <category> Fix </category>
-          
+        <category>ubuntu</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> Fix </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>自留地</title>
-      <link href="/2016/12/22/Private/"/>
-      <url>/2016/12/22/Private/</url>
-      
-        <content type="html"><![CDATA[<h1 id="第一篇文章"><a href="#第一篇文章" class="headerlink" title="第一篇文章"></a>第一篇文章</h1><h4 id="Tachibana-Lolo"><a href="#Tachibana-Lolo" class="headerlink" title="Tachibana Lolo"></a>Tachibana Lolo</h4><p>嗯，就这样。还在研究中。没什么好东西。基本用于展示而已。</p>]]></content>
-      
-      
-      
-    </entry>
-    
-    
-  
-  
+      <tags>
+        <tag>ubuntu</tag>
+      </tags>
+  </entry>
 </search>
