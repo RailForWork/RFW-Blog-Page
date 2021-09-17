@@ -1,35 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>test</title>
+  <title>RailForWork Blog</title>
   
-  <subtitle>For test</subtitle>
-  <link href="https://akarin.tech/atom.xml" rel="self"/>
+  <subtitle>Blog for RFW</subtitle>
+  <link href="https://blog.rail.moe/atom.xml" rel="self"/>
   
-  <link href="https://akarin.tech/"/>
-  <updated>2021-09-14T08:01:43.210Z</updated>
-  <id>https://akarin.tech/</id>
+  <link href="https://blog.rail.moe/"/>
+  <updated>2021-09-17T16:31:23.051Z</updated>
+  <id>https://blog.rail.moe/</id>
   
   <author>
-    <name>test</name>
+    <name>RFW Admin</name>
     
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>test</title>
-    <link href="https://akarin.tech/2016/12/22/Private/"/>
-    <id>https://akarin.tech/2016/12/22/Private/</id>
-    <published>2016-12-21T18:49:25.000Z</published>
-    <updated>2021-09-14T08:01:43.210Z</updated>
+    <title>给discourse开发主题组件时遇到的一些坑</title>
+    <link href="https://blog.rail.moe/2021/09/18/discourse-theme-component/"/>
+    <id>https://blog.rail.moe/2021/09/18/discourse-theme-component/</id>
+    <published>2021-09-17T16:21:43.000Z</published>
+    <updated>2021-09-17T16:31:23.051Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="第一篇文章"><a href="#第一篇文章" class="headerlink" title="第一篇文章"></a>第一篇文章</h1><h4 id="test"><a href="#test" class="headerlink" title="test"></a>test</h4><p>test</p>]]></content>
-    
-    
-    <summary type="html">test</summary>
+    <content type="html"><![CDATA[<p>说到底，真的太痛苦了啊特么的，怎么会有人管注释叫“docs”呢？反正api的功能也不多，其中用的最多的应该是modify class，但我们今天不聊这个，聊聊<a href="https://github.com/RailForWork/Discourse-Coloring-Tag">coloring tag</a>这个插件我是怎么写出来的。</p><p>discourse有一个部分是render tag，顾名思义，这是负责“如何渲染tag”的组件，api里有一个replacerendertag，允许你直接修改它默认的生成方式，然后把你想生成tag的方式塞进去，coloring tag这个插件实际上就是在它原来渲染tag的基础上增加了一个判断，如果检测到有settings来的变量，则改变颜色（写入生成的tag里的style），没有就不写。</p><p>总之给这个破玩意开发插件实在是有点痛苦。</p><p>在你思考用什么来实现自己的功能的时候，这个过程可能要比你实际写更痛苦。</p>]]></content>
     
     
+    <summary type="html">Discourse的插件文档几乎等于没有，所谓的docs只是几行注释，开发的过程真是痛苦不堪。</summary>
     
+    
+    
+    <category term="Discourse" scheme="https://blog.rail.moe/categories/Discourse/"/>
+    
+    
+    <category term="Discourse" scheme="https://blog.rail.moe/tags/Discourse/"/>
+    
+    <category term="Discourse-theme-component" scheme="https://blog.rail.moe/tags/Discourse-theme-component/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>如何为discourse开启Onedrive同步网站备份</title>
+    <link href="https://blog.rail.moe/2021/09/18/discourse-onedrive/"/>
+    <id>https://blog.rail.moe/2021/09/18/discourse-onedrive/</id>
+    <published>2021-09-17T16:20:30.000Z</published>
+    <updated>2021-09-17T16:29:06.321Z</updated>
+    
+    <content type="html"><![CDATA[<p>Google Drive和DropBox我就不写了，discourse有它们两的官方插件，没必要用我这种方法。<br>主要是针对有的人开了Office365的家庭版，有个1T又用不完那种（比如我）。<br>原理其实很简单，说穿了不是什么太复杂的东西，但不说可能知道的人就比较少。</p><p>记得上一篇文章里我提到过，discourse的论坛数据都是储存在docker外的，即/var/discourse/shared这个路径，那么巧了，备份的路径就在这个 /shared/bakcups/default 里。那么已知discourse可以让论坛自动定时备份，并且备份的路径在服务器可访问，求：如何使用onedrive自动把这些备份好的文件上传到onedrive呢？</p><p>装一个onedrive for Linux不就好了吗。（笑）</p><p><a href="https://github.com/abraunegg/onedrive">https://github.com/abraunegg/onedrive</a></p><p>我用的是这个。</p><p>Ubuntu/Debian都有对应的包，不用你自己累死累活去编译。<br>装完之后别动东西，然后去 /etc 目录下 mkdir 一个 onedrive 文件夹，然后进入这个文件夹之后wget它默认config也好，vi config自己贴进去也好都可以，然后把路径指向 /var/diacourse/shared/backups/default ，最后把upload only和no remote delete设置为true，然后直接在命令行里敲onedrive，把给你的url在浏览器打开，登录再把空白网页的授权url剪切下来贴进去，你的onedrive就完成授权了。<br>此时你可以直接 systemctl –user enable onedrive 和 systemctl –user start onedrive配置开机自启和启动服务了。不出意外的话，当你过5分钟再 systemctl –user status onedrive的时候，它就会显示onedrive在后台默默帮你上传文件了。</p><p>对了，onedrive默认设置是5分钟检测一次变化，你可以自己调，调快测试或者调慢用于生产环境都行，随你。</p><p>再说个小细节，vi launcher里按/然后输入512m，前面加个 -v outside/path:docker/path 就可以自己指定backups和upload的路径。</p><p>有什么疑问欢迎各位发邮件来与技术人员交流心得。</p>]]></content>
+    
+    
+    <summary type="html">如何利用OneDrive,使Discourse的定时备份自动同步到OneDrive上去。</summary>
+    
+    
+    
+    <category term="Discourse" scheme="https://blog.rail.moe/categories/Discourse/"/>
+    
+    
+    <category term="Discourse" scheme="https://blog.rail.moe/tags/Discourse/"/>
+    
+    <category term="OneDrive" scheme="https://blog.rail.moe/tags/OneDrive/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>浅谈我对discourse的理解</title>
+    <link href="https://blog.rail.moe/2021/09/18/discourse/"/>
+    <id>https://blog.rail.moe/2021/09/18/discourse/</id>
+    <published>2021-09-17T16:19:59.000Z</published>
+    <updated>2021-09-17T16:24:28.010Z</updated>
+    
+    <content type="html"><![CDATA[<p>discourse实在是太复杂了，人家那么多年的心血让我一个菜鸡两三天看完也不现实，总之在研究discourse的时候我发现了一些很有意思的设计：</p><p>首先谈谈的discourse底层，它官方推荐且唯一推荐的运行方式是跑在一个docker上，瞠目结舌了多多少少属于是，但只要你被草习惯了，你就会发现discourse这套东西还蛮有意思的，它实际上是这样的；<br>论坛核心数据实际上是在/var/discourse/shared这个路径，对，核心数据是完全暴露在docker外，实际存储在服务器上的，docker只是做了一个软link让docker里面可以访问外部的资源，这么做的好处是你至少觉得放外面出事了抢救的概率比里面高一点。。。整个docker炸了也没啥关系（</p><p>底层是数据，那么上一层就是docker的image了。<br>discourse有一个launcher的bash，经常你在containers/app.yml改动了啥就需要rebuild，所谓rebuild，实际上就是执行一次重新生成镜像，rebuild时我看它里面大概做了这么几件事：</p><ol><li>把discourse对应的版本（默认为main，即最不稳定的版本）从github上pull下来</li><li>把你自己自定义的plugin也从对应的github上pull下来</li><li>压缩（brolti）js/css</li><li>把数据库开起来</li></ol><p>总之image就是新的一个运行环境了。</p><p>最上面则是containers，也就是docker的参数传递，这时候它会把你app.yml规定好的参数穿进去docker，比如volume路径，SMTP服务器参数之类的。。。（这个真的太阴间了，SMTP服务器每次变好像都要rebuild一次，不能很方便地在管理页面更改）</p><p>总结一下就是，最底下是放在外面的数据（sql/用户上传文件什么的），中间是运行环境（Nginx，Ruby，SQL服务器之类的），最上层是参数（SMTP服务器）</p><p>理解了它们怎么运作，才能更好地维护和魔改discourse。</p>]]></content>
+    
+    
+    <summary type="html">本文主要介绍Discourse的基础运作原理以及它的组成部分。</summary>
+    
+    
+    
+    <category term="Discourse" scheme="https://blog.rail.moe/categories/Discourse/"/>
+    
+    
+    <category term="Discourse" scheme="https://blog.rail.moe/tags/Discourse/"/>
+    
+    <category term="docker" scheme="https://blog.rail.moe/tags/docker/"/>
     
   </entry>
   

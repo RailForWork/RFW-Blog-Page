@@ -20,20 +20,21 @@
     var CONFIG = {"hostname":"blog.rail.moe","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="分享一些论坛里遇到的事情。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="标签">
-<meta property="og:url" content="https://blog.rail.moe/tags/index.html">
+  <meta name="description" content="本文主要介绍Discourse的基础运作原理以及它的组成部分。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="浅谈我对discourse的理解">
+<meta property="og:url" content="https://blog.rail.moe/2021/09/18/discourse/index.html">
 <meta property="og:site_name" content="RailForWork Blog">
-<meta property="og:description" content="分享一些论坛里遇到的事情。">
+<meta property="og:description" content="本文主要介绍Discourse的基础运作原理以及它的组成部分。">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2014-12-22T04:39:04.000Z">
-<meta property="article:modified_time" content="2019-11-28T03:31:04.000Z">
+<meta property="article:published_time" content="2021-09-17T16:19:59.000Z">
+<meta property="article:modified_time" content="2021-09-17T16:24:28.010Z">
 <meta property="article:author" content="RFW Admin">
-<meta property="article:tag" content="IT">
+<meta property="article:tag" content="Discourse">
+<meta property="article:tag" content="docker">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://blog.rail.moe/tags/">
+<link rel="canonical" href="https://blog.rail.moe/2021/09/18/discourse/">
 
 
 <script id="page-configurations">
@@ -41,13 +42,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>标签 | RailForWork Blog
-</title>
+  <title>浅谈我对discourse的理解 | RailForWork Blog</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-WX7YMYHFK5"></script>
     <script>
@@ -170,51 +170,112 @@
       <div class="main-inner">
         <div class="content-wrap">
           
-  
-  
 
-          <div class="content page posts-expand">
+          <div class="content post posts-expand">
             
 
     
-    
-    
-    <div class="post-block" lang="zh-CN">
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.rail.moe/2021/09/18/discourse/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="RFW Admin">
+      <meta itemprop="description" content="分享一些论坛里遇到的事情。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="RailForWork Blog">
+    </span>
       <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          浅谈我对discourse的理解
+        </h1>
 
-<h1 class="post-title" itemprop="name headline">标签
-</h1>
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
 
-<div class="post-meta">
+              <time title="创建时间：2021-09-18 00:19:59" itemprop="dateCreated datePublished" datetime="2021-09-18T00:19:59+08:00">2021-09-18</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Discourse/" itemprop="url" rel="index"><span itemprop="name">Discourse</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+            <div class="post-description">本文主要介绍Discourse的基础运作原理以及它的组成部分。</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>discourse实在是太复杂了，人家那么多年的心血让我一个菜鸡两三天看完也不现实，总之在研究discourse的时候我发现了一些很有意思的设计：</p>
+<p>首先谈谈的discourse底层，它官方推荐且唯一推荐的运行方式是跑在一个docker上，瞠目结舌了多多少少属于是，但只要你被草习惯了，你就会发现discourse这套东西还蛮有意思的，它实际上是这样的；<br>论坛核心数据实际上是在/var/discourse/shared这个路径，对，核心数据是完全暴露在docker外，实际存储在服务器上的，docker只是做了一个软link让docker里面可以访问外部的资源，这么做的好处是你至少觉得放外面出事了抢救的概率比里面高一点。。。整个docker炸了也没啥关系（</p>
+<p>底层是数据，那么上一层就是docker的image了。<br>discourse有一个launcher的bash，经常你在containers/app.yml改动了啥就需要rebuild，所谓rebuild，实际上就是执行一次重新生成镜像，rebuild时我看它里面大概做了这么几件事：</p>
+<ol>
+<li>把discourse对应的版本（默认为main，即最不稳定的版本）从github上pull下来</li>
+<li>把你自己自定义的plugin也从对应的github上pull下来</li>
+<li>压缩（brolti）js/css</li>
+<li>把数据库开起来</li>
+</ol>
+<p>总之image就是新的一个运行环境了。</p>
+<p>最上面则是containers，也就是docker的参数传递，这时候它会把你app.yml规定好的参数穿进去docker，比如volume路径，SMTP服务器参数之类的。。。（这个真的太阴间了，SMTP服务器每次变好像都要rebuild一次，不能很方便地在管理页面更改）</p>
+<p>总结一下就是，最底下是放在外面的数据（sql/用户上传文件什么的），中间是运行环境（Nginx，Ruby，SQL服务器之类的），最上层是参数（SMTP服务器）</p>
+<p>理解了它们怎么运作，才能更好地维护和魔改discourse。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Discourse/" rel="tag"># Discourse</a>
+              <a href="/tags/docker/" rel="tag"># docker</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2021/09/18/discourse-onedrive/" rel="next" title="如何为discourse开启Onedrive同步网站备份">
+      如何为discourse开启Onedrive同步网站备份 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
   
 
-</div>
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
-          <div class="tag-cloud">
-            <div class="tag-cloud-title">
-              目前共计 4 个标签
-            </div>
-            <div class="tag-cloud-tags">
-              <a href="/tags/Discourse/" style="font-size: 30px; color: #111">Discourse</a> <a href="/tags/Discourse-theme-component/" style="font-size: 12px; color: #ccc">Discourse-theme-component</a> <a href="/tags/OneDrive/" style="font-size: 12px; color: #ccc">OneDrive</a> <a href="/tags/docker/" style="font-size: 12px; color: #ccc">docker</a>
-            </div>
-          </div>
-        
-      </div>
-      
-      
-      
-    </div>
-    
-
-    
-    
-    
 
 
           </div>

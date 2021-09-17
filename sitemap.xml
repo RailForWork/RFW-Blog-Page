@@ -2,42 +2,49 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://akarin.tech/service/index.html</loc>
+    <loc>https://blog.rail.moe/2021/09/18/discourse-theme-component/</loc>
     
-    <lastmod>2021-09-14</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://akarin.tech/about/index.html</loc>
-    
-    <lastmod>2021-09-14</lastmod>
+    <lastmod>2021-09-17</lastmod>
     
   </url>
   
   <url>
-    <loc>https://akarin.tech/2016/12/22/Private/</loc>
+    <loc>https://blog.rail.moe/2021/09/18/discourse-onedrive/</loc>
     
-    <lastmod>2021-09-14</lastmod>
+    <lastmod>2021-09-17</lastmod>
     
   </url>
   
   <url>
-    <loc>https://akarin.tech/archives/index.html</loc>
+    <loc>https://blog.rail.moe/2021/09/18/discourse/</loc>
+    
+    <lastmod>2021-09-17</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.rail.moe/about/index.html</loc>
+    
+    <lastmod>2021-09-17</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.rail.moe/archives/index.html</loc>
     
     <lastmod>2019-11-28</lastmod>
     
   </url>
   
   <url>
-    <loc>https://akarin.tech/categories/index.html</loc>
+    <loc>https://blog.rail.moe/categories/index.html</loc>
     
     <lastmod>2019-11-28</lastmod>
     
   </url>
   
   <url>
-    <loc>https://akarin.tech/tags/index.html</loc>
+    <loc>https://blog.rail.moe/tags/index.html</loc>
     
     <lastmod>2019-11-28</lastmod>
     
@@ -45,13 +52,48 @@
   
 
   <url>
-    <loc>https://akarin.tech/</loc>
+    <loc>https://blog.rail.moe/</loc>
     <lastmod>2021-09-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
 
   
+  <url>
+    <loc>https://blog.rail.moe/tags/Discourse/</loc>
+    <lastmod>2021-09-17</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.rail.moe/tags/OneDrive/</loc>
+    <lastmod>2021-09-17</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.rail.moe/tags/Discourse-theme-component/</loc>
+    <lastmod>2021-09-17</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.rail.moe/tags/docker/</loc>
+    <lastmod>2021-09-17</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
 
+  
+  <url>
+    <loc>https://blog.rail.moe/categories/Discourse/</loc>
+    <lastmod>2021-09-17</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
   
 </urlset>
