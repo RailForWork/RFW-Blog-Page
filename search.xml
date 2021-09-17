@@ -1,9 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<search>
-  <entry>
-    <title>test</title>
-    <url>/2016/12/22/Private/</url>
-    <content><![CDATA[<h1 id="第一篇文章"><a href="#第一篇文章" class="headerlink" title="第一篇文章"></a>第一篇文章</h1><h4 id="test"><a href="#test" class="headerlink" title="test"></a>test</h4><p>test</p>
-]]></content>
-  </entry>
+<search> 
+  
+  
+    
+    <entry>
+      <title>test</title>
+      <link href="/2016/12/22/Private/"/>
+      <url>/2016/12/22/Private/</url>
+      
+        <content type="html"><![CDATA[<h1 id="第一篇文章"><a href="#第一篇文章" class="headerlink" title="第一篇文章"></a>第一篇文章</h1><h4 id="test"><a href="#test" class="headerlink" title="test"></a>test</h4><p>test</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+  
+  
 </search>
