@@ -6,7 +6,7 @@
   <link href="https://blog.rail.moe/atom.xml" rel="self"/>
   
   <link href="https://blog.rail.moe/"/>
-  <updated>2021-09-17T16:31:23.051Z</updated>
+  <updated>2021-11-05T03:42:50.648Z</updated>
   <id>https://blog.rail.moe/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>RFW论坛自己改动的discourse功能</title>
+    <link href="https://blog.rail.moe/2021/11/05/theme-component-used/"/>
+    <id>https://blog.rail.moe/2021/11/05/theme-component-used/</id>
+    <published>2021-11-05T03:37:04.000Z</published>
+    <updated>2021-11-05T03:42:50.648Z</updated>
+    
+    <content type="html"><![CDATA[<p>微信图片外链破解（weixin image hack）：抓取微信公众号的内容时，如不添加本插件，将无法显示从微信公众号抓取的图片。</p><p>广州地铁tag样式（实验性）（Special Tag CSS）：把广州地铁这个tag变成圆角。</p><p>改变分享icon（Replace share icon）：替换分享的图标，原图标为链接图标，现图标为分享图标。（本改动最低版本要求为2.8.0.beta7版本89a2cec7be分支。）</p><p>高亮精华帖子（暂不推荐使用）（Highlight Topic List with Special Tag）：这个功能比较魔改。。。首先是不知道为什么discourse对加精这个功能好像没怎么在乎。。。其次是实现的方式很鬼畜。该插件改动了名为“＃”的tag的样式，将其改为星星。然后将检测到带这个tag的帖子改为紫色加粗。</p><p>隐藏汉堡菜单的子类别和键盘快捷键（Hide Sub-Categories and Keyboard shortcut）：那汉堡菜单里的键盘快捷键不说没有用吧，那也是一点用没有了。子类别在本论坛作为“高权限”存在，没什么在汉堡菜单里占着的意义，故隐藏掉。</p><p>黑幕（heimu）：添加类似萌娘百科的黑幕功能。</p><p>改变sticker显示大小（Display emoji correctly）：论坛允许自己添加“表情符号”，也就是表情包，但是大小按emoji显示，就很不好，太小了看不清。所以改动了一下自己上传的表情符号的大小，原来的emoji大小不变。</p><p>以上这些就是为了改善论坛使用体验而自己进行的小改动。大部分都是css改一下的东西。本论坛别的使用的插件就没放了，毕竟不是自己写的，需要什么功能插件的话直接去discourse官方论坛找就好了。</p>]]></content>
+    
+    
+    <summary type="html">本文主要介绍RFW论坛修改的discourse功能和插件。</summary>
+    
+    
+    
+    <category term="Discourse" scheme="https://blog.rail.moe/categories/Discourse/"/>
+    
+    
+    <category term="Discourse" scheme="https://blog.rail.moe/tags/Discourse/"/>
+    
+    <category term="plugin" scheme="https://blog.rail.moe/tags/plugin/"/>
+    
+  </entry>
   
   <entry>
     <title>给discourse开发主题组件时遇到的一些坑</title>
