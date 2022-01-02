@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.rail.moe/2022/01/03/Discourse-SAML-simpleSAMLphp/</loc>
+    
+    <lastmod>2022-01-02</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://blog.rail.moe/2021/11/05/theme-component-used/</loc>
     
     <lastmod>2021-11-05</lastmod>
@@ -60,7 +67,7 @@
 
   <url>
     <loc>https://blog.rail.moe/</loc>
-    <lastmod>2021-11-29</lastmod>
+    <lastmod>2022-01-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -68,35 +75,42 @@
   
   <url>
     <loc>https://blog.rail.moe/tags/Discourse/</loc>
-    <lastmod>2021-11-29</lastmod>
+    <lastmod>2022-01-02</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.rail.moe/tags/SAML/</loc>
+    <lastmod>2022-01-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://blog.rail.moe/tags/OneDrive/</loc>
-    <lastmod>2021-11-29</lastmod>
+    <lastmod>2022-01-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://blog.rail.moe/tags/docker/</loc>
-    <lastmod>2021-11-29</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.rail.moe/tags/plugin/</loc>
-    <lastmod>2021-11-29</lastmod>
+    <lastmod>2022-01-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://blog.rail.moe/tags/Discourse-theme-component/</loc>
-    <lastmod>2021-11-29</lastmod>
+    <lastmod>2022-01-02</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.rail.moe/tags/plugin/</loc>
+    <lastmod>2022-01-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
@@ -105,7 +119,14 @@
   
   <url>
     <loc>https://blog.rail.moe/categories/Discourse/</loc>
-    <lastmod>2021-11-29</lastmod>
+    <lastmod>2022-01-02</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.rail.moe/categories/Discourse/SAML/</loc>
+    <lastmod>2022-01-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
